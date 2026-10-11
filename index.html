@@ -19,6 +19,9 @@
       --cream: #FFF8F0;
       --cream-2: #FFEFE0;
       --cream-3: #FFE4CC;
+      --butter: #FFF3D6;
+      --sky: #E0F0FF;
+      --mint: #E0F5EC;
       --warm-white: #FFFFFF;
       --coral: #FF6B4A;
       --coral-dark: #E85533;
@@ -120,15 +123,21 @@
     }
 
     .logo-icon {
-      width: 36px;
-      height: 36px;
+      width: 40px;
+      height: 40px;
       background: linear-gradient(135deg, var(--coral), var(--amber));
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--warm-white);
-      font-size: 0.95rem;
+      font-size: 1.05rem;
+      box-shadow: 0 4px 12px rgba(255, 107, 74, 0.3);
+      transition: var(--transition);
+    }
+
+    .logo:hover .logo-icon {
+      transform: rotate(-12deg) scale(1.08);
     }
 
     nav ul {
@@ -173,9 +182,10 @@
       transform: scale(1.08);
     }
 
-    /* ============ HERO ============ */
+    /* ============ HERO — NOW WITH PHOTO BACKGROUND ============ */
     .hero {
-      background: var(--cream);
+      background: linear-gradient(rgba(255, 248, 240, 0.88), rgba(255, 248, 240, 0.78)),
+                  url('hero-bg.jpg') center/cover no-repeat;
       padding: 160px 0 0;
       position: relative;
       overflow: hidden;
@@ -198,7 +208,7 @@
       width: 500px;
       height: 500px;
       background: var(--coral-light);
-      opacity: 0.6;
+      opacity: 0.5;
     }
 
     .hero-blob-2 {
@@ -207,7 +217,74 @@
       width: 400px;
       height: 400px;
       background: var(--amber-light);
-      opacity: 0.5;
+      opacity: 0.4;
+    }
+
+    .hero-blob-3 {
+      top: 30%;
+      left: 40%;
+      width: 300px;
+      height: 300px;
+      background: var(--mint);
+      opacity: 0.35;
+    }
+
+    /* ============ FLOATING PHOTO CARDS ============ */
+    .paw-float {
+      position: absolute;
+      border-radius: 20px;
+      background: var(--warm-white);
+      padding: 6px;
+      box-shadow: 0 12px 32px rgba(107, 68, 35, 0.2);
+      pointer-events: none;
+      z-index: 1;
+      animation: paw-drift 18s ease-in-out infinite;
+      overflow: hidden;
+      border: 2px solid var(--warm-white);
+    }
+
+    .paw-float img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 14px;
+      display: block;
+    }
+
+    .paw-float:nth-child(1) {
+      width: 90px; height: 90px;
+      top: 15%; left: 6%;
+      animation-delay: 0s;
+      transform: rotate(-8deg);
+    }
+    .paw-float:nth-child(2) {
+      width: 70px; height: 70px;
+      top: 62%; left: 10%;
+      animation-delay: 4s;
+      transform: rotate(6deg);
+    }
+    .paw-float:nth-child(3) {
+      width: 100px; height: 100px;
+      top: 22%; right: 8%;
+      animation-delay: 2s;
+      transform: rotate(10deg);
+    }
+    .paw-float:nth-child(4) {
+      width: 110px; height: 110px;
+      bottom: 18%; right: 12%;
+      animation-delay: 6s;
+      transform: rotate(-6deg);
+    }
+    .paw-float:nth-child(5) {
+      width: 75px; height: 75px;
+      top: 72%; right: 28%;
+      animation-delay: 8s;
+      transform: rotate(8deg);
+    }
+
+    @keyframes paw-drift {
+      0%, 100% { transform: translateY(0) rotate(-8deg); opacity: 0.9; }
+      50% { transform: translateY(-24px) rotate(4deg); opacity: 1; }
     }
 
     .hero-inner {
@@ -233,10 +310,17 @@
       padding: 8px 18px;
       border-radius: 50px;
       margin-bottom: 28px;
+      backdrop-filter: blur(8px);
     }
 
     .hero-eyebrow i {
       font-size: 0.85rem;
+      animation: heart-beat 2s ease-in-out infinite;
+    }
+
+    @keyframes heart-beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
     }
 
     .hero h1 {
@@ -252,7 +336,7 @@
       font-family: var(--font-script);
       text-transform: none;
       color: var(--coral);
-      font-size: 4.8rem;
+      font-size: 5rem;
       letter-spacing: 0;
       display: inline-block;
       transform: rotate(-2deg);
@@ -319,7 +403,7 @@
       gap: 32px;
       flex-wrap: wrap;
       padding-top: 32px;
-      border-top: 1px dashed var(--border);
+      border-top: 1px dashed rgba(107, 68, 35, 0.2);
     }
 
     .hero-stat {
@@ -363,6 +447,7 @@
       justify-content: center;
       overflow: hidden;
       animation: blob-morph 12s ease-in-out infinite;
+      box-shadow: 0 20px 60px rgba(255, 107, 74, 0.25);
     }
 
     @keyframes blob-morph {
@@ -382,16 +467,16 @@
       overflow: hidden;
     }
 
-    .pet-blob-inner i {
-      font-size: 12rem;
-      color: var(--coral);
-      opacity: 0.9;
-    }
-
     .pet-blob-inner img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      animation: dog-wag 6s ease-in-out infinite;
+    }
+
+    @keyframes dog-wag {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.04); }
     }
 
     .floating-badge {
@@ -399,11 +484,17 @@
       background: var(--warm-white);
       border-radius: 20px;
       padding: 14px 20px;
-      box-shadow: 0 12px 32px rgba(107, 68, 35, 0.12);
+      box-shadow: 0 12px 32px rgba(107, 68, 35, 0.15);
       display: flex;
       align-items: center;
       gap: 12px;
       z-index: 3;
+      transition: var(--transition);
+    }
+
+    .floating-badge:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 16px 40px rgba(255, 107, 74, 0.25);
     }
 
     .floating-badge i {
@@ -477,6 +568,10 @@
       margin-bottom: 24px;
     }
 
+    .section-badge i {
+      font-size: 0.85rem;
+    }
+
     .section-title {
       font-size: 3rem;
       font-weight: 700;
@@ -534,6 +629,12 @@
     .about-circle-main i {
       font-size: 8rem;
       color: var(--warm-white);
+      animation: cat-breathe 5s ease-in-out infinite;
+    }
+
+    @keyframes cat-breathe {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
     }
 
     .about-circle-small {
@@ -613,6 +714,12 @@
       padding: 16px 18px;
       border-radius: 50px;
       box-shadow: 0 4px 16px rgba(107, 68, 35, 0.05);
+      transition: var(--transition);
+    }
+
+    .about-feature:hover {
+      transform: translateX(4px);
+      box-shadow: 0 8px 24px rgba(255, 107, 74, 0.12);
     }
 
     .about-feature i {
@@ -673,16 +780,27 @@
     }
 
     .service-icon-circle {
-      width: 80px;
-      height: 80px;
+      width: 90px;
+      height: 90px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--coral-light), var(--amber-light));
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2rem;
+      font-size: 2.2rem;
       color: var(--coral-dark);
       margin: 0 auto 24px;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .service-icon-circle::after {
+      content: '🐾';
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      font-size: 0.9rem;
+      opacity: 0;
       transition: var(--transition);
     }
 
@@ -690,6 +808,10 @@
       background: linear-gradient(135deg, var(--coral), var(--amber));
       color: var(--warm-white);
       transform: rotate(-10deg) scale(1.08);
+    }
+
+    .service-card:hover .service-icon-circle::after {
+      opacity: 1;
     }
 
     .service-card h4 {
@@ -840,6 +962,24 @@
       transition: var(--transition);
       box-shadow: 0 6px 24px rgba(107, 68, 35, 0.06);
       position: relative;
+      overflow: hidden;
+    }
+
+    .why-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, var(--amber), transparent);
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .why-item:hover::before {
+      opacity: 1;
     }
 
     .why-item:hover {
@@ -848,14 +988,14 @@
     }
 
     .why-icon-badge {
-      width: 64px;
-      height: 64px;
+      width: 70px;
+      height: 70px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--amber-light), var(--coral-light));
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       color: var(--coral-dark);
       margin: 0 auto 20px;
       transition: var(--transition);
@@ -864,7 +1004,7 @@
     .why-item:hover .why-icon-badge {
       background: linear-gradient(135deg, var(--coral), var(--amber));
       color: var(--warm-white);
-      transform: rotate(-8deg);
+      transform: rotate(-8deg) scale(1.05);
     }
 
     .why-item h4 {
@@ -903,14 +1043,14 @@
     }
 
     .pet-icon-circle {
-      width: 88px;
-      height: 88px;
+      width: 90px;
+      height: 90px;
       border-radius: 50%;
       margin: 0 auto 18px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2.4rem;
+      font-size: 2.5rem;
       color: var(--warm-white);
       transition: var(--transition);
     }
@@ -974,7 +1114,7 @@
 
     .testimonial-stars {
       color: var(--amber);
-      font-size: 1rem;
+      font-size: 1.1rem;
       letter-spacing: 3px;
       margin-bottom: 16px;
       text-align: center;
@@ -999,8 +1139,8 @@
     }
 
     .testimonial-avatar {
-      width: 44px;
-      height: 44px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--coral), var(--amber));
       display: flex;
@@ -1008,7 +1148,7 @@
       justify-content: center;
       font-family: var(--font-display);
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 1rem;
       color: var(--warm-white);
       flex-shrink: 0;
     }
@@ -1581,6 +1721,12 @@
       color: var(--warm-white);
       font-size: 2rem;
       box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+      animation: paw-rotate 8s ease-in-out infinite;
+    }
+
+    @keyframes paw-rotate {
+      0%, 100% { transform: translateX(-50%) rotate(-8deg); }
+      50% { transform: translateX(-50%) rotate(8deg); }
     }
 
     .footer-inner {
@@ -1647,7 +1793,7 @@
     .footer-social a:hover {
       background: var(--coral);
       color: var(--warm-white);
-      transform: translateY(-3px);
+      transform: translateY(-3px) rotate(-8deg);
     }
 
     .footer-bottom {
@@ -1684,7 +1830,6 @@
       .hero-description { max-width: 560px; }
       .hero-visual { order: -1; min-height: 380px; }
       .pet-blob { width: 340px; height: 340px; }
-      .pet-blob-inner i { font-size: 9rem; }
       .about-wrap { grid-template-columns: 1fr; gap: 60px; }
       .about-visual { min-height: 380px; }
       .services-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
@@ -1695,6 +1840,8 @@
       .testimonials-grid { grid-template-columns: repeat(3, 1fr); }
       .pricing-grid { grid-template-columns: repeat(3, 1fr); }
       .contact-wrapper { grid-template-columns: 1fr; gap: 32px; }
+      .paw-float { opacity: 0.6; }
+      .paw-float:nth-child(4) { display: none; }
     }
 
     @media (max-width: 768px) {
@@ -1748,6 +1895,7 @@
       .footer-links { justify-content: center; }
       .floating-badge { display: none; }
       .form-row { grid-template-columns: 1fr; }
+      .paw-float { display: none; }
     }
 
     @media (max-width: 480px) {
@@ -1758,7 +1906,6 @@
       .section-title { font-size: 1.7rem; }
       .section-title .script { font-size: 2rem; }
       .pet-blob { width: 260px; height: 260px; }
-      .pet-blob-inner i { font-size: 6rem; }
       .about-circle-main { width: 260px; height: 260px; }
       .about-circle-main i { font-size: 6rem; }
       .about-circle-1 { width: 70px; height: 70px; font-size: 1rem; }
@@ -1802,6 +1949,15 @@
   <section class="hero" id="home">
     <div class="hero-blob hero-blob-1"></div>
     <div class="hero-blob hero-blob-2"></div>
+    <div class="hero-blob hero-blob-3"></div>
+
+    <!-- Floating photo cards (replace paw icons) -->
+    <div class="paw-float"><img src="pet1.jpg" alt="Happy pet"></div>
+    <div class="paw-float"><img src="pet2.jpg" alt="Happy pet"></div>
+    <div class="paw-float"><img src="pet3.jpg" alt="Happy pet"></div>
+    <div class="paw-float"><img src="pet4.jpg" alt="Happy pet"></div>
+    <div class="paw-float"><img src="pet5.jpg" alt="Happy pet"></div>
+
     <div class="container hero-inner">
       <div class="hero-text">
         <div class="hero-eyebrow"><i class="fas fa-heart"></i> Trusted by Pet Parents in Metro Manila</div>
@@ -1822,7 +1978,8 @@
       <div class="hero-visual">
         <div class="pet-blob">
           <div class="pet-blob-inner">
-            <i class="fas fa-dog"></i>
+            <!-- Photo inside the blob circle -->
+            <img src="hero-pet.jpg" alt="Happy pet">
           </div>
         </div>
         <div class="floating-badge badge-1">
