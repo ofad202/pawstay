@@ -230,7 +230,7 @@
       opacity: 0.35;
     }
 
-    /* ============ FLOATING PHOTO CARDS (5 cards, positioned on edges) ============ */
+    /* ============ FLOATING PHOTO CARDS (5 cards, all on left + center) ============ */
     .paw-float {
       position: absolute;
       border-radius: 20px;
@@ -256,35 +256,35 @@
     /* Card 1 — top-left */
     .paw-float:nth-child(1) {
       width: 95px; height: 95px;
-      top: 18%; left: 4%;
+      top: 20%; left: 6%;
       animation-delay: 0s;
     }
 
-    /* Card 2 — mid-left */
+    /* Card 2 — left-center, below card 1 */
     .paw-float:nth-child(2) {
       width: 85px; height: 85px;
-      top: 55%; left: 6%;
+      top: 52%; left: 8%;
       animation-delay: 7s;
     }
 
-    /* Card 3 — bottom-left */
+    /* Card 3 — bottom-left, well above fold */
     .paw-float:nth-child(3) {
       width: 100px; height: 100px;
-      bottom: 14%; left: 20%;
+      bottom: 12%; left: 24%;
       animation-delay: 14s;
     }
 
-    /* Card 4 — top-right corner (outside blob) */
+    /* Card 4 — center-left (between text and blob) */
     .paw-float:nth-child(4) {
       width: 80px; height: 80px;
-      top: 10%; right: 3%;
+      top: 15%; left: 42%;
       animation-delay: 21s;
     }
 
-    /* Card 5 — bottom-right corner (outside blob) */
+    /* Card 5 — center (below card 4) */
     .paw-float:nth-child(5) {
       width: 90px; height: 90px;
-      bottom: 8%; right: 4%;
+      bottom: 18%; left: 44%;
       animation-delay: 28s;
     }
 
@@ -1982,7 +1982,7 @@
     <div class="hero-blob hero-blob-2"></div>
     <div class="hero-blob hero-blob-3"></div>
 
-    <!-- 5 floating photo cards -->
+    <!-- 5 floating photo cards — all positioned on left + center -->
     <div class="paw-float"><img src="pet1.jpg" alt="Happy pet"></div>
     <div class="paw-float"><img src="pet2.jpg" alt="Happy pet"></div>
     <div class="paw-float"><img src="pet3.jpg" alt="Happy pet"></div>
