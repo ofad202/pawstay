@@ -485,7 +485,7 @@
 
     /* ============ SECTIONS ============ */
     .section {
-      padding: 110px 0;
+      padding: 60px 0;
       position: relative;
     }
 
@@ -500,7 +500,7 @@
     .section-header {
       text-align: center;
       max-width: 720px;
-      margin: 0 auto 72px;
+      margin: 0 auto 48px;
     }
 
     .section-badge {
@@ -680,198 +680,321 @@
       letter-spacing: 0.03em;
     }
 
-    /* ============ SERVICES ============ */
+    /* ============ SERVICES & PRICING (MERGED) ============ */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 32px;
+      align-items: start;
     }
 
     .service-card {
       background: var(--warm-white);
       padding: 48px 32px 40px;
-      border-radius: 28px;
+      border-radius: 32px;
       transition: var(--transition);
+      box-shadow: 0 12px 40px rgba(107, 68, 35, 0.08);
       position: relative;
-      box-shadow: 0 8px 32px rgba(107, 68, 35, 0.08);
-      overflow: hidden;
+      text-align: center;
     }
 
-    .service-card:nth-child(1) { transform: rotate(-1deg); }
-    .service-card:nth-child(2) { transform: rotate(1.5deg); }
-    .service-card:nth-child(3) { transform: rotate(-0.5deg); }
+    .service-card.featured {
+      background: linear-gradient(180deg, var(--warm-white) 0%, var(--coral-light) 100%);
+      transform: scale(1.04);
+      box-shadow: 0 20px 60px rgba(255, 107, 74, 0.2);
+    }
 
     .service-card:hover {
-      transform: rotate(0deg) translateY(-8px);
-      box-shadow: 0 20px 48px rgba(255, 107, 74, 0.2);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 48px rgba(255, 107, 74, 0.18);
     }
 
-    .service-card::before {
-      content: '';
+    .service-card.featured:hover {
+      transform: scale(1.04) translateY(-6px);
+    }
+
+    .service-badge {
       position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 6px;
-      background: linear-gradient(90deg, var(--coral), var(--amber));
+      top: -16px; left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--coral), var(--coral-dark));
+      color: var(--warm-white);
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 8px 22px;
+      border-radius: 50px;
+      box-shadow: 0 8px 20px rgba(255, 107, 74, 0.35);
+      white-space: nowrap;
     }
 
     .service-icon-circle {
-      width: 90px;
-      height: 90px;
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--coral-light), var(--amber-light));
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2.2rem;
+      font-size: 2rem;
       color: var(--coral-dark);
-      margin: 0 auto 24px;
+      margin: 0 auto 20px;
       transition: var(--transition);
-      position: relative;
     }
 
-    .service-icon-circle::after {
-      content: '🐾';
-      position: absolute;
-      top: -6px; right: -6px;
-      font-size: 0.9rem;
-      opacity: 0;
-      transition: var(--transition);
+    .service-card.featured .service-icon-circle {
+      background: linear-gradient(135deg, var(--coral), var(--amber));
+      color: var(--warm-white);
     }
 
     .service-card:hover .service-icon-circle {
-      background: linear-gradient(135deg, var(--coral), var(--amber));
-      color: var(--warm-white);
       transform: rotate(-10deg) scale(1.08);
     }
 
-    .service-card:hover .service-icon-circle::after { opacity: 1; }
-
-    .service-card h4 {
+    .service-name {
+      font-family: var(--font-display);
       font-size: 1.3rem;
-      margin-bottom: 12px;
-      color: var(--brown);
-      text-align: center;
-    }
-
-    .service-card p {
-      font-size: 0.98rem;
-      color: var(--text-body);
-      line-height: 1.7;
-      margin-bottom: 24px;
-      text-align: center;
-    }
-
-    .service-price-row {
-      display: flex;
-      justify-content: center;
-      align-items: baseline;
-      gap: 6px;
-      padding-top: 24px;
-      border-top: 2px dashed var(--border);
-    }
-
-    .service-price {
-      font-family: var(--font-display);
-      font-size: 2rem;
       font-weight: 700;
-      color: var(--coral);
-      line-height: 1;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--brown);
+      margin-bottom: 8px;
     }
 
-    .service-price-unit {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      font-family: var(--font-display);
-      letter-spacing: 0.06em;
+    .service-tagline {
+      font-size: 0.92rem;
+      color: var(--text-body);
+      line-height: 1.6;
+      margin-bottom: 24px;
     }
 
-    /* ============ HOW IT WORKS ============ */
-    .steps-wrap { position: relative; }
-
-    .steps-line {
-      position: absolute;
-      top: 70px;
-      left: 15%; right: 15%;
-      height: 2px;
-      background-image: linear-gradient(90deg, var(--coral) 50%, transparent 50%);
-      background-size: 16px 2px;
-      z-index: 1;
-    }
-
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .step-item {
-      text-align: center;
-      padding: 0 16px;
-    }
-
-    .step-circle {
-      width: 140px;
-      height: 140px;
+    .service-price-circle {
+      width: 160px;
+      height: 160px;
       border-radius: 50%;
-      background: var(--warm-white);
-      border: 3px dashed var(--coral);
+      background: linear-gradient(135deg, var(--coral-light), var(--amber-light));
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 32px;
+      margin: 0 auto 16px;
       position: relative;
       transition: var(--transition);
     }
 
-    .step-item:hover .step-circle {
-      border-color: var(--amber);
-      border-style: solid;
+    .service-card.featured .service-price-circle {
+      background: linear-gradient(135deg, var(--coral), var(--amber));
+    }
+
+    .service-card:hover .service-price-circle {
       transform: scale(1.05);
     }
 
-    .step-circle-inner {
-      width: 100px;
-      height: 100px;
+    .service-price-currency {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--brown);
+      margin-bottom: -4px;
+    }
+
+    .service-card.featured .service-price-currency {
+      color: rgba(255,255,255,0.9);
+    }
+
+    .service-price-amount {
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--brown);
+      line-height: 1;
+    }
+
+    .service-card.featured .service-price-amount {
+      color: var(--warm-white);
+    }
+
+    .service-price-per {
+      font-size: 0.78rem;
+      color: var(--text-body);
+      font-family: var(--font-display);
+      letter-spacing: 0.08em;
+      margin-top: 4px;
+    }
+
+    .service-card.featured .service-price-per {
+      color: rgba(255,255,255,0.9);
+    }
+
+    /* ===== TWEAK 2: Trust line under price ===== */
+    .service-trust {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-family: var(--font-display);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 2px dashed var(--border);
+    }
+
+    .service-trust i {
+      color: var(--coral);
+      font-size: 0.7rem;
+    }
+
+    .service-trust span {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .service-card.featured .service-trust {
+      color: var(--brown-soft);
+      border-bottom-color: rgba(107, 68, 35, 0.2);
+    }
+
+    .service-features {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
+      text-align: left;
+    }
+
+    .service-features li {
+      font-size: 0.92rem;
+      color: var(--text-body);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.6;
+    }
+
+    .service-features li i {
+      color: var(--coral);
+      font-size: 0.85rem;
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+
+    .service-card.featured .service-features li {
+      color: var(--brown);
+    }
+
+    .service-btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* ===== TWEAK 1: Mini How It Works strip ===== */
+    .how-mini-strip {
+      margin-top: 56px;
+      padding: 32px 24px;
+      background: var(--warm-white);
+      border-radius: 28px;
+      box-shadow: 0 8px 28px rgba(107, 68, 35, 0.06);
+      border: 1.5px dashed var(--border);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      position: relative;
+    }
+
+    .how-mini-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      text-align: left;
+    }
+
+    .how-mini-icon {
+      width: 54px;
+      height: 54px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--coral), var(--amber));
+      color: var(--warm-white);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2.4rem;
-      color: var(--warm-white);
-      box-shadow: 0 12px 32px rgba(255, 107, 74, 0.25);
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      box-shadow: 0 6px 18px rgba(255, 107, 74, 0.25);
+      position: relative;
     }
 
-    .step-number-badge {
+    .how-mini-step {
       position: absolute;
-      top: -4px; right: -4px;
-      width: 42px; height: 42px;
+      top: -4px;
+      right: -4px;
+      width: 22px;
+      height: 22px;
       border-radius: 50%;
       background: var(--brown);
       color: var(--warm-white);
       font-family: var(--font-display);
-      font-size: 0.95rem;
+      font-size: 0.7rem;
       font-weight: 700;
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 4px solid var(--cream);
+      border: 2px solid var(--warm-white);
     }
 
-    .step-item h4 {
-      font-size: 1.2rem;
-      margin-bottom: 12px;
+    .how-mini-text h5 {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
       color: var(--brown);
+      margin-bottom: 2px;
     }
 
-    .step-item p {
+    .how-mini-text p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ===== TWEAK 3: Not sure helper link ===== */
+    .not-sure-helper {
+      margin-top: 32px;
+      text-align: center;
       font-size: 0.98rem;
       color: var(--text-body);
-      line-height: 1.7;
-      max-width: 300px;
-      margin: 0 auto;
+    }
+
+    .not-sure-helper a {
+      color: var(--coral);
+      font-weight: 600;
+      font-family: var(--font-display);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 8px;
+      border-radius: 8px;
+      transition: var(--transition);
+      border-bottom: 2px solid transparent;
+    }
+
+    .not-sure-helper a:hover {
+      border-bottom-color: var(--coral);
+      gap: 10px;
+    }
+
+    .not-sure-helper a i {
+      font-size: 0.9rem;
     }
 
     /* ============ WHY US ============ */
@@ -939,61 +1062,6 @@
       font-size: 0.92rem;
       color: var(--text-body);
       line-height: 1.65;
-    }
-
-    /* ============ PETS ============ */
-    .pets-row {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-    }
-
-    .pet-item {
-      text-align: center;
-      padding: 32px 16px;
-      border-radius: 24px;
-      background: var(--warm-white);
-      transition: var(--transition);
-      box-shadow: 0 6px 20px rgba(107, 68, 35, 0.05);
-      border: 2px solid transparent;
-    }
-
-    .pet-item:hover {
-      border-color: var(--amber);
-      transform: translateY(-6px);
-      box-shadow: 0 12px 32px rgba(255, 179, 71, 0.2);
-    }
-
-    .pet-icon-circle {
-      width: 90px; height: 90px;
-      border-radius: 50%;
-      margin: 0 auto 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.5rem;
-      color: var(--warm-white);
-      transition: var(--transition);
-    }
-
-    .pet-item:nth-child(1) .pet-icon-circle { background: linear-gradient(135deg, var(--coral), var(--coral-dark)); }
-    .pet-item:nth-child(2) .pet-icon-circle { background: linear-gradient(135deg, var(--amber), var(--mustard)); }
-    .pet-item:nth-child(3) .pet-icon-circle { background: linear-gradient(135deg, var(--teal), #3A8076); }
-    .pet-item:nth-child(4) .pet-icon-circle { background: linear-gradient(135deg, var(--mustard), #C8871F); }
-
-    .pet-item:hover .pet-icon-circle {
-      transform: scale(1.08) rotate(-6deg);
-    }
-
-    .pet-item h4 {
-      font-size: 1.05rem;
-      margin-bottom: 4px;
-      color: var(--brown);
-    }
-
-    .pet-item p {
-      font-size: 0.85rem;
-      color: var(--text-muted);
     }
 
     /* ============ TESTIMONIALS ============ */
@@ -1088,149 +1156,6 @@
       color: var(--text-muted);
     }
 
-    /* ============ PRICING ============ */
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-      align-items: start;
-    }
-
-    .pricing-card {
-      background: var(--warm-white);
-      padding: 48px 32px 40px;
-      border-radius: 32px;
-      transition: var(--transition);
-      box-shadow: 0 12px 40px rgba(107, 68, 35, 0.08);
-      position: relative;
-      text-align: center;
-    }
-
-    .pricing-card.featured {
-      background: linear-gradient(180deg, var(--warm-white) 0%, var(--coral-light) 100%);
-      transform: scale(1.04);
-      box-shadow: 0 20px 60px rgba(255, 107, 74, 0.2);
-    }
-
-    .pricing-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 48px rgba(255, 107, 74, 0.18);
-    }
-
-    .pricing-card.featured:hover {
-      transform: scale(1.04) translateY(-6px);
-    }
-
-    .pricing-badge {
-      position: absolute;
-      top: -16px; left: 50%;
-      transform: translateX(-50%);
-      background: linear-gradient(135deg, var(--coral), var(--coral-dark));
-      color: var(--warm-white);
-      font-family: var(--font-display);
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      padding: 8px 22px;
-      border-radius: 50px;
-      box-shadow: 0 8px 20px rgba(255, 107, 74, 0.35);
-      white-space: nowrap;
-    }
-
-    .pricing-name {
-      font-family: var(--font-display);
-      font-size: 0.95rem;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 24px;
-      display: block;
-    }
-
-    .pricing-circle {
-      width: 180px; height: 180px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--coral-light), var(--amber-light));
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 24px;
-      position: relative;
-      transition: var(--transition);
-    }
-
-    .pricing-card.featured .pricing-circle {
-      background: linear-gradient(135deg, var(--coral), var(--amber));
-    }
-
-    .pricing-card:hover .pricing-circle { transform: scale(1.05); }
-
-    .pricing-currency {
-      font-family: var(--font-display);
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: var(--brown);
-      margin-bottom: -4px;
-    }
-
-    .pricing-card.featured .pricing-currency {
-      color: rgba(255,255,255,0.9);
-    }
-
-    .pricing-amount {
-      font-family: var(--font-display);
-      font-size: 3.2rem;
-      font-weight: 700;
-      color: var(--brown);
-      line-height: 1;
-    }
-
-    .pricing-card.featured .pricing-amount { color: var(--warm-white); }
-
-    .pricing-per {
-      font-size: 0.8rem;
-      color: var(--text-body);
-      font-family: var(--font-display);
-      letter-spacing: 0.08em;
-      margin-top: 4px;
-    }
-
-    .pricing-card.featured .pricing-per {
-      color: rgba(255,255,255,0.9);
-    }
-
-    .pricing-features {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 32px;
-      text-align: left;
-    }
-
-    .pricing-features li {
-      font-size: 0.92rem;
-      color: var(--text-body);
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      line-height: 1.6;
-    }
-
-    .pricing-features li i {
-      color: var(--coral);
-      font-size: 0.85rem;
-      margin-top: 5px;
-      flex-shrink: 0;
-    }
-
-    .pricing-btn {
-      width: 100%;
-      justify-content: center;
-    }
-
     /* ============ FAQ ============ */
     .faq-list {
       max-width: 860px;
@@ -1318,7 +1243,7 @@
     /* ============ CONTACT ============ */
     .contact-section {
       background: var(--cream-2);
-      padding: 120px 0;
+      padding: 70px 0;
       position: relative;
       overflow: hidden;
     }
@@ -1714,12 +1639,9 @@
       .about-wrap { grid-template-columns: 1fr; gap: 60px; }
       .about-visual { min-height: 380px; }
       .services-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
-      .steps-line { display: none; }
-      .steps-grid { grid-template-columns: repeat(3, 1fr); }
+      .how-mini-strip { grid-template-columns: 1fr; gap: 20px; padding: 28px 22px; }
       .why-grid { grid-template-columns: repeat(3, 1fr); }
-      .pets-row { grid-template-columns: repeat(4, 1fr); }
       .testimonials-grid { grid-template-columns: repeat(3, 1fr); }
-      .pricing-grid { grid-template-columns: repeat(3, 1fr); }
       .contact-wrapper { grid-template-columns: 1fr; gap: 32px; }
 
       .hero-blob {
@@ -1754,27 +1676,22 @@
       .hero h1 { font-size: 2.4rem; }
       .hero h1 .script { font-size: 2.8rem; }
       .hero-stats { gap: 20px; }
-      .section { padding: 72px 0; }
+      .section { padding: 40px 0; }
       .section-title { font-size: 2rem; }
       .section-title .script { font-size: 2.4rem; }
+      .section-header { margin-bottom: 32px; }
       .services-grid,
-      .steps-grid,
       .why-grid,
-      .testimonials-grid,
-      .pricing-grid { grid-template-columns: 1fr; gap: 24px; }
-      .service-card:nth-child(1),
-      .service-card:nth-child(2),
-      .service-card:nth-child(3),
+      .testimonials-grid { grid-template-columns: 1fr; gap: 24px; }
+      .service-card.featured { transform: scale(1); }
+      .service-card.featured:hover { transform: translateY(-6px); }
       .testimonial-card:nth-child(1),
       .testimonial-card:nth-child(2),
       .testimonial-card:nth-child(3) { transform: rotate(0deg); }
-      .pets-row { grid-template-columns: repeat(2, 1fr); }
       .about-features { grid-template-columns: 1fr; }
       .contact-info { padding: 40px 28px; }
       .contact-form { padding: 36px 24px; }
       .contact-info h2 { font-size: 1.9rem; }
-      .pricing-card.featured { transform: scale(1); }
-      .pricing-card.featured:hover { transform: translateY(-6px); }
       .footer-inner { flex-direction: column; text-align: center; }
       .footer-links { justify-content: center; }
       .floating-badge { display: none; }
@@ -1803,14 +1720,11 @@
       .about-circle-1 { width: 70px; height: 70px; font-size: 1rem; }
       .about-circle-2 { width: 60px; height: 60px; font-size: 1rem; }
       .about-circle-3 { width: 48px; height: 48px; font-size: 0.85rem; }
-      .pets-row { grid-template-columns: 1fr; }
-      .pricing-circle { width: 150px; height: 150px; }
-      .pricing-amount { font-size: 2.6rem; }
+      .service-price-circle { width: 140px; height: 140px; }
+      .service-price-amount { font-size: 2.4rem; }
       .faq-question { padding: 20px 24px; font-size: 0.92rem; }
       .faq-item.open .faq-answer { padding: 0 24px 24px; }
-      .step-circle { width: 120px; height: 120px; }
-      .step-circle-inner { width: 86px; height: 86px; font-size: 2rem; }
-      .step-number-badge { width: 36px; height: 36px; font-size: 0.85rem; }
+      .how-mini-icon { width: 46px; height: 46px; font-size: 1.1rem; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1847,8 +1761,7 @@
         <ul>
           <li><a href="#about">About</a></li>
           <li><a href="#services">Services</a></li>
-          <li><a href="#how">How It Works</a></li>
-          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#why">Why Us</a></li>
           <li><a href="#faq">FAQ</a></li>
           <li><a href="#contact">Book Now</a></li>
         </ul>
@@ -1943,85 +1856,140 @@
     </div>
   </section>
 
+  <!-- ============ SERVICES & PRICING (MERGED) ============ -->
   <section class="section section-cream-2" id="services">
     <div class="container">
       <div class="section-header reveal">
-        <div class="section-badge"><i class="fas fa-star"></i> Our Services</div>
-        <h2 class="section-title">Care that <span class="script">fits your life</span></h2>
-        <p class="section-desc">From quick drop-ins to overnight stays — pick the care that fits your pet's needs.</p>
+        <div class="section-badge"><i class="fas fa-tag"></i> Services & Pricing</div>
+        <h2 class="section-title">Simple, <span class="script">honest rates</span></h2>
+        <p class="section-desc">No hidden fees. Multi-pet discounts available. Pick the care that fits your pet's needs.</p>
       </div>
       <div class="services-grid reveal">
-        <div class="service-card">
-          <div class="service-icon-circle"><i class="fas fa-walking"></i></div>
-          <h4>Daily Dog Walking</h4>
-          <p>30–60 minute walks to keep your dog active, happy, and healthy. Perfect for busy weekdays.</p>
-          <div class="service-price-row">
-            <span class="service-price">₱300</span>
-            <span class="service-price-unit">/ walk</span>
-          </div>
-        </div>
+
+        <!-- Drop-In Card -->
         <div class="service-card">
           <div class="service-icon-circle"><i class="fas fa-home"></i></div>
-          <h4>Drop-In Visits</h4>
-          <p>Feeding, playtime, litter cleaning, and companionship while you're at work or away.</p>
-          <div class="service-price-row">
-            <span class="service-price">₱400</span>
-            <span class="service-price-unit">/ visit</span>
+          <div class="service-name">Drop-In Visit</div>
+          <p class="service-tagline">Feeding, playtime, and companionship while you're away.</p>
+          <div class="service-price-circle">
+            <span class="service-price-currency">₱</span>
+            <span class="service-price-amount">400</span>
+            <span class="service-price-per">per visit</span>
           </div>
+          <!-- TWEAK 2: Trust line -->
+          <div class="service-trust">
+            <span><i class="fas fa-check-circle"></i> Free meet & greet</span>
+            <span><i class="fas fa-check-circle"></i> No cancellation fee</span>
+          </div>
+          <ul class="service-features">
+            <li><i class="fas fa-check"></i> Feeding & fresh water</li>
+            <li><i class="fas fa-check"></i> Playtime & companionship</li>
+            <li><i class="fas fa-check"></i> Litter / waste cleanup</li>
+            <li><i class="fas fa-check"></i> Photo updates sent</li>
+          </ul>
+          <a href="#contact" class="btn btn-secondary service-btn">Book Drop-In</a>
         </div>
+
+        <!-- Daily Walk (Featured) -->
+        <div class="service-card featured">
+          <span class="service-badge">Most Popular</span>
+          <div class="service-icon-circle"><i class="fas fa-walking"></i></div>
+          <div class="service-name">Daily Dog Walk</div>
+          <p class="service-tagline">30–60 minute walks to keep your dog active and happy.</p>
+          <div class="service-price-circle">
+            <span class="service-price-currency">₱</span>
+            <span class="service-price-amount">300</span>
+            <span class="service-price-per">per walk</span>
+          </div>
+          <!-- TWEAK 2: Trust line -->
+          <div class="service-trust">
+            <span><i class="fas fa-check-circle"></i> Free meet & greet</span>
+            <span><i class="fas fa-check-circle"></i> No cancellation fee</span>
+          </div>
+          <ul class="service-features">
+            <li><i class="fas fa-check"></i> 30–60 minute walk</li>
+            <li><i class="fas fa-check"></i> Fresh water refill</li>
+            <li><i class="fas fa-check"></i> Paw cleaning after walk</li>
+            <li><i class="fas fa-check"></i> Route updates & photos</li>
+            <li><i class="fas fa-check"></i> Discount for 5x/week</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary service-btn">Book a Walk</a>
+        </div>
+
+        <!-- Overnight Card -->
         <div class="service-card">
           <div class="service-icon-circle"><i class="fas fa-moon"></i></div>
-          <h4>Overnight Sitting</h4>
-          <p>Full overnight care in your home — so your pet sleeps in familiar surroundings.</p>
-          <div class="service-price-row">
-            <span class="service-price">₱1,200</span>
-            <span class="service-price-unit">/ night</span>
+          <div class="service-name">Overnight Sitting</div>
+          <p class="service-tagline">Full overnight care in your home — familiar and stress-free.</p>
+          <div class="service-price-circle">
+            <span class="service-price-currency">₱</span>
+            <span class="service-price-amount">1,200</span>
+            <span class="service-price-per">per night</span>
+          </div>
+          <!-- TWEAK 2: Trust line -->
+          <div class="service-trust">
+            <span><i class="fas fa-check-circle"></i> Free meet & greet</span>
+            <span><i class="fas fa-check-circle"></i> No cancellation fee</span>
+          </div>
+          <ul class="service-features">
+            <li><i class="fas fa-check"></i> Overnight stay in your home</li>
+            <li><i class="fas fa-check"></i> Evening & morning feeding</li>
+            <li><i class="fas fa-check"></i> Multiple walks included</li>
+            <li><i class="fas fa-check"></i> Medication administration</li>
+            <li><i class="fas fa-check"></i> Continuous updates</li>
+          </ul>
+          <a href="#contact" class="btn btn-secondary service-btn">Book Overnight</a>
+        </div>
+
+      </div>
+
+      <!-- TWEAK 1: Mini How It Works strip -->
+      <div class="how-mini-strip reveal">
+        <div class="how-mini-item">
+          <div class="how-mini-icon">
+            <i class="fas fa-comments"></i>
+            <span class="how-mini-step">1</span>
+          </div>
+          <div class="how-mini-text">
+            <h5>Book & Meet</h5>
+            <p>Send your details, then we schedule a free meet & greet.</p>
+          </div>
+        </div>
+        <div class="how-mini-item">
+          <div class="how-mini-icon">
+            <i class="fas fa-clipboard-check"></i>
+            <span class="how-mini-step">2</span>
+          </div>
+          <div class="how-mini-text">
+            <h5>Plan the Care</h5>
+            <p>We discuss routines, meds, and any special needs.</p>
+          </div>
+        </div>
+        <div class="how-mini-item">
+          <div class="how-mini-icon">
+            <i class="fas fa-camera"></i>
+            <span class="how-mini-step">3</span>
+          </div>
+          <div class="how-mini-text">
+            <h5>Relax & Enjoy</h5>
+            <p>Daily photo updates until you're back home.</p>
           </div>
         </div>
       </div>
+
+      <!-- TWEAK 3: Not sure helper link -->
+      <div class="not-sure-helper reveal">
+        Not sure which service fits your pet? 
+        <a href="#contact">
+          <i class="fas fa-comment-dots"></i>
+          Message us on Messenger
+        </a>
+      </div>
+
     </div>
   </section>
 
-  <section class="section section-cream" id="how">
-    <div class="container">
-      <div class="section-header reveal">
-        <div class="section-badge"><i class="fas fa-route"></i> How It Works</div>
-        <h2 class="section-title">Easy as <span class="script">one, two, three</span></h2>
-        <p class="section-desc">From your first message to your pet's care — here's the simple process.</p>
-      </div>
-      <div class="steps-wrap reveal">
-        <div class="steps-line"></div>
-        <div class="steps-grid">
-          <div class="step-item">
-            <div class="step-circle">
-              <div class="step-circle-inner"><i class="fas fa-comments"></i></div>
-              <span class="step-number-badge">01</span>
-            </div>
-            <h4>Book & Meet</h4>
-            <p>Send us your details and preferred dates. We'll schedule a free meet-and-greet with your pet.</p>
-          </div>
-          <div class="step-item">
-            <div class="step-circle">
-              <div class="step-circle-inner"><i class="fas fa-clipboard-check"></i></div>
-              <span class="step-number-badge">02</span>
-            </div>
-            <h4>Plan the Care</h4>
-            <p>We'll discuss feeding routines, medications, exercise, and any special needs your pet has.</p>
-          </div>
-          <div class="step-item">
-            <div class="step-circle">
-              <div class="step-circle-inner"><i class="fas fa-camera"></i></div>
-              <span class="step-number-badge">03</span>
-            </div>
-            <h4>Relax & Enjoy</h4>
-            <p>Get daily photo updates while we care for your pet. Come home to a happy, healthy companion.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-cream-2" id="why">
+  <section class="section section-cream" id="why">
     <div class="container">
       <div class="section-header reveal">
         <div class="section-badge"><i class="fas fa-heart"></i> Why PawStay</div>
@@ -2058,38 +2026,6 @@
           <div class="why-icon-badge"><i class="fas fa-star"></i></div>
           <h4>5-Star Rated</h4>
           <p>Rated by real pet parents across Metro Manila. See our reviews below.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-cream" id="pets">
-    <div class="container">
-      <div class="section-header reveal">
-        <div class="section-badge"><i class="fas fa-paw"></i> Pets We Care For</div>
-        <h2 class="section-title">All shapes, <span class="script">all sizes</span></h2>
-        <p class="section-desc">We welcome pets of every kind — with the right care for each.</p>
-      </div>
-      <div class="pets-row reveal">
-        <div class="pet-item">
-          <div class="pet-icon-circle"><i class="fas fa-dog"></i></div>
-          <h4>Dogs</h4>
-          <p>All breeds & ages</p>
-        </div>
-        <div class="pet-item">
-          <div class="pet-icon-circle"><i class="fas fa-cat"></i></div>
-          <h4>Cats</h4>
-          <p>Kittens to seniors</p>
-        </div>
-        <div class="pet-item">
-          <div class="pet-icon-circle"><i class="fas fa-dove"></i></div>
-          <h4>Birds</h4>
-          <p>Small to medium</p>
-        </div>
-        <div class="pet-item">
-          <div class="pet-icon-circle"><i class="fas fa-fish"></i></div>
-          <h4>Small Pets</h4>
-          <p>Fish, hamsters, rabbits</p>
         </div>
       </div>
     </div>
@@ -2143,67 +2079,7 @@
     </div>
   </section>
 
-  <section class="section section-cream" id="pricing">
-    <div class="container">
-      <div class="section-header reveal">
-        <div class="section-badge"><i class="fas fa-tag"></i> Pricing</div>
-        <h2 class="section-title">Simple, <span class="script">honest rates</span></h2>
-        <p class="section-desc">No hidden fees. Multi-pet discounts available. Pay only for what you need.</p>
-      </div>
-      <div class="pricing-grid reveal">
-        <div class="pricing-card">
-          <span class="pricing-name">Drop-In</span>
-          <div class="pricing-circle">
-            <span class="pricing-currency">₱</span>
-            <span class="pricing-amount">400</span>
-            <span class="pricing-per">per visit</span>
-          </div>
-          <ul class="pricing-features">
-            <li><i class="fas fa-check"></i> Feeding & fresh water</li>
-            <li><i class="fas fa-check"></i> Playtime & companionship</li>
-            <li><i class="fas fa-check"></i> Litter / waste cleanup</li>
-            <li><i class="fas fa-check"></i> Photo updates sent</li>
-          </ul>
-          <a href="#contact" class="btn btn-secondary pricing-btn">Book Drop-In</a>
-        </div>
-        <div class="pricing-card featured">
-          <span class="pricing-badge">Most Popular</span>
-          <span class="pricing-name">Daily Walk</span>
-          <div class="pricing-circle">
-            <span class="pricing-currency">₱</span>
-            <span class="pricing-amount">300</span>
-            <span class="pricing-per">per walk</span>
-          </div>
-          <ul class="pricing-features">
-            <li><i class="fas fa-check"></i> 30–60 minute walk</li>
-            <li><i class="fas fa-check"></i> Fresh water refill</li>
-            <li><i class="fas fa-check"></i> Paw cleaning after walk</li>
-            <li><i class="fas fa-check"></i> Route updates & photos</li>
-            <li><i class="fas fa-check"></i> Discount for 5x/week</li>
-          </ul>
-          <a href="#contact" class="btn btn-primary pricing-btn">Book a Walk</a>
-        </div>
-        <div class="pricing-card">
-          <span class="pricing-name">Overnight</span>
-          <div class="pricing-circle">
-            <span class="pricing-currency">₱</span>
-            <span class="pricing-amount">1,200</span>
-            <span class="pricing-per">per night</span>
-          </div>
-          <ul class="pricing-features">
-            <li><i class="fas fa-check"></i> Overnight stay in your home</li>
-            <li><i class="fas fa-check"></i> Evening & morning feeding</li>
-            <li><i class="fas fa-check"></i> Multiple walks included</li>
-            <li><i class="fas fa-check"></i> Medication administration</li>
-            <li><i class="fas fa-check"></i> Continuous updates</li>
-          </ul>
-          <a href="#contact" class="btn btn-secondary pricing-btn">Book Overnight</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-cream-2" id="faq">
+  <section class="section section-cream" id="faq">
     <div class="container">
       <div class="section-header reveal">
         <div class="section-badge"><i class="fas fa-question-circle"></i> FAQ</div>
@@ -2231,42 +2107,6 @@
         </div>
         <div class="faq-item">
           <button class="faq-question">
-            Can you administer medication to my pet?
-            <span class="faq-icon-circle"><i class="fas fa-chevron-down"></i></span>
-          </button>
-          <div class="faq-answer">
-            <p>Yes. Our sitters are trained to give oral medications, topical treatments, and insulin injections (with proper instruction from you). We'll ask for complete dosage details during the meet-and-greet.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">
-            What if my pet gets sick or injured?
-            <span class="faq-icon-circle"><i class="fas fa-chevron-down"></i></span>
-          </button>
-          <div class="faq-answer">
-            <p>We'll contact you immediately and, if needed, take your pet to your preferred veterinarian. Please provide your vet's contact details during booking. For emergencies, we'll use the nearest 24-hour animal clinic.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">
-            How far in advance should I book?
-            <span class="faq-icon-circle"><i class="fas fa-chevron-down"></i></span>
-          </button>
-          <div class="faq-answer">
-            <p>We recommend booking at least <strong>3–5 days in advance</strong> for regular visits, and <strong>1–2 weeks in advance</strong> for overnight stays or holiday periods. Same-day bookings may be accommodated depending on availability.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">
-            Do you have a multi-pet discount?
-            <span class="faq-icon-circle"><i class="fas fa-chevron-down"></i></span>
-          </button>
-          <div class="faq-answer">
-            <p>Yes — we offer <strong>10% off for each additional pet</strong> in the same household. Just mention it when you book and we'll apply the discount automatically.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">
             How do I pay for the service?
             <span class="faq-icon-circle"><i class="fas fa-chevron-down"></i></span>
           </button>
@@ -2281,15 +2121,6 @@
           </button>
           <div class="faq-answer">
             <p>We require a <strong>50% downpayment</strong> to confirm and reserve your slot. The remaining balance is settled <strong>after the service is completed</strong> — once we've sent you the daily photo updates and completion report. No payment is required for cancellations made before the booking starts.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">
-            Do you accept cash?
-            <span class="faq-icon-circle"><i class="fas fa-chevron-down"></i></span>
-          </button>
-          <div class="faq-answer">
-            <p>Yes — <strong>cash on completion</strong> is accepted for clients who prefer to pay in person. This is ideal for regular weekly walks or drop-in visits where the sitter meets you directly. For overnight or multi-day bookings, we recommend GCash, Maya, or bank transfer for convenience and record-keeping.</p>
           </div>
         </div>
       </div>
@@ -2418,8 +2249,7 @@
         <div class="footer-links">
           <a href="#about">About</a>
           <a href="#services">Services</a>
-          <a href="#how">How It Works</a>
-          <a href="#pricing">Pricing</a>
+          <a href="#why">Why Us</a>
           <a href="#faq">FAQ</a>
           <a href="#contact">Book Now</a>
         </div>
