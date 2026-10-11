@@ -246,238 +246,7 @@
       opacity: 0.35;
     }
 
-    /* ============ FLOATING PHOTO CARDS — ORGANIC DISTRIBUTION ============ */
-    .paw-float {
-      position: absolute;
-      border-radius: 22px;
-      background: var(--warm-white);
-      padding: 6px;
-      box-shadow: 0 14px 34px rgba(107, 68, 35, 0.18);
-      pointer-events: none;
-      z-index: 10;
-      overflow: hidden;
-      border: 2px solid var(--warm-white);
-      will-change: transform;
-      animation: paw-drift 38s ease-in-out infinite;
-    }
-
-    .paw-float img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 16px;
-      display: block;
-    }
-
-    /* ---- Hero floating cards: staggered, varied sizes, hand-placed feel ---- */
-    .paw-float.hf1 {
-      width: 92px; height: 92px;
-      top: 18%; left: 1.5%;
-      animation-delay: 0s;
-      animation-duration: 34s;
-      --rot: -7deg;
-      transform: rotate(-7deg);
-    }
-    .paw-float.hf2 {
-      width: 74px; height: 74px;
-      top: 44%; left: 3.5%;
-      animation-delay: 6s;
-      animation-duration: 42s;
-      transform: rotate(5deg);
-    }
-    .paw-float.hf3 {
-      width: 110px; height: 110px;
-      bottom: 14%; left: 1%;
-      animation-delay: 13s;
-      animation-duration: 48s;
-      transform: rotate(-3deg);
-    }
-    .paw-float.hf4 {
-      width: 84px; height: 84px;
-      top: 8%; right: 3%;
-      animation-delay: 20s;
-      animation-duration: 36s;
-      transform: rotate(8deg);
-    }
-    .paw-float.hf5 {
-      width: 96px; height: 96px;
-      bottom: 8%; right: 1.5%;
-      animation-delay: 27s;
-      animation-duration: 44s;
-      transform: rotate(-5deg);
-    }
-
-    /* Extra floating cards distributed through other sections */
-    .paw-float-section {
-      position: absolute;
-      border-radius: 20px;
-      background: var(--warm-white);
-      padding: 5px;
-      box-shadow: 0 10px 28px rgba(107, 68, 35, 0.16);
-      pointer-events: none;
-      z-index: 5;
-      overflow: hidden;
-      border: 2px solid var(--warm-white);
-      will-change: transform;
-      animation: paw-drift 46s ease-in-out infinite;
-    }
-
-    .paw-float-section img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 14px;
-      display: block;
-    }
-
-    /* ===== ORGANIC POSITIONS — varied sizes, staggered, clustered where natural ===== */
-
-    /* ABOUT — one upper-right, one small mid-left (asymmetric) */
-    .float-about-1 {
-      width: 78px; height: 78px;
-      top: 6%; right: 2.5%;
-      animation-delay: 2s;
-      animation-duration: 40s;
-      transform: rotate(6deg);
-    }
-    .float-about-2 {
-      width: 58px; height: 58px;
-      top: 52%; left: 1.5%;
-      animation-delay: 14s;
-      animation-duration: 52s;
-      transform: rotate(-9deg);
-    }
-
-    /* SERVICES — cluster: two small ones together top-left, one bottom-right */
-    .float-services-1 {
-      width: 66px; height: 66px;
-      top: 14%; left: 1.5%;
-      animation-delay: 4s;
-      animation-duration: 38s;
-      transform: rotate(-4deg);
-    }
-    .float-services-2 {
-      width: 50px; height: 50px;
-      top: 26%; left: 6%;
-      animation-delay: 4.5s;
-      animation-duration: 56s;
-      transform: rotate(11deg);
-    }
-    .float-services-3 {
-      width: 82px; height: 82px;
-      bottom: 10%; right: 2%;
-      animation-delay: 17s;
-      animation-duration: 45s;
-      transform: rotate(7deg);
-    }
-
-    /* HOW IT WORKS — one big upper-right, one tiny mid-left */
-    .float-how-1 {
-      width: 86px; height: 86px;
-      top: 10%; right: 2%;
-      animation-delay: 8s;
-      animation-duration: 42s;
-      transform: rotate(-6deg);
-    }
-    .float-how-2 {
-      width: 54px; height: 54px;
-      top: 58%; left: 2%;
-      animation-delay: 22s;
-      animation-duration: 58s;
-      transform: rotate(10deg);
-    }
-
-    /* WHY — one lower-left, one upper-right, one small mid-right */
-    .float-why-1 {
-      width: 72px; height: 72px;
-      bottom: 8%; left: 2.5%;
-      animation-delay: 3s;
-      animation-duration: 44s;
-      transform: rotate(5deg);
-    }
-    .float-why-2 {
-      width: 62px; height: 62px;
-      top: 8%; right: 3%;
-      animation-delay: 16s;
-      animation-duration: 50s;
-      transform: rotate(-8deg);
-    }
-
-    /* PETS — one large upper-right, one small lower-left */
-    .float-pets-1 {
-      width: 88px; height: 88px;
-      top: 12%; right: 2%;
-      animation-delay: 6s;
-      animation-duration: 40s;
-      transform: rotate(-5deg);
-    }
-    .float-pets-2 {
-      width: 52px; height: 52px;
-      bottom: 14%; left: 2%;
-      animation-delay: 25s;
-      animation-duration: 54s;
-      transform: rotate(9deg);
-    }
-
-    /* TESTIMONIALS — two on left stacked, one on right */
-    .float-test-1 {
-      width: 74px; height: 74px;
-      top: 6%; left: 2%;
-      animation-delay: 5s;
-      animation-duration: 46s;
-      transform: rotate(-7deg);
-    }
-    .float-test-2 {
-      width: 56px; height: 56px;
-      top: 22%; left: 6.5%;
-      animation-delay: 5.5s;
-      animation-duration: 60s;
-      transform: rotate(12deg);
-    }
-    .float-test-3 {
-      width: 80px; height: 80px;
-      bottom: 12%; right: 2%;
-      animation-delay: 19s;
-      animation-duration: 44s;
-      transform: rotate(6deg);
-    }
-
-    /* PRICING — one upper-left, one lower-right (balanced but not mirrored) */
-    .float-pricing-1 {
-      width: 70px; height: 70px;
-      top: 10%; left: 2%;
-      animation-delay: 9s;
-      animation-duration: 48s;
-      transform: rotate(7deg);
-    }
-    .float-pricing-2 {
-      width: 90px; height: 90px;
-      bottom: 8%; right: 2%;
-      animation-delay: 24s;
-      animation-duration: 42s;
-      transform: rotate(-6deg);
-    }
-
-    /* FAQ — one upper-right, one lower-left */
-    .float-faq-1 {
-      width: 64px; height: 64px;
-      top: 8%; right: 3%;
-      animation-delay: 11s;
-      animation-duration: 50s;
-      transform: rotate(-9deg);
-    }
-    .float-faq-2 {
-      width: 76px; height: 76px;
-      bottom: 10%; left: 2%;
-      animation-delay: 28s;
-      animation-duration: 46s;
-      transform: rotate(5deg);
-    }
-
-    @keyframes paw-drift {
-      0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)); opacity: 0.94; }
-      50% { transform: translateY(-12px) rotate(calc(var(--rot, 0deg) + 4deg)); opacity: 1; }
-    }
+    /* ============ FLOATING PHOTO CARDS — REMOVED ============ */
 
     .hero-inner {
       display: grid;
@@ -2025,11 +1794,6 @@
         filter: none !important;
         opacity: 0.35 !important;
       }
-
-      .paw-float,
-      .paw-float-section {
-        opacity: 0.55;
-      }
     }
 
     @media (max-width: 768px) {
@@ -2084,8 +1848,6 @@
       .floating-badge { display: none; }
       .form-row { grid-template-columns: 1fr; }
 
-      .paw-float,
-      .paw-float-section { display: none; }
       .pet-blob { animation: none; }
 
       .contact-section::before,
@@ -2130,8 +1892,6 @@
         scroll-behavior: auto !important;
       }
 
-      .paw-float,
-      .paw-float-section,
       .pet-blob,
       .about-circle-1,
       .about-circle-2,
@@ -2173,13 +1933,6 @@
     <div class="hero-blob hero-blob-2"></div>
     <div class="hero-blob hero-blob-3"></div>
 
-    <!-- Hero floating cards — organic, varied -->
-    <div class="paw-float hf1"><img src="pet1.jpg" alt="Happy pet"></div>
-    <div class="paw-float hf2"><img src="pet2.jpg" alt="Happy pet"></div>
-    <div class="paw-float hf3"><img src="pet1.jpg" alt="Happy pet"></div>
-    <div class="paw-float hf4"><img src="pet2.jpg" alt="Happy pet"></div>
-    <div class="paw-float hf5"><img src="pet1.jpg" alt="Happy pet"></div>
-
     <div class="container hero-inner">
       <div class="hero-text">
         <div class="hero-eyebrow"><i class="fas fa-heart"></i> Trusted by Pet Parents in Metro Manila</div>
@@ -2220,9 +1973,6 @@
   </section>
 
   <section class="section section-cream" id="about">
-    <div class="paw-float-section float-about-1"><img src="pet1.jpg" alt="Pet"></div>
-    <div class="paw-float-section float-about-2"><img src="pet2.jpg" alt="Pet"></div>
-
     <div class="container">
       <div class="section-header reveal">
         <div class="section-badge"><i class="fas fa-paw"></i> About PawStay</div>
@@ -2266,10 +2016,6 @@
   </section>
 
   <section class="section section-cream-2" id="services">
-    <div class="paw-float-section float-services-1"><img src="pet2.jpg" alt="Pet"></div>
-    <div class="paw-float-section float-services-2"><img src="pet1.jpg" alt="Pet"></div>
-    <div class="paw-float-section float-services-3"><img src="pet2.jpg" alt="Pet"></div>
-
     <div class="container">
       <div class="section-header reveal">
         <div class="section-badge"><i class="fas fa-star"></i> Our Services</div>
@@ -2309,9 +2055,6 @@
   </section>
 
   <section class="section section-cream" id="how">
-    <div class="paw-float-section float-how-1"><img src="pet1.jpg" alt="Pet"></div>
-    <div class="paw-float-section float-how-2"><img src="pet2.jpg" alt="Pet"></div>
-
     <div class="container">
       <div class="section-header reveal">
         <div class="section-badge"><i class="fas fa-route"></i> How It Works</div>
@@ -2351,9 +2094,6 @@
   </section>
 
   <section class="section section-cream-2" id="why">
-    <div class="paw-float-section float-why-1"><img src="pet2.jpg" alt="Pet"></div>
-    <div class="paw-float-section float-why-2"><img src="pet1.jpg" alt="Pet"></div>
-
     <div class="container">
       <div class="section-header reveal">
         <div class="section-badge"><i class="fas fa-heart"></i> Why PawStay</div>
@@ -2396,9 +2136,6 @@
   </section>
 
   <section class="section section-cream" id="pets">
-    <div class="paw-float-section float-pets-1"><img src="pet1.jpg" alt="Pet"></div>
-    <div class="paw-float-section float-pets-2"><img src="pet2.jpg" alt="Pet"></div>
-
     <div class="container">
       <div class="section-header reveal">
         <div class="section-badge"><i class="fas fa-paw"></i> Pets We Care For</div>
@@ -2431,10 +2168,6 @@
   </section>
 
   <section class="section section-cream-2" id="testimonials">
-    <div class="paw-float-section float-test-1"><img src="pet1.jpg" alt="Pet"></div>
-    <div class="paw-float-section float-test-2"><img src="pet2.jpg" alt="Pet"></div>
-    <div class="paw-float-section float-test-3"><img src="pet1.jpg" alt="Pet"></div>
-
     <div class="container">
       <div class="section-header reveal">
         <div class="section-badge"><i class="fas fa-quote-left"></i> Testimonials</div>
@@ -2483,9 +2216,6 @@
   </section>
 
   <section class="section section-cream" id="pricing">
-    <div class="paw-float-section float-pricing-1"><img src="pet2.jpg" alt="Pet"></div>
-    <div class="paw-float-section float-pricing-2"><img src="pet1.jpg" alt="Pet"></div>
-
     <div class="container">
       <div class="section-header reveal">
         <div class="section-badge"><i class="fas fa-tag"></i> Pricing</div>
@@ -2546,9 +2276,6 @@
   </section>
 
   <section class="section section-cream-2" id="faq">
-    <div class="paw-float-section float-faq-1"><img src="pet1.jpg" alt="Pet"></div>
-    <div class="paw-float-section float-faq-2"><img src="pet2.jpg" alt="Pet"></div>
-
     <div class="container">
       <div class="section-header reveal">
         <div class="section-badge"><i class="fas fa-question-circle"></i> FAQ</div>
