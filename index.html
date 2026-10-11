@@ -1474,6 +1474,33 @@
       margin-bottom: 28px;
     }
 
+    .form-section-title {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin: 28px 0 16px;
+      padding-top: 24px;
+      border-top: 2px dashed var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .form-section-title i {
+      color: var(--coral);
+      font-size: 0.9rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
     .form-group {
       margin-bottom: 18px;
     }
@@ -1504,6 +1531,11 @@
       outline: none;
     }
 
+    .form-group input[type="date"] {
+      cursor: pointer;
+      font-family: var(--font-body);
+    }
+
     .form-group textarea {
       border-radius: 20px;
       min-height: 100px;
@@ -1521,7 +1553,7 @@
     .form-submit {
       width: 100%;
       justify-content: center;
-      margin-top: 8px;
+      margin-top: 24px;
     }
 
     /* ============ FOOTER ============ */
@@ -1715,6 +1747,7 @@
       .footer-inner { flex-direction: column; text-align: center; }
       .footer-links { justify-content: center; }
       .floating-badge { display: none; }
+      .form-row { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 480px) {
@@ -2252,17 +2285,20 @@
         <h3><i class="fas fa-paw"></i> Booking Request</h3>
         <p class="contact-form-subtitle">Fill out the form and we'll be in touch shortly.</p>
         <form action="https://formspree.io/f/mnpjzdwz" method="POST">
-          <div class="form-group">
-            <label for="name">Your Name</label>
-            <input type="text" id="name" name="name" placeholder="Juan Dela Cruz" required>
+          <!-- OWNER INFO -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="Juan Dela Cruz" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Mobile Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="0917 123 4567" required>
+            </div>
           </div>
           <div class="form-group">
             <label for="email">Email Address</label>
             <input type="email" id="email" name="email" placeholder="you@example.com" required>
-          </div>
-          <div class="form-group">
-            <label for="phone">Mobile Number</label>
-            <input type="tel" id="phone" name="phone" placeholder="0917 123 4567" required>
           </div>
           <div class="form-group">
             <label for="service">Service Needed</label>
@@ -2274,10 +2310,39 @@
               <option value="other">Other / Not Sure</option>
             </select>
           </div>
-          <div class="form-group">
-            <label for="message">Tell Us About Your Pet</label>
-            <textarea id="message" name="message" placeholder="Pet's name, breed, age, temperament, special needs, and preferred dates." required></textarea>
+
+          <!-- PET INFO -->
+          <div class="form-section-title">
+            <i class="fas fa-paw"></i> Pet Information
           </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="pet_name">Pet Name</label>
+              <input type="text" id="pet_name" name="pet_name" placeholder="Mochi" required>
+            </div>
+            <div class="form-group">
+              <label for="pet_breed">Breed</label>
+              <input type="text" id="pet_breed" name="pet_breed" placeholder="Shih Tzu" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="pet_age">Pet Age</label>
+              <input type="text" id="pet_age" name="pet_age" placeholder="3 years" required>
+            </div>
+            <div class="form-group">
+              <label for="booking_date">Preferred Booking Date</label>
+              <input type="date" id="booking_date" name="booking_date" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Temperament & Special Needs</label>
+            <textarea id="message" name="message" placeholder="Describe your pet's temperament, any special needs, medications, or things we should know." required></textarea>
+          </div>
+
           <button type="submit" class="btn btn-primary form-submit">
             <i class="fas fa-paper-plane"></i> Send Booking Request
           </button>
@@ -2369,6 +2434,20 @@
         item.classList.toggle('open');
       });
     });
+
+    // ============ AUTO-SET BOOKING DATE MINIMUM TO "TODAY + 3 DAYS" ============
+    const bookingDate = document.getElementById('booking_date');
+    if (bookingDate) {
+      const today = new Date();
+      const minDate = new Date(today);
+      minDate.setDate(today.getDate() + 3);
+
+      const yyyy = minDate.getFullYear();
+      const mm = String(minDate.getMonth() + 1).padStart(2, '0');
+      const dd = String(minDate.getDate()).padStart(2, '0');
+
+      bookingDate.min = `${yyyy}-${mm}-${dd}`;
+    }
   </script>
 </body>
 </html>
