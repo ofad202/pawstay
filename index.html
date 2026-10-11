@@ -230,7 +230,7 @@
       opacity: 0.35;
     }
 
-    /* ============ FLOATING PHOTO CARDS (3 cards only) ============ */
+    /* ============ FLOATING PHOTO CARDS (5 cards, positioned on edges) ============ */
     .paw-float {
       position: absolute;
       border-radius: 20px;
@@ -238,8 +238,8 @@
       padding: 6px;
       box-shadow: 0 12px 32px rgba(107, 68, 35, 0.2);
       pointer-events: none;
-      z-index: 1;
-      animation: paw-drift 30s ease-in-out infinite;
+      z-index: 3;
+      animation: paw-drift 35s ease-in-out infinite;
       overflow: hidden;
       border: 2px solid var(--warm-white);
       will-change: transform;
@@ -256,27 +256,41 @@
     /* Card 1 — top-left */
     .paw-float:nth-child(1) {
       width: 95px; height: 95px;
-      top: 18%; left: 6%;
+      top: 18%; left: 4%;
       animation-delay: 0s;
     }
 
-    /* Card 2 — top-right */
+    /* Card 2 — mid-left */
     .paw-float:nth-child(2) {
-      width: 105px; height: 105px;
-      top: 25%; right: 8%;
-      animation-delay: 10s;
+      width: 85px; height: 85px;
+      top: 55%; left: 6%;
+      animation-delay: 7s;
     }
 
-    /* Card 3 — bottom-right */
+    /* Card 3 — bottom-left */
     .paw-float:nth-child(3) {
-      width: 115px; height: 115px;
-      bottom: 18%; right: 12%;
-      animation-delay: 20s;
+      width: 100px; height: 100px;
+      bottom: 14%; left: 20%;
+      animation-delay: 14s;
+    }
+
+    /* Card 4 — top-right corner (outside blob) */
+    .paw-float:nth-child(4) {
+      width: 80px; height: 80px;
+      top: 10%; right: 3%;
+      animation-delay: 21s;
+    }
+
+    /* Card 5 — bottom-right corner (outside blob) */
+    .paw-float:nth-child(5) {
+      width: 90px; height: 90px;
+      bottom: 8%; right: 4%;
+      animation-delay: 28s;
     }
 
     @keyframes paw-drift {
       0%, 100% { transform: translateY(0) rotate(-6deg); opacity: 0.92; }
-      50% { transform: translateY(-16px) rotate(3deg); opacity: 1; }
+      50% { transform: translateY(-14px) rotate(3deg); opacity: 1; }
     }
 
     .hero-inner {
@@ -428,7 +442,6 @@
       min-height: 480px;
     }
 
-    /* Pet blob — morphing shape (kept) but photo inside is static */
     .pet-blob {
       position: relative;
       width: 440px;
@@ -461,7 +474,6 @@
       overflow: hidden;
     }
 
-    /* NO ANIMATION on the photo — this was the main lag cause */
     .pet-blob-inner img {
       width: 100%;
       height: 100%;
@@ -477,7 +489,7 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      z-index: 3;
+      z-index: 4;
       transition: var(--transition);
     }
 
@@ -1826,7 +1838,7 @@
 
       /* Soften floating cards */
       .paw-float {
-        opacity: 0.8;
+        opacity: 0.75;
       }
     }
 
@@ -1919,7 +1931,7 @@
       .step-number-badge { width: 36px; height: 36px; font-size: 0.85rem; }
     }
 
-    /* ============ ACCESSIBILITY — reduced motion support ============ */
+    /* ============ ACCESSIBILITY — reduced motion ============ */
     @media (prefers-reduced-motion: reduce) {
       *,
       *::before,
@@ -1935,7 +1947,6 @@
       .about-circle-1,
       .about-circle-2,
       .about-circle-3,
-      .footer-blob,
       .hero-eyebrow i {
         animation: none !important;
       }
@@ -1971,10 +1982,12 @@
     <div class="hero-blob hero-blob-2"></div>
     <div class="hero-blob hero-blob-3"></div>
 
-    <!-- Only 3 floating photo cards now (was 5) -->
+    <!-- 5 floating photo cards -->
     <div class="paw-float"><img src="pet1.jpg" alt="Happy pet"></div>
+    <div class="paw-float"><img src="pet2.jpg" alt="Happy pet"></div>
     <div class="paw-float"><img src="pet3.jpg" alt="Happy pet"></div>
     <div class="paw-float"><img src="pet4.jpg" alt="Happy pet"></div>
+    <div class="paw-float"><img src="pet5.jpg" alt="Happy pet"></div>
 
     <div class="container hero-inner">
       <div class="hero-text">
