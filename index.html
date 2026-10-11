@@ -182,7 +182,7 @@
       transform: scale(1.08);
     }
 
-    /* ============ HERO — NOW WITH PHOTO BACKGROUND ============ */
+    /* ============ HERO — WITH PHOTO BACKGROUND ============ */
     .hero {
       background: linear-gradient(rgba(255, 248, 240, 0.88), rgba(255, 248, 240, 0.78)),
                   url('hero-bg.jpg') center/cover no-repeat;
@@ -200,6 +200,7 @@
       filter: blur(80px);
       pointer-events: none;
       z-index: 0;
+      will-change: opacity;
     }
 
     .hero-blob-1 {
@@ -229,7 +230,7 @@
       opacity: 0.35;
     }
 
-    /* ============ FLOATING PHOTO CARDS ============ */
+    /* ============ FLOATING PHOTO CARDS (3 cards only) ============ */
     .paw-float {
       position: absolute;
       border-radius: 20px;
@@ -238,9 +239,10 @@
       box-shadow: 0 12px 32px rgba(107, 68, 35, 0.2);
       pointer-events: none;
       z-index: 1;
-      animation: paw-drift 18s ease-in-out infinite;
+      animation: paw-drift 30s ease-in-out infinite;
       overflow: hidden;
       border: 2px solid var(--warm-white);
+      will-change: transform;
     }
 
     .paw-float img {
@@ -251,40 +253,30 @@
       display: block;
     }
 
+    /* Card 1 — top-left */
     .paw-float:nth-child(1) {
-      width: 90px; height: 90px;
-      top: 15%; left: 6%;
+      width: 95px; height: 95px;
+      top: 18%; left: 6%;
       animation-delay: 0s;
-      transform: rotate(-8deg);
     }
+
+    /* Card 2 — top-right */
     .paw-float:nth-child(2) {
-      width: 70px; height: 70px;
-      top: 62%; left: 10%;
-      animation-delay: 4s;
-      transform: rotate(6deg);
+      width: 105px; height: 105px;
+      top: 25%; right: 8%;
+      animation-delay: 10s;
     }
+
+    /* Card 3 — bottom-right */
     .paw-float:nth-child(3) {
-      width: 100px; height: 100px;
-      top: 22%; right: 8%;
-      animation-delay: 2s;
-      transform: rotate(10deg);
-    }
-    .paw-float:nth-child(4) {
-      width: 110px; height: 110px;
+      width: 115px; height: 115px;
       bottom: 18%; right: 12%;
-      animation-delay: 6s;
-      transform: rotate(-6deg);
-    }
-    .paw-float:nth-child(5) {
-      width: 75px; height: 75px;
-      top: 72%; right: 28%;
-      animation-delay: 8s;
-      transform: rotate(8deg);
+      animation-delay: 20s;
     }
 
     @keyframes paw-drift {
-      0%, 100% { transform: translateY(0) rotate(-8deg); opacity: 0.9; }
-      50% { transform: translateY(-24px) rotate(4deg); opacity: 1; }
+      0%, 100% { transform: translateY(0) rotate(-6deg); opacity: 0.92; }
+      50% { transform: translateY(-16px) rotate(3deg); opacity: 1; }
     }
 
     .hero-inner {
@@ -315,12 +307,12 @@
 
     .hero-eyebrow i {
       font-size: 0.85rem;
-      animation: heart-beat 2s ease-in-out infinite;
+      animation: heart-beat 3s ease-in-out infinite;
     }
 
     @keyframes heart-beat {
       0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.15); }
+      50% { transform: scale(1.12); }
     }
 
     .hero h1 {
@@ -436,6 +428,7 @@
       min-height: 480px;
     }
 
+    /* Pet blob — morphing shape (kept) but photo inside is static */
     .pet-blob {
       position: relative;
       width: 440px;
@@ -446,8 +439,9 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      animation: blob-morph 12s ease-in-out infinite;
+      animation: blob-morph 14s ease-in-out infinite;
       box-shadow: 0 20px 60px rgba(255, 107, 74, 0.25);
+      will-change: border-radius;
     }
 
     @keyframes blob-morph {
@@ -467,16 +461,11 @@
       overflow: hidden;
     }
 
+    /* NO ANIMATION on the photo — this was the main lag cause */
     .pet-blob-inner img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      animation: dog-wag 6s ease-in-out infinite;
-    }
-
-    @keyframes dog-wag {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.04); }
     }
 
     .floating-badge {
@@ -629,12 +618,6 @@
     .about-circle-main i {
       font-size: 8rem;
       color: var(--warm-white);
-      animation: cat-breathe 5s ease-in-out infinite;
-    }
-
-    @keyframes cat-breathe {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
     }
 
     .about-circle-small {
@@ -654,7 +637,7 @@
       width: 90px;
       height: 90px;
       background: linear-gradient(135deg, var(--coral), var(--coral-dark));
-      animation: float-1 4s ease-in-out infinite;
+      animation: float-1 6s ease-in-out infinite;
     }
 
     .about-circle-2 {
@@ -663,7 +646,7 @@
       width: 80px;
       height: 80px;
       background: linear-gradient(135deg, var(--amber), var(--mustard));
-      animation: float-2 5s ease-in-out infinite;
+      animation: float-2 8s ease-in-out infinite;
     }
 
     .about-circle-3 {
@@ -672,17 +655,17 @@
       width: 60px;
       height: 60px;
       background: linear-gradient(135deg, var(--teal), #3A8076);
-      animation: float-2 6s ease-in-out infinite;
+      animation: float-2 10s ease-in-out infinite;
     }
 
     @keyframes float-1 {
       0%, 100% { transform: translateY(0) rotate(0); }
-      50% { transform: translateY(-12px) rotate(5deg); }
+      50% { transform: translateY(-10px) rotate(4deg); }
     }
 
     @keyframes float-2 {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
+      50% { transform: translateY(-6px); }
     }
 
     .about-content p {
@@ -1721,12 +1704,6 @@
       color: var(--warm-white);
       font-size: 2rem;
       box-shadow: 0 12px 32px rgba(0,0,0,0.2);
-      animation: paw-rotate 8s ease-in-out infinite;
-    }
-
-    @keyframes paw-rotate {
-      0%, 100% { transform: translateX(-50%) rotate(-8deg); }
-      50% { transform: translateX(-50%) rotate(8deg); }
     }
 
     .footer-inner {
@@ -1840,8 +1817,17 @@
       .testimonials-grid { grid-template-columns: repeat(3, 1fr); }
       .pricing-grid { grid-template-columns: repeat(3, 1fr); }
       .contact-wrapper { grid-template-columns: 1fr; gap: 32px; }
-      .paw-float { opacity: 0.6; }
-      .paw-float:nth-child(4) { display: none; }
+
+      /* PERFORMANCE: disable blur filters on tablet */
+      .hero-blob {
+        filter: none !important;
+        opacity: 0.35 !important;
+      }
+
+      /* Soften floating cards */
+      .paw-float {
+        opacity: 0.8;
+      }
     }
 
     @media (max-width: 768px) {
@@ -1895,7 +1881,19 @@
       .footer-links { justify-content: center; }
       .floating-badge { display: none; }
       .form-row { grid-template-columns: 1fr; }
+
+      /* PERFORMANCE: hide floating cards on mobile */
       .paw-float { display: none; }
+
+      /* PERFORMANCE: stop blob morph on mobile */
+      .pet-blob { animation: none; }
+
+      /* PERFORMANCE: remove contact section blurs */
+      .contact-section::before,
+      .contact-section::after {
+        filter: none !important;
+        opacity: 0.2 !important;
+      }
     }
 
     @media (max-width: 480px) {
@@ -1919,6 +1917,28 @@
       .step-circle { width: 120px; height: 120px; }
       .step-circle-inner { width: 86px; height: 86px; font-size: 2rem; }
       .step-number-badge { width: 36px; height: 36px; font-size: 0.85rem; }
+    }
+
+    /* ============ ACCESSIBILITY — reduced motion support ============ */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+
+      .paw-float,
+      .pet-blob,
+      .about-circle-1,
+      .about-circle-2,
+      .about-circle-3,
+      .footer-blob,
+      .hero-eyebrow i {
+        animation: none !important;
+      }
     }
   </style>
 </head>
@@ -1951,12 +1971,10 @@
     <div class="hero-blob hero-blob-2"></div>
     <div class="hero-blob hero-blob-3"></div>
 
-    <!-- Floating photo cards (replace paw icons) -->
+    <!-- Only 3 floating photo cards now (was 5) -->
     <div class="paw-float"><img src="pet1.jpg" alt="Happy pet"></div>
-    <div class="paw-float"><img src="pet2.jpg" alt="Happy pet"></div>
     <div class="paw-float"><img src="pet3.jpg" alt="Happy pet"></div>
     <div class="paw-float"><img src="pet4.jpg" alt="Happy pet"></div>
-    <div class="paw-float"><img src="pet5.jpg" alt="Happy pet"></div>
 
     <div class="container hero-inner">
       <div class="hero-text">
@@ -1978,7 +1996,6 @@
       <div class="hero-visual">
         <div class="pet-blob">
           <div class="pet-blob-inner">
-            <!-- Photo inside the blob circle -->
             <img src="hero-pet.jpg" alt="Happy pet">
           </div>
         </div>
@@ -2442,7 +2459,6 @@
         <h3><i class="fas fa-paw"></i> Booking Request</h3>
         <p class="contact-form-subtitle">Fill out the form and we'll be in touch shortly.</p>
         <form action="https://formspree.io/f/mnpjzdwz" method="POST">
-          <!-- OWNER INFO -->
           <div class="form-row">
             <div class="form-group">
               <label for="name">Your Name</label>
@@ -2468,7 +2484,6 @@
             </select>
           </div>
 
-          <!-- PET INFO -->
           <div class="form-section-title">
             <i class="fas fa-paw"></i> Pet Information
           </div>
