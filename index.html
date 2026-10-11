@@ -1,0 +1,2335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PawStay Pet Sitting | Trusted Pet Care When You're Away</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@300;400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --cream: #FFF8F0;
+      --cream-2: #FFEFE0;
+      --cream-3: #FFE4CC;
+      --warm-white: #FFFFFF;
+      --coral: #FF6B4A;
+      --coral-dark: #E85533;
+      --coral-light: #FFE0D6;
+      --amber: #FFB347;
+      --amber-light: #FFD699;
+      --mustard: #E8A33D;
+      --brown: #6B4423;
+      --brown-soft: #8B5E3C;
+      --text-body: #5C4A3D;
+      --text-muted: #A08B7A;
+      --border: #F0E0D0;
+      --teal: #4A9B8E;
+      --teal-light: #D6F0EC;
+
+      --font-display: 'Oswald', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-script: 'Caveat', cursive;
+
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--text-body);
+      background-color: var(--cream);
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: var(--brown);
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    ul { list-style: none; }
+
+    .container {
+      width: 92%;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    /* ============ FLOATING PILL HEADER ============ */
+    header {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      width: 94%;
+      max-width: 1100px;
+      background: rgba(255, 248, 240, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 60px;
+      border: 1.5px solid var(--border);
+      box-shadow: 0 8px 32px rgba(107, 68, 35, 0.08);
+      transition: var(--transition);
+    }
+
+    header.scrolled {
+      top: 12px;
+      background: rgba(255, 248, 240, 0.98);
+      box-shadow: 0 12px 40px rgba(107, 68, 35, 0.12);
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--brown);
+      padding: 6px 12px;
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--coral), var(--amber));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--warm-white);
+      font-size: 0.95rem;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    nav a {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--brown);
+      padding: 10px 18px;
+      border-radius: 50px;
+      transition: var(--transition);
+    }
+
+    nav a:hover {
+      background: var(--coral-light);
+      color: var(--coral-dark);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: linear-gradient(135deg, var(--coral), var(--amber));
+      border: none;
+      color: var(--warm-white);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: var(--transition);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .menu-toggle:hover {
+      transform: scale(1.08);
+    }
+
+    /* ============ HERO ============ */
+    .hero {
+      background: var(--cream);
+      padding: 160px 0 0;
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-blob-1 {
+      top: -100px;
+      right: -100px;
+      width: 500px;
+      height: 500px;
+      background: var(--coral-light);
+      opacity: 0.6;
+    }
+
+    .hero-blob-2 {
+      bottom: 100px;
+      left: -150px;
+      width: 400px;
+      height: 400px;
+      background: var(--amber-light);
+      opacity: 0.5;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+      padding-bottom: 80px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--coral);
+      background: var(--coral-light);
+      padding: 8px 18px;
+      border-radius: 50px;
+      margin-bottom: 28px;
+    }
+
+    .hero-eyebrow i {
+      font-size: 0.85rem;
+    }
+
+    .hero h1 {
+      font-size: 4.2rem;
+      font-weight: 700;
+      color: var(--brown);
+      margin-bottom: 24px;
+      line-height: 1.02;
+      letter-spacing: -0.01em;
+    }
+
+    .hero h1 .script {
+      font-family: var(--font-script);
+      text-transform: none;
+      color: var(--coral);
+      font-size: 4.8rem;
+      letter-spacing: 0;
+      display: inline-block;
+      transform: rotate(-2deg);
+      margin: 0 4px;
+    }
+
+    .hero-description {
+      font-size: 1.1rem;
+      color: var(--text-body);
+      margin-bottom: 36px;
+      max-width: 520px;
+      font-weight: 400;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 34px;
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      border-radius: 50px;
+      transition: var(--transition);
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--coral), var(--coral-dark));
+      color: var(--warm-white);
+      box-shadow: 0 8px 24px rgba(255, 107, 74, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 32px rgba(255, 107, 74, 0.4);
+    }
+
+    .btn-secondary {
+      background: var(--warm-white);
+      color: var(--brown);
+      border-color: var(--border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--coral);
+      color: var(--coral);
+      transform: translateY(-3px);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      padding-top: 32px;
+      border-top: 1px dashed var(--border);
+    }
+
+    .hero-stat {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-stat strong {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--brown);
+      line-height: 1;
+    }
+
+    .hero-stat span {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-family: var(--font-display);
+      margin-top: 4px;
+    }
+
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      min-height: 480px;
+    }
+
+    .pet-blob {
+      position: relative;
+      width: 440px;
+      height: 440px;
+      background: linear-gradient(135deg, var(--amber-light), var(--coral-light));
+      border-radius: 60% 40% 55% 45% / 45% 55% 40% 60%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      animation: blob-morph 12s ease-in-out infinite;
+    }
+
+    @keyframes blob-morph {
+      0%, 100% { border-radius: 60% 40% 55% 45% / 45% 55% 40% 60%; }
+      50% { border-radius: 45% 55% 40% 60% / 60% 40% 55% 45%; }
+    }
+
+    .pet-blob-inner {
+      width: 88%;
+      height: 88%;
+      background: var(--warm-white);
+      border-radius: 60% 40% 55% 45% / 45% 55% 40% 60%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pet-blob-inner i {
+      font-size: 12rem;
+      color: var(--coral);
+      opacity: 0.9;
+    }
+
+    .pet-blob-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .floating-badge {
+      position: absolute;
+      background: var(--warm-white);
+      border-radius: 20px;
+      padding: 14px 20px;
+      box-shadow: 0 12px 32px rgba(107, 68, 35, 0.12);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 3;
+    }
+
+    .floating-badge i {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--coral), var(--amber));
+      color: var(--warm-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .floating-badge span {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--brown);
+      letter-spacing: 0.04em;
+      line-height: 1.3;
+    }
+
+    .floating-badge.badge-1 {
+      top: 20px;
+      left: -20px;
+      transform: rotate(-3deg);
+    }
+
+    .floating-badge.badge-2 {
+      bottom: 40px;
+      right: -20px;
+      transform: rotate(3deg);
+    }
+
+    .floating-badge.badge-3 {
+      top: 50%;
+      left: -30px;
+      transform: rotate(-2deg);
+    }
+
+    /* ============ SECTIONS ============ */
+    .section {
+      padding: 110px 0;
+      position: relative;
+    }
+
+    .section-cream { background: var(--cream); }
+    .section-cream-2 { background: var(--cream-2); }
+
+    .section-header {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 72px;
+    }
+
+    .section-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--coral);
+      background: var(--coral-light);
+      padding: 8px 18px;
+      border-radius: 50px;
+      margin-bottom: 24px;
+    }
+
+    .section-title {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--brown);
+      line-height: 1.05;
+    }
+
+    .section-title .script {
+      font-family: var(--font-script);
+      text-transform: none;
+      color: var(--coral);
+      font-size: 3.4rem;
+      letter-spacing: 0;
+      display: inline-block;
+      transform: rotate(-2deg);
+      margin: 0 4px;
+    }
+
+    .section-desc {
+      font-size: 1.08rem;
+      color: var(--text-body);
+      font-weight: 400;
+      line-height: 1.7;
+    }
+
+    /* ============ ABOUT ============ */
+    .about-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 480px;
+    }
+
+    .about-circle-main {
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--coral-light), var(--amber-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(255, 107, 74, 0.2);
+    }
+
+    .about-circle-main i {
+      font-size: 8rem;
+      color: var(--warm-white);
+    }
+
+    .about-circle-small {
+      position: absolute;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--warm-white);
+      font-size: 1.4rem;
+      box-shadow: 0 12px 32px rgba(107, 68, 35, 0.15);
+    }
+
+    .about-circle-1 {
+      top: 20px;
+      right: 40px;
+      width: 90px;
+      height: 90px;
+      background: linear-gradient(135deg, var(--coral), var(--coral-dark));
+      animation: float-1 4s ease-in-out infinite;
+    }
+
+    .about-circle-2 {
+      bottom: 40px;
+      left: 20px;
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--amber), var(--mustard));
+      animation: float-2 5s ease-in-out infinite;
+    }
+
+    .about-circle-3 {
+      top: 60px;
+      left: 40px;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--teal), #3A8076);
+      animation: float-2 6s ease-in-out infinite;
+    }
+
+    @keyframes float-1 {
+      0%, 100% { transform: translateY(0) rotate(0); }
+      50% { transform: translateY(-12px) rotate(5deg); }
+    }
+
+    @keyframes float-2 {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .about-content p {
+      margin-bottom: 20px;
+      color: var(--text-body);
+      font-size: 1.05rem;
+      line-height: 1.85;
+    }
+
+    .about-content strong {
+      color: var(--brown);
+      font-weight: 700;
+      background: linear-gradient(transparent 60%, var(--amber-light) 60%);
+      padding: 0 2px;
+    }
+
+    .about-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .about-feature {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--warm-white);
+      padding: 16px 18px;
+      border-radius: 50px;
+      box-shadow: 0 4px 16px rgba(107, 68, 35, 0.05);
+    }
+
+    .about-feature i {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--coral), var(--amber));
+      color: var(--warm-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    .about-feature span {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--brown);
+      letter-spacing: 0.03em;
+    }
+
+    /* ============ SERVICES ============ */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .service-card {
+      background: var(--warm-white);
+      padding: 48px 32px 40px;
+      border-radius: 28px;
+      transition: var(--transition);
+      position: relative;
+      box-shadow: 0 8px 32px rgba(107, 68, 35, 0.08);
+      overflow: hidden;
+    }
+
+    .service-card:nth-child(1) { transform: rotate(-1deg); }
+    .service-card:nth-child(2) { transform: rotate(1.5deg); }
+    .service-card:nth-child(3) { transform: rotate(-0.5deg); }
+
+    .service-card:hover {
+      transform: rotate(0deg) translateY(-8px);
+      box-shadow: 0 20px 48px rgba(255, 107, 74, 0.2);
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, var(--coral), var(--amber));
+    }
+
+    .service-icon-circle {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--coral-light), var(--amber-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: var(--coral-dark);
+      margin: 0 auto 24px;
+      transition: var(--transition);
+    }
+
+    .service-card:hover .service-icon-circle {
+      background: linear-gradient(135deg, var(--coral), var(--amber));
+      color: var(--warm-white);
+      transform: rotate(-10deg) scale(1.08);
+    }
+
+    .service-card h4 {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      color: var(--brown);
+      text-align: center;
+    }
+
+    .service-card p {
+      font-size: 0.98rem;
+      color: var(--text-body);
+      line-height: 1.7;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .service-price-row {
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+      gap: 6px;
+      padding-top: 24px;
+      border-top: 2px dashed var(--border);
+    }
+
+    .service-price {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--coral);
+      line-height: 1;
+    }
+
+    .service-price-unit {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-family: var(--font-display);
+      letter-spacing: 0.06em;
+    }
+
+    /* ============ HOW IT WORKS ============ */
+    .steps-wrap {
+      position: relative;
+    }
+
+    .steps-line {
+      position: absolute;
+      top: 70px;
+      left: 15%;
+      right: 15%;
+      height: 2px;
+      background-image: linear-gradient(90deg, var(--coral) 50%, transparent 50%);
+      background-size: 16px 2px;
+      z-index: 1;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .step-item {
+      text-align: center;
+      padding: 0 16px;
+    }
+
+    .step-circle {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: var(--warm-white);
+      border: 3px dashed var(--coral);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 32px;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .step-item:hover .step-circle {
+      border-color: var(--amber);
+      border-style: solid;
+      transform: scale(1.05);
+    }
+
+    .step-circle-inner {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--coral), var(--amber));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.4rem;
+      color: var(--warm-white);
+      box-shadow: 0 12px 32px rgba(255, 107, 74, 0.25);
+    }
+
+    .step-number-badge {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--brown);
+      color: var(--warm-white);
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 4px solid var(--cream);
+    }
+
+    .step-item h4 {
+      font-size: 1.2rem;
+      margin-bottom: 12px;
+      color: var(--brown);
+    }
+
+    .step-item p {
+      font-size: 0.98rem;
+      color: var(--text-body);
+      line-height: 1.7;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+
+    /* ============ WHY US ============ */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .why-item {
+      background: var(--warm-white);
+      padding: 36px 28px;
+      border-radius: 24px;
+      text-align: center;
+      transition: var(--transition);
+      box-shadow: 0 6px 24px rgba(107, 68, 35, 0.06);
+      position: relative;
+    }
+
+    .why-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(255, 179, 71, 0.2);
+    }
+
+    .why-icon-badge {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--amber-light), var(--coral-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: var(--coral-dark);
+      margin: 0 auto 20px;
+      transition: var(--transition);
+    }
+
+    .why-item:hover .why-icon-badge {
+      background: linear-gradient(135deg, var(--coral), var(--amber));
+      color: var(--warm-white);
+      transform: rotate(-8deg);
+    }
+
+    .why-item h4 {
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+      color: var(--brown);
+    }
+
+    .why-item p {
+      font-size: 0.92rem;
+      color: var(--text-body);
+      line-height: 1.65;
+    }
+
+    /* ============ PETS ============ */
+    .pets-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .pet-item {
+      text-align: center;
+      padding: 32px 16px;
+      border-radius: 24px;
+      background: var(--warm-white);
+      transition: var(--transition);
+      box-shadow: 0 6px 20px rgba(107, 68, 35, 0.05);
+      border: 2px solid transparent;
+    }
+
+    .pet-item:hover {
+      border-color: var(--amber);
+      transform: translateY(-6px);
+      box-shadow: 0 12px 32px rgba(255, 179, 71, 0.2);
+    }
+
+    .pet-icon-circle {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      margin: 0 auto 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.4rem;
+      color: var(--warm-white);
+      transition: var(--transition);
+    }
+
+    .pet-item:nth-child(1) .pet-icon-circle { background: linear-gradient(135deg, var(--coral), var(--coral-dark)); }
+    .pet-item:nth-child(2) .pet-icon-circle { background: linear-gradient(135deg, var(--amber), var(--mustard)); }
+    .pet-item:nth-child(3) .pet-icon-circle { background: linear-gradient(135deg, var(--teal), #3A8076); }
+    .pet-item:nth-child(4) .pet-icon-circle { background: linear-gradient(135deg, var(--mustard), #C8871F); }
+
+    .pet-item:hover .pet-icon-circle {
+      transform: scale(1.08) rotate(-6deg);
+    }
+
+    .pet-item h4 {
+      font-size: 1.05rem;
+      margin-bottom: 4px;
+      color: var(--brown);
+    }
+
+    .pet-item p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* ============ TESTIMONIALS ============ */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .testimonial-card {
+      background: var(--warm-white);
+      padding: 32px 28px;
+      border-radius: 20px;
+      box-shadow: 0 12px 40px rgba(107, 68, 35, 0.1);
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .testimonial-card:nth-child(1) { transform: rotate(-2deg); }
+    .testimonial-card:nth-child(2) { transform: rotate(1deg); }
+    .testimonial-card:nth-child(3) { transform: rotate(-1deg); }
+
+    .testimonial-card:hover {
+      transform: rotate(0deg) translateY(-6px);
+      box-shadow: 0 20px 48px rgba(255, 107, 74, 0.18);
+    }
+
+    .testimonial-tape {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-2deg);
+      width: 80px;
+      height: 28px;
+      background: var(--amber-light);
+      opacity: 0.9;
+      border-radius: 4px;
+    }
+
+    .testimonial-stars {
+      color: var(--amber);
+      font-size: 1rem;
+      letter-spacing: 3px;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .testimonial-text {
+      font-size: 0.98rem;
+      color: var(--text-body);
+      line-height: 1.75;
+      margin-bottom: 20px;
+      font-style: italic;
+      text-align: center;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding-top: 18px;
+      border-top: 1px dashed var(--border);
+    }
+
+    .testimonial-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--coral), var(--amber));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--warm-white);
+      flex-shrink: 0;
+    }
+
+    .testimonial-info {
+      text-align: left;
+    }
+
+    .testimonial-info strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--brown);
+    }
+
+    .testimonial-info span {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* ============ PRICING ============ */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      align-items: start;
+    }
+
+    .pricing-card {
+      background: var(--warm-white);
+      padding: 48px 32px 40px;
+      border-radius: 32px;
+      transition: var(--transition);
+      box-shadow: 0 12px 40px rgba(107, 68, 35, 0.08);
+      position: relative;
+      text-align: center;
+    }
+
+    .pricing-card.featured {
+      background: linear-gradient(180deg, var(--warm-white) 0%, var(--coral-light) 100%);
+      transform: scale(1.04);
+      box-shadow: 0 20px 60px rgba(255, 107, 74, 0.2);
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 48px rgba(255, 107, 74, 0.18);
+    }
+
+    .pricing-card.featured:hover {
+      transform: scale(1.04) translateY(-6px);
+    }
+
+    .pricing-badge {
+      position: absolute;
+      top: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--coral), var(--coral-dark));
+      color: var(--warm-white);
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 8px 22px;
+      border-radius: 50px;
+      box-shadow: 0 8px 20px rgba(255, 107, 74, 0.35);
+      white-space: nowrap;
+    }
+
+    .pricing-name {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      display: block;
+    }
+
+    .pricing-circle {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--coral-light), var(--amber-light));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .pricing-card.featured .pricing-circle {
+      background: linear-gradient(135deg, var(--coral), var(--amber));
+    }
+
+    .pricing-card:hover .pricing-circle {
+      transform: scale(1.05);
+    }
+
+    .pricing-currency {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--brown);
+      margin-bottom: -4px;
+    }
+
+    .pricing-card.featured .pricing-currency {
+      color: rgba(255,255,255,0.9);
+    }
+
+    .pricing-amount {
+      font-family: var(--font-display);
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: var(--brown);
+      line-height: 1;
+    }
+
+    .pricing-card.featured .pricing-amount {
+      color: var(--warm-white);
+    }
+
+    .pricing-per {
+      font-size: 0.8rem;
+      color: var(--text-body);
+      font-family: var(--font-display);
+      letter-spacing: 0.08em;
+      margin-top: 4px;
+    }
+
+    .pricing-card.featured .pricing-per {
+      color: rgba(255,255,255,0.9);
+    }
+
+    .pricing-features {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
+      text-align: left;
+    }
+
+    .pricing-features li {
+      font-size: 0.92rem;
+      color: var(--text-body);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.6;
+    }
+
+    .pricing-features li i {
+      color: var(--coral);
+      font-size: 0.85rem;
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+
+    .pricing-btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* ============ FAQ ============ */
+    .faq-list {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .faq-item {
+      background: var(--warm-white);
+      border-radius: 20px;
+      transition: var(--transition);
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(107, 68, 35, 0.05);
+      border: 2px solid transparent;
+    }
+
+    .faq-item:hover {
+      border-color: var(--amber-light);
+    }
+
+    .faq-item.open {
+      border-color: var(--coral);
+      box-shadow: 0 12px 32px rgba(255, 107, 74, 0.15);
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 24px 32px;
+      text-align: left;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--brown);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      transition: color var(--transition);
+    }
+
+    .faq-question:hover { color: var(--coral); }
+
+    .faq-icon-circle {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--coral-light);
+      color: var(--coral);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+      transition: var(--transition);
+    }
+
+    .faq-item.open .faq-icon-circle {
+      background: var(--coral);
+      color: var(--warm-white);
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+      padding: 0 32px;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 500px;
+      padding: 0 32px 28px;
+    }
+
+    .faq-answer p {
+      font-size: 0.98rem;
+      color: var(--text-body);
+      line-height: 1.8;
+    }
+
+    /* ============ CONTACT ============ */
+    .contact-section {
+      background: var(--cream-2);
+      padding: 120px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-section::before {
+      content: '';
+      position: absolute;
+      top: -80px;
+      right: -80px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: var(--coral-light);
+      opacity: 0.5;
+      filter: blur(60px);
+    }
+
+    .contact-section::after {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      left: -100px;
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
+      background: var(--amber-light);
+      opacity: 0.5;
+      filter: blur(60px);
+    }
+
+    .contact-wrapper {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .contact-info {
+      background: linear-gradient(135deg, var(--coral), var(--coral-dark));
+      padding: 56px 40px;
+      border-radius: 32px;
+      color: var(--warm-white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-info::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .contact-info::after {
+      content: '';
+      position: absolute;
+      bottom: -60px;
+      left: -60px;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .contact-info-inner {
+      position: relative;
+      z-index: 2;
+    }
+
+    .contact-info h2 {
+      font-size: 2.4rem;
+      color: var(--warm-white);
+      margin-bottom: 16px;
+      line-height: 1.1;
+    }
+
+    .contact-info p {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 32px;
+      line-height: 1.8;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 18px;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 50px;
+      transition: var(--transition);
+    }
+
+    .contact-detail:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateX(4px);
+    }
+
+    .contact-detail i {
+      width: 40px;
+      height: 40px;
+      background: var(--warm-white);
+      color: var(--coral-dark);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-detail-text {
+      display: flex;
+      flex-direction: column;
+      color: var(--warm-white);
+    }
+
+    .contact-detail-label {
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      margin-bottom: 2px;
+    }
+
+    .contact-detail-value {
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .contact-form {
+      background: var(--warm-white);
+      padding: 48px 40px;
+      border-radius: 32px;
+      box-shadow: 0 16px 48px rgba(107, 68, 35, 0.12);
+    }
+
+    .contact-form h3 {
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+      color: var(--brown);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .contact-form h3 i {
+      color: var(--coral);
+    }
+
+    .contact-form-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--brown);
+      margin-bottom: 8px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 20px;
+      font-family: var(--font-body);
+      font-size: 0.98rem;
+      color: var(--brown);
+      background: var(--cream);
+      border: 2px solid transparent;
+      border-radius: 50px;
+      transition: var(--transition);
+      outline: none;
+    }
+
+    .form-group textarea {
+      border-radius: 20px;
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--coral);
+      background: var(--warm-white);
+      box-shadow: 0 0 0 4px rgba(255, 107, 74, 0.1);
+    }
+
+    .form-submit {
+      width: 100%;
+      justify-content: center;
+      margin-top: 8px;
+    }
+
+    /* ============ FOOTER ============ */
+    footer {
+      background: var(--brown);
+      padding: 64px 0 36px;
+      position: relative;
+      color: var(--cream);
+      border-radius: 60px 60px 0 0;
+      margin-top: 40px;
+    }
+
+    .footer-blob {
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--coral), var(--amber));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--warm-white);
+      font-size: 2rem;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      padding-top: 24px;
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--warm-white);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-brand i {
+      color: var(--amber);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 26px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber-light);
+      transition: color var(--transition);
+    }
+
+    .footer-links a:hover { color: var(--warm-white); }
+
+    .footer-social {
+      display: flex;
+      gap: 12px;
+    }
+
+    .footer-social a {
+      width: 42px;
+      height: 42px;
+      background: rgba(255, 214, 153, 0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--amber-light);
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+
+    .footer-social a:hover {
+      background: var(--coral);
+      color: var(--warm-white);
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 44px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255, 214, 153, 0.15);
+      font-size: 0.78rem;
+      color: var(--amber-light);
+      letter-spacing: 0.08em;
+      font-family: var(--font-display);
+      text-transform: uppercase;
+      line-height: 1.8;
+      opacity: 0.85;
+    }
+
+    /* ============ REVEAL ============ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 1024px) {
+      header { top: 12px; }
+      .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 60px; padding-bottom: 60px; }
+      .hero-eyebrow, .hero-description, .hero-actions, .hero-stats { margin-left: auto; margin-right: auto; justify-content: center; }
+      .hero-description { max-width: 560px; }
+      .hero-visual { order: -1; min-height: 380px; }
+      .pet-blob { width: 340px; height: 340px; }
+      .pet-blob-inner i { font-size: 9rem; }
+      .about-wrap { grid-template-columns: 1fr; gap: 60px; }
+      .about-visual { min-height: 380px; }
+      .services-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+      .steps-line { display: none; }
+      .steps-grid { grid-template-columns: repeat(3, 1fr); }
+      .why-grid { grid-template-columns: repeat(3, 1fr); }
+      .pets-row { grid-template-columns: repeat(4, 1fr); }
+      .testimonials-grid { grid-template-columns: repeat(3, 1fr); }
+      .pricing-grid { grid-template-columns: repeat(3, 1fr); }
+      .contact-wrapper { grid-template-columns: 1fr; gap: 32px; }
+    }
+
+    @media (max-width: 768px) {
+      header { top: 10px; width: 96%; }
+      .header-inner { padding: 10px 16px; }
+      .logo { font-size: 1.05rem; padding: 4px 8px; }
+      .logo-icon { width: 32px; height: 32px; font-size: 0.85rem; }
+      .menu-toggle { display: flex; }
+      nav {
+        position: absolute;
+        top: calc(100% + 12px);
+        left: 0;
+        width: 100%;
+        background: var(--cream);
+        border-radius: 24px;
+        border: 1.5px solid var(--border);
+        box-shadow: 0 12px 32px rgba(107, 68, 35, 0.12);
+        display: none;
+        padding: 16px;
+      }
+      nav.active { display: block; }
+      nav ul { flex-direction: column; gap: 4px; padding: 0; }
+      nav ul li { width: 100%; }
+      nav a { display: block; padding: 14px 20px; border-radius: 50px; text-align: center; }
+      .hero { padding: 130px 0 0; min-height: auto; }
+      .hero h1 { font-size: 2.4rem; }
+      .hero h1 .script { font-size: 2.8rem; }
+      .hero-stats { gap: 20px; }
+      .section { padding: 72px 0; }
+      .section-title { font-size: 2rem; }
+      .section-title .script { font-size: 2.4rem; }
+      .services-grid,
+      .steps-grid,
+      .why-grid,
+      .testimonials-grid,
+      .pricing-grid { grid-template-columns: 1fr; gap: 24px; }
+      .service-card:nth-child(1),
+      .service-card:nth-child(2),
+      .service-card:nth-child(3),
+      .testimonial-card:nth-child(1),
+      .testimonial-card:nth-child(2),
+      .testimonial-card:nth-child(3) { transform: rotate(0deg); }
+      .pets-row { grid-template-columns: repeat(2, 1fr); }
+      .about-features { grid-template-columns: 1fr; }
+      .contact-info { padding: 40px 28px; }
+      .contact-form { padding: 36px 24px; }
+      .contact-info h2 { font-size: 1.9rem; }
+      .pricing-card.featured { transform: scale(1); }
+      .pricing-card.featured:hover { transform: translateY(-6px); }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; }
+      .floating-badge { display: none; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2rem; }
+      .hero h1 .script { font-size: 2.3rem; }
+      .hero-actions { flex-direction: column; width: 100%; }
+      .hero-actions .btn { width: 100%; justify-content: center; }
+      .section-title { font-size: 1.7rem; }
+      .section-title .script { font-size: 2rem; }
+      .pet-blob { width: 260px; height: 260px; }
+      .pet-blob-inner i { font-size: 6rem; }
+      .about-circle-main { width: 260px; height: 260px; }
+      .about-circle-main i { font-size: 6rem; }
+      .about-circle-1 { width: 70px; height: 70px; font-size: 1rem; }
+      .about-circle-2 { width: 60px; height: 60px; font-size: 1rem; }
+      .about-circle-3 { width: 48px; height: 48px; font-size: 0.85rem; }
+      .pets-row { grid-template-columns: 1fr; }
+      .pricing-circle { width: 150px; height: 150px; }
+      .pricing-amount { font-size: 2.6rem; }
+      .faq-question { padding: 20px 24px; font-size: 0.92rem; }
+      .faq-item.open .faq-answer { padding: 0 24px 24px; }
+      .step-circle { width: 120px; height: 120px; }
+      .step-circle-inner { width: 86px; height: 86px; font-size: 2rem; }
+      .step-number-badge { width: 36px; height: 36px; font-size: 0.85rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header id="header">
+    <div class="header-inner">
+      <a href="#home" class="logo">
+        <span class="logo-icon"><i class="fas fa-paw"></i></span>
+        PawStay
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav id="mainNav">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#how">How It Works</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Book Now</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-blob hero-blob-1"></div>
+    <div class="hero-blob hero-blob-2"></div>
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <div class="hero-eyebrow"><i class="fas fa-heart"></i> Trusted by Pet Parents in Metro Manila</div>
+        <h1>Your pets,<br>cared for <span class="script">always.</span></h1>
+        <p class="hero-description">
+          Professional pet sitting, dog walking, and overnight care — delivered with love, patience, and daily photo updates. Travel with peace of mind.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary"><i class="fas fa-paw"></i> Book a Sitter</a>
+          <a href="#services" class="btn btn-secondary"><i class="fas fa-list"></i> Our Services</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><strong>500+</strong><span>Happy Pets</span></div>
+          <div class="hero-stat"><strong>4.9★</strong><span>Avg Rating</span></div>
+          <div class="hero-stat"><strong>7 Days</strong><span>Available</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="pet-blob">
+          <div class="pet-blob-inner">
+            <i class="fas fa-dog"></i>
+          </div>
+        </div>
+        <div class="floating-badge badge-1">
+          <i class="fas fa-shield-alt"></i>
+          <span>Vetted<br>Sitters</span>
+        </div>
+        <div class="floating-badge badge-2">
+          <i class="fas fa-camera"></i>
+          <span>Daily Photo<br>Updates</span>
+        </div>
+        <div class="floating-badge badge-3">
+          <i class="fas fa-heart"></i>
+          <span>Pet-First<br>Care</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-cream" id="about">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-badge"><i class="fas fa-paw"></i> About PawStay</div>
+        <h2 class="section-title">A warm hand <span class="script">for your pets</span></h2>
+        <p class="section-desc">Built on trust, reliability, and genuine love for animals — PawStay treats your pets like family.</p>
+      </div>
+      <div class="about-wrap">
+        <div class="about-visual reveal">
+          <div class="about-circle-main">
+            <i class="fas fa-cat"></i>
+          </div>
+          <div class="about-circle-small about-circle-1"><i class="fas fa-heart"></i></div>
+          <div class="about-circle-small about-circle-2"><i class="fas fa-bone"></i></div>
+          <div class="about-circle-small about-circle-3"><i class="fas fa-star"></i></div>
+        </div>
+        <div class="about-content reveal">
+          <p><strong>PawStay Pet Sitting</strong> is a local pet care service offering in-home visits, daily walks, and overnight stays for dogs, cats, and small pets. Whether you're traveling, working late, or just need a helping hand — we're here.</p>
+          <p>Every sitter is vetted, pet-first, and trained to handle different temperaments and needs. We send you regular photo updates and detailed reports, so you always know how your pet is doing — even when you're miles away.</p>
+          <p>No cages, no kennels, no stress. Just warm, personal care in the comfort of your pet's own home.</p>
+          <div class="about-features">
+            <div class="about-feature">
+              <i class="fas fa-shield-alt"></i>
+              <span>Vetted Sitters</span>
+            </div>
+            <div class="about-feature">
+              <i class="fas fa-camera"></i>
+              <span>Photo Updates</span>
+            </div>
+            <div class="about-feature">
+              <i class="fas fa-heart"></i>
+              <span>Pet-First Care</span>
+            </div>
+            <div class="about-feature">
+              <i class="fas fa-clock"></i>
+              <span>7 Days a Week</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-cream-2" id="services">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-badge"><i class="fas fa-star"></i> Our Services</div>
+        <h2 class="section-title">Care that <span class="script">fits your life</span></h2>
+        <p class="section-desc">From quick drop-ins to overnight stays — pick the care that fits your pet's needs.</p>
+      </div>
+      <div class="services-grid reveal">
+        <div class="service-card">
+          <div class="service-icon-circle"><i class="fas fa-walking"></i></div>
+          <h4>Daily Dog Walking</h4>
+          <p>30–60 minute walks to keep your dog active, happy, and healthy. Perfect for busy weekdays.</p>
+          <div class="service-price-row">
+            <span class="service-price">₱300</span>
+            <span class="service-price-unit">/ walk</span>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon-circle"><i class="fas fa-home"></i></div>
+          <h4>Drop-In Visits</h4>
+          <p>Feeding, playtime, litter cleaning, and companionship while you're at work or away.</p>
+          <div class="service-price-row">
+            <span class="service-price">₱400</span>
+            <span class="service-price-unit">/ visit</span>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon-circle"><i class="fas fa-moon"></i></div>
+          <h4>Overnight Sitting</h4>
+          <p>Full overnight care in your home — so your pet sleeps in familiar surroundings.</p>
+          <div class="service-price-row">
+            <span class="service-price">₱1,200</span>
+            <span class="service-price-unit">/ night</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-cream" id="how">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-badge"><i class="fas fa-route"></i> How It Works</div>
+        <h2 class="section-title">Easy as <span class="script">one, two, three</span></h2>
+        <p class="section-desc">From your first message to your pet's care — here's the simple process.</p>
+      </div>
+      <div class="steps-wrap reveal">
+        <div class="steps-line"></div>
+        <div class="steps-grid">
+          <div class="step-item">
+            <div class="step-circle">
+              <div class="step-circle-inner"><i class="fas fa-comments"></i></div>
+              <span class="step-number-badge">01</span>
+            </div>
+            <h4>Book & Meet</h4>
+            <p>Send us your details and preferred dates. We'll schedule a free meet-and-greet with your pet.</p>
+          </div>
+          <div class="step-item">
+            <div class="step-circle">
+              <div class="step-circle-inner"><i class="fas fa-clipboard-check"></i></div>
+              <span class="step-number-badge">02</span>
+            </div>
+            <h4>Plan the Care</h4>
+            <p>We'll discuss feeding routines, medications, exercise, and any special needs your pet has.</p>
+          </div>
+          <div class="step-item">
+            <div class="step-circle">
+              <div class="step-circle-inner"><i class="fas fa-camera"></i></div>
+              <span class="step-number-badge">03</span>
+            </div>
+            <h4>Relax & Enjoy</h4>
+            <p>Get daily photo updates while we care for your pet. Come home to a happy, healthy companion.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-cream-2" id="why">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-badge"><i class="fas fa-heart"></i> Why PawStay</div>
+        <h2 class="section-title">More than <span class="script">just sitting</span></h2>
+        <p class="section-desc">Every pet gets personal attention, genuine love, and professional care.</p>
+      </div>
+      <div class="why-grid reveal">
+        <div class="why-item">
+          <div class="why-icon-badge"><i class="fas fa-user-shield"></i></div>
+          <h4>Trusted Sitters</h4>
+          <p>Every sitter is vetted, experienced, and passionate about animal care.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-icon-badge"><i class="fas fa-mobile-alt"></i></div>
+          <h4>Live Updates</h4>
+          <p>Photos, videos, and messages sent throughout every visit — always.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-icon-badge"><i class="fas fa-heartbeat"></i></div>
+          <h4>Health-Aware</h4>
+          <p>Trained to handle medications, senior pets, and special dietary needs.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-icon-badge"><i class="fas fa-lock"></i></div>
+          <h4>Fully Insured</h4>
+          <p>Your home and pet are covered. Peace of mind for every booking.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-icon-badge"><i class="fas fa-clock"></i></div>
+          <h4>Flexible Timing</h4>
+          <p>Early mornings, late evenings, weekends, and holidays — we're here.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-icon-badge"><i class="fas fa-star"></i></div>
+          <h4>5-Star Rated</h4>
+          <p>Rated by real pet parents across Metro Manila. See our reviews below.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-cream" id="pets">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-badge"><i class="fas fa-paw"></i> Pets We Care For</div>
+        <h2 class="section-title">All shapes, <span class="script">all sizes</span></h2>
+        <p class="section-desc">We welcome pets of every kind — with the right care for each.</p>
+      </div>
+      <div class="pets-row reveal">
+        <div class="pet-item">
+          <div class="pet-icon-circle"><i class="fas fa-dog"></i></div>
+          <h4>Dogs</h4>
+          <p>All breeds & ages</p>
+        </div>
+        <div class="pet-item">
+          <div class="pet-icon-circle"><i class="fas fa-cat"></i></div>
+          <h4>Cats</h4>
+          <p>Kittens to seniors</p>
+        </div>
+        <div class="pet-item">
+          <div class="pet-icon-circle"><i class="fas fa-dove"></i></div>
+          <h4>Birds</h4>
+          <p>Small to medium</p>
+        </div>
+        <div class="pet-item">
+          <div class="pet-icon-circle"><i class="fas fa-fish"></i></div>
+          <h4>Small Pets</h4>
+          <p>Fish, hamsters, rabbits</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-cream-2" id="testimonials">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-badge"><i class="fas fa-quote-left"></i> Testimonials</div>
+        <h2 class="section-title">What pet parents <span class="script">are saying</span></h2>
+        <p class="section-desc">Real reviews from clients who trust PawStay with their fur babies.</p>
+      </div>
+      <div class="testimonials-grid reveal">
+        <div class="testimonial-card">
+          <div class="testimonial-tape"></div>
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Our dog Mochi is usually anxious around strangers, but PawStay handled her with so much patience. We got photos every day — it really put our minds at ease."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">M</div>
+            <div class="testimonial-info">
+              <strong>Maria S.</strong>
+              <span>Dog Owner · Quezon City</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-tape"></div>
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"I travel a lot for work, and PawStay has become my go-to. They follow my cat's feeding schedule perfectly and always clean the litter box before leaving."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">J</div>
+            <div class="testimonial-info">
+              <strong>James R.</strong>
+              <span>Cat Owner · Makati</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-tape"></div>
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Booked an overnight sitter for a 3-day trip. Came home to a spotless house and a very happy dog. Worth every peso — highly recommended."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">A</div>
+            <div class="testimonial-info">
+              <strong>Andrea L.</strong>
+              <span>Dog Owner · Marikina</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-cream" id="pricing">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-badge"><i class="fas fa-tag"></i> Pricing</div>
+        <h2 class="section-title">Simple, <span class="script">honest rates</span></h2>
+        <p class="section-desc">No hidden fees. Multi-pet discounts available. Pay only for what you need.</p>
+      </div>
+      <div class="pricing-grid reveal">
+        <div class="pricing-card">
+          <span class="pricing-name">Drop-In</span>
+          <div class="pricing-circle">
+            <span class="pricing-currency">₱</span>
+            <span class="pricing-amount">400</span>
+            <span class="pricing-per">per visit</span>
+          </div>
+          <ul class="pricing-features">
+            <li><i class="fas fa-check"></i> Feeding & fresh water</li>
+            <li><i class="fas fa-check"></i> Playtime & companionship</li>
+            <li><i class="fas fa-check"></i> Litter / waste cleanup</li>
+            <li><i class="fas fa-check"></i> Photo updates sent</li>
+          </ul>
+          <a href="#contact" class="btn btn-secondary pricing-btn">Book Drop-In</a>
+        </div>
+        <div class="pricing-card featured">
+          <span class="pricing-badge">Most Popular</span>
+          <span class="pricing-name">Daily Walk</span>
+          <div class="pricing-circle">
+            <span class="pricing-currency">₱</span>
+            <span class="pricing-amount">300</span>
+            <span class="pricing-per">per walk</span>
+          </div>
+          <ul class="pricing-features">
+            <li><i class="fas fa-check"></i> 30–60 minute walk</li>
+            <li><i class="fas fa-check"></i> Fresh water refill</li>
+            <li><i class="fas fa-check"></i> Paw cleaning after walk</li>
+            <li><i class="fas fa-check"></i> Route updates & photos</li>
+            <li><i class="fas fa-check"></i> Discount for 5x/week</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary pricing-btn">Book a Walk</a>
+        </div>
+        <div class="pricing-card">
+          <span class="pricing-name">Overnight</span>
+          <div class="pricing-circle">
+            <span class="pricing-currency">₱</span>
+            <span class="pricing-amount">1,200</span>
+            <span class="pricing-per">per night</span>
+          </div>
+          <ul class="pricing-features">
+            <li><i class="fas fa-check"></i> Overnight stay in your home</li>
+            <li><i class="fas fa-check"></i> Evening & morning feeding</li>
+            <li><i class="fas fa-check"></i> Multiple walks included</li>
+            <li><i class="fas fa-check"></i> Medication administration</li>
+            <li><i class="fas fa-check"></i> Continuous updates</li>
+          </ul>
+          <a href="#contact" class="btn btn-secondary pricing-btn">Book Overnight</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-cream-2" id="faq">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-badge"><i class="fas fa-question-circle"></i> FAQ</div>
+        <h2 class="section-title">Questions? <span class="script">We've got answers.</span></h2>
+        <p class="section-desc">Everything you need to know before booking your first visit.</p>
+      </div>
+      <div class="faq-list reveal">
+        <div class="faq-item">
+          <button class="faq-question">
+            Are your sitters background-checked?
+            <span class="faq-icon-circle"><i class="fas fa-chevron-down"></i></span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. Every PawStay sitter goes through a vetting process that includes a background check, reference verification, and an in-person interview. We only hire sitters who genuinely love animals.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            Do you offer a free meet-and-greet?
+            <span class="faq-icon-circle"><i class="fas fa-chevron-down"></i></span>
+          </button>
+          <div class="faq-answer">
+            <p>Absolutely. Before your first booking, we schedule a free meet-and-greet so you, your pet, and your assigned sitter can get to know each other. This helps your pet feel comfortable and lets us understand their routine.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            Can you administer medication to my pet?
+            <span class="faq-icon-circle"><i class="fas fa-chevron-down"></i></span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. Our sitters are trained to give oral medications, topical treatments, and insulin injections (with proper instruction from you). We'll ask for complete dosage details during the meet-and-greet.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            What if my pet gets sick or injured?
+            <span class="faq-icon-circle"><i class="fas fa-chevron-down"></i></span>
+          </button>
+          <div class="faq-answer">
+            <p>We'll contact you immediately and, if needed, take your pet to your preferred veterinarian. Please provide your vet's contact details during booking. For emergencies, we'll use the nearest 24-hour animal clinic.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            How far in advance should I book?
+            <span class="faq-icon-circle"><i class="fas fa-chevron-down"></i></span>
+          </button>
+          <div class="faq-answer">
+            <p>We recommend booking at least <strong>3–5 days in advance</strong> for regular visits, and <strong>1–2 weeks in advance</strong> for overnight stays or holiday periods. Same-day bookings may be accommodated depending on availability.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            Do you have a multi-pet discount?
+            <span class="faq-icon-circle"><i class="fas fa-chevron-down"></i></span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes — we offer <strong>10% off for each additional pet</strong> in the same household. Just mention it when you book and we'll apply the discount automatically.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            How do I pay for the service?
+            <span class="faq-icon-circle"><i class="fas fa-chevron-down"></i></span>
+          </button>
+          <div class="faq-answer">
+            <p>After we confirm your booking and send you a fee summary, you can pay via <strong>GCash, Maya, Bank Transfer, or Cash</strong>. We'll send the exact payment details — account number, GCash number, or bank info — along with your confirmation so you know exactly where to send your payment.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            When do I need to pay?
+            <span class="faq-icon-circle"><i class="fas fa-chevron-down"></i></span>
+          </button>
+          <div class="faq-answer">
+            <p>We require a <strong>50% downpayment</strong> to confirm and reserve your slot. The remaining balance is settled <strong>after the service is completed</strong> — once we've sent you the daily photo updates and completion report. No payment is required for cancellations made before the booking starts.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            Do you accept cash?
+            <span class="faq-icon-circle"><i class="fas fa-chevron-down"></i></span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes — <strong>cash on completion</strong> is accepted for clients who prefer to pay in person. This is ideal for regular weekly walks or drop-in visits where the sitter meets you directly. For overnight or multi-day bookings, we recommend GCash, Maya, or bank transfer for convenience and record-keeping.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section" id="contact">
+    <div class="container contact-wrapper">
+      <div class="contact-info reveal">
+        <div class="contact-info-inner">
+          <h2>Book a<br>Sitter Today</h2>
+          <p>Tell us about your pet and your schedule. We'll reply within a few hours with availability and next steps.</p>
+          <div class="contact-details">
+            <a href="mailto:joseombrog93@gmail.com" class="contact-detail">
+              <i class="fas fa-envelope"></i>
+              <div class="contact-detail-text">
+                <span class="contact-detail-label">Email</span>
+                <span class="contact-detail-value">joseombrog93@gmail.com</span>
+              </div>
+            </a>
+            <a href="tel:+639535216790" class="contact-detail">
+              <i class="fas fa-phone"></i>
+              <div class="contact-detail-text">
+                <span class="contact-detail-label">Phone / Viber</span>
+                <span class="contact-detail-value">+63 953 521 6790</span>
+              </div>
+            </a>
+            <div class="contact-detail">
+              <i class="fas fa-map-marker-alt"></i>
+              <div class="contact-detail-text">
+                <span class="contact-detail-label">Service Area</span>
+                <span class="contact-detail-value">Metro Manila</span>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <i class="fas fa-clock"></i>
+              <div class="contact-detail-text">
+                <span class="contact-detail-label">Available</span>
+                <span class="contact-detail-value">Mon – Sun · 6AM – 10PM</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form reveal">
+        <h3><i class="fas fa-paw"></i> Booking Request</h3>
+        <p class="contact-form-subtitle">Fill out the form and we'll be in touch shortly.</p>
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="Juan Dela Cruz" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Mobile Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="0917 123 4567" required>
+          </div>
+          <div class="form-group">
+            <label for="service">Service Needed</label>
+            <select id="service" name="service" required>
+              <option value="">Select a service...</option>
+              <option value="walk">Daily Dog Walking</option>
+              <option value="dropin">Drop-In Visit</option>
+              <option value="overnight">Overnight Sitting</option>
+              <option value="other">Other / Not Sure</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Tell Us About Your Pet</label>
+            <textarea id="message" name="message" placeholder="Pet's name, breed, age, temperament, special needs, and preferred dates." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary form-submit">
+            <i class="fas fa-paper-plane"></i> Send Booking Request
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-blob"><i class="fas fa-paw"></i></div>
+    <div class="container">
+      <div class="footer-inner">
+        <a href="#home" class="footer-brand">
+          <i class="fas fa-paw"></i> PawStay Pet Sitting
+        </a>
+        <div class="footer-links">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#how">How It Works</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Book Now</a>
+        </div>
+        <div class="footer-social">
+          <a href="mailto:joseombrog93@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <a href="tel:+639535216790" aria-label="Phone"><i class="fas fa-phone"></i></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 PawStay Pet Sitting · All rights reserved<br>
+        Serving Metro Manila · Fully Insured · Pet-First Care
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    const menuToggle = document.getElementById('menuToggle');
+    const mainNav = document.getElementById('mainNav');
+    menuToggle.addEventListener('click', () => {
+      mainNav.classList.toggle('active');
+      const icon = menuToggle.querySelector('i');
+      icon.classList.toggle('fa-bars');
+      icon.classList.toggle('fa-times');
+    });
+
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        mainNav.classList.remove('active');
+        const icon = menuToggle.querySelector('i');
+        icon.classList.add('fa-bars');
+        icon.classList.remove('fa-times');
+      });
+    });
+
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          e.preventDefault();
+          const offset = 100;
+          const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+          window.scrollTo({ top: elementPosition - offset, behavior: 'smooth' });
+        }
+      });
+    });
+
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        item.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>
