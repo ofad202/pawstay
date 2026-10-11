@@ -1357,8 +1357,31 @@
     .contact-info p {
       font-size: 1rem;
       color: rgba(255, 255, 255, 0.9);
-      margin-bottom: 32px;
+      margin-bottom: 24px;
       line-height: 1.8;
+    }
+
+    .urgent-notice {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px dashed rgba(255, 255, 255, 0.4);
+      padding: 14px 18px;
+      border-radius: 16px;
+      margin-bottom: 24px;
+      font-size: 0.9rem;
+      color: var(--warm-white);
+      line-height: 1.5;
+    }
+
+    .urgent-notice i {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .urgent-notice strong {
+      font-weight: 700;
     }
 
     .contact-details {
@@ -1380,6 +1403,15 @@
     .contact-detail:hover {
       background: rgba(255, 255, 255, 0.2);
       transform: translateX(4px);
+    }
+
+    .contact-detail.messenger-detail {
+      background: rgba(255, 255, 255, 0.18);
+      border: 1.5px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .contact-detail.messenger-detail:hover {
+      background: rgba(255, 255, 255, 0.28);
     }
 
     .contact-detail i {
@@ -2178,12 +2210,18 @@
         <div class="contact-info-inner">
           <h2>Book a<br>Sitter Today</h2>
           <p>Tell us about your pet and your schedule. We'll reply within a few hours with availability and next steps.</p>
+
+          <div class="urgent-notice">
+            <i class="fas fa-bolt"></i>
+            <span><strong>Urgent?</strong> Message us directly on Messenger for faster replies.</span>
+          </div>
+
           <div class="contact-details">
-            <a href="mailto:joseombrog93@gmail.com" class="contact-detail">
-              <i class="fas fa-envelope"></i>
+            <a href="https://m.me/YOUR_MESSENGER_USERNAME" target="_blank" class="contact-detail messenger-detail">
+              <i class="fab fa-facebook-messenger"></i>
               <div class="contact-detail-text">
-                <span class="contact-detail-label">Email</span>
-                <span class="contact-detail-value">joseombrog93@gmail.com</span>
+                <span class="contact-detail-label">Messenger (Fastest)</span>
+                <span class="contact-detail-value">@YOUR_PAGE_HANDLE</span>
               </div>
             </a>
             <a href="tel:+639535216790" class="contact-detail">
@@ -2264,6 +2302,7 @@
           <a href="#contact">Book Now</a>
         </div>
         <div class="footer-social">
+          <a href="https://m.me/YOUR_MESSENGER_USERNAME" target="_blank" aria-label="Messenger"><i class="fab fa-facebook-messenger"></i></a>
           <a href="mailto:joseombrog93@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
           <a href="tel:+639535216790" aria-label="Phone"><i class="fas fa-phone"></i></a>
         </div>
