@@ -59,7 +59,6 @@
       overflow-x: hidden;
     }
 
-    /* ===== GLOBAL CAT BACKGROUND ===== */
     .page-bg-cat {
       position: fixed;
       top: 0;
@@ -480,23 +479,9 @@
       line-height: 1.3;
     }
 
-    .floating-badge.badge-1 {
-      top: 20px;
-      left: -20px;
-      transform: rotate(-3deg);
-    }
-
-    .floating-badge.badge-2 {
-      bottom: 40px;
-      right: -20px;
-      transform: rotate(3deg);
-    }
-
-    .floating-badge.badge-3 {
-      top: 50%;
-      left: -30px;
-      transform: rotate(-2deg);
-    }
+    .floating-badge.badge-1 { top: 20px; left: -20px; transform: rotate(-3deg); }
+    .floating-badge.badge-2 { bottom: 40px; right: -20px; transform: rotate(3deg); }
+    .floating-badge.badge-3 { top: 50%; left: -30px; transform: rotate(-2deg); }
 
     /* ============ SECTIONS ============ */
     .section {
@@ -534,9 +519,7 @@
       margin-bottom: 24px;
     }
 
-    .section-badge i {
-      font-size: 0.85rem;
-    }
+    .section-badge i { font-size: 0.85rem; }
 
     .section-title {
       font-size: 3rem;
@@ -612,28 +595,19 @@
     }
 
     .about-circle-1 {
-      top: 20px;
-      right: 40px;
-      width: 90px;
-      height: 90px;
+      top: 20px; right: 40px; width: 90px; height: 90px;
       background: linear-gradient(135deg, var(--coral), var(--coral-dark));
       animation: float-1 6s ease-in-out infinite;
     }
 
     .about-circle-2 {
-      bottom: 40px;
-      left: 20px;
-      width: 80px;
-      height: 80px;
+      bottom: 40px; left: 20px; width: 80px; height: 80px;
       background: linear-gradient(135deg, var(--amber), var(--mustard));
       animation: float-2 8s ease-in-out infinite;
     }
 
     .about-circle-3 {
-      top: 60px;
-      left: 40px;
-      width: 60px;
-      height: 60px;
+      top: 60px; left: 40px; width: 60px; height: 60px;
       background: linear-gradient(135deg, var(--teal), #3A8076);
       animation: float-2 10s ease-in-out infinite;
     }
@@ -735,9 +709,7 @@
     .service-card::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       height: 6px;
       background: linear-gradient(90deg, var(--coral), var(--amber));
     }
@@ -760,8 +732,7 @@
     .service-icon-circle::after {
       content: '🐾';
       position: absolute;
-      top: -6px;
-      right: -6px;
+      top: -6px; right: -6px;
       font-size: 0.9rem;
       opacity: 0;
       transition: var(--transition);
@@ -773,9 +744,7 @@
       transform: rotate(-10deg) scale(1.08);
     }
 
-    .service-card:hover .service-icon-circle::after {
-      opacity: 1;
-    }
+    .service-card:hover .service-icon-circle::after { opacity: 1; }
 
     .service-card h4 {
       font-size: 1.3rem;
@@ -817,15 +786,12 @@
     }
 
     /* ============ HOW IT WORKS ============ */
-    .steps-wrap {
-      position: relative;
-    }
+    .steps-wrap { position: relative; }
 
     .steps-line {
       position: absolute;
       top: 70px;
-      left: 15%;
-      right: 15%;
+      left: 15%; right: 15%;
       height: 2px;
       background-image: linear-gradient(90deg, var(--coral) 50%, transparent 50%);
       background-size: 16px 2px;
@@ -880,10 +846,8 @@
 
     .step-number-badge {
       position: absolute;
-      top: -4px;
-      right: -4px;
-      width: 42px;
-      height: 42px;
+      top: -4px; right: -4px;
+      width: 42px; height: 42px;
       border-radius: 50%;
       background: var(--brown);
       color: var(--warm-white);
@@ -931,19 +895,15 @@
     .why-item::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 50%;
+      top: 0; left: 50%;
       transform: translateX(-50%);
-      width: 60%;
-      height: 4px;
+      width: 60%; height: 4px;
       background: linear-gradient(90deg, transparent, var(--amber), transparent);
       opacity: 0;
       transition: var(--transition);
     }
 
-    .why-item:hover::before {
-      opacity: 1;
-    }
+    .why-item:hover::before { opacity: 1; }
 
     .why-item:hover {
       transform: translateY(-6px);
@@ -951,8 +911,7 @@
     }
 
     .why-icon-badge {
-      width: 70px;
-      height: 70px;
+      width: 70px; height: 70px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--amber-light), var(--coral-light));
       display: flex;
@@ -1006,8 +965,7 @@
     }
 
     .pet-icon-circle {
-      width: 90px;
-      height: 90px;
+      width: 90px; height: 90px;
       border-radius: 50%;
       margin: 0 auto 18px;
       display: flex;
@@ -1065,11 +1023,9 @@
 
     .testimonial-tape {
       position: absolute;
-      top: -14px;
-      left: 50%;
+      top: -14px; left: 50%;
       transform: translateX(-50%) rotate(-2deg);
-      width: 80px;
-      height: 28px;
+      width: 80px; height: 28px;
       background: var(--amber-light);
       opacity: 0.9;
       border-radius: 4px;
@@ -1102,8 +1058,7 @@
     }
 
     .testimonial-avatar {
-      width: 48px;
-      height: 48px;
+      width: 48px; height: 48px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--coral), var(--amber));
       display: flex;
@@ -1116,9 +1071,7 @@
       flex-shrink: 0;
     }
 
-    .testimonial-info {
-      text-align: left;
-    }
+    .testimonial-info { text-align: left; }
 
     .testimonial-info strong {
       display: block;
@@ -1170,8 +1123,7 @@
 
     .pricing-badge {
       position: absolute;
-      top: -16px;
-      left: 50%;
+      top: -16px; left: 50%;
       transform: translateX(-50%);
       background: linear-gradient(135deg, var(--coral), var(--coral-dark));
       color: var(--warm-white);
@@ -1198,8 +1150,7 @@
     }
 
     .pricing-circle {
-      width: 180px;
-      height: 180px;
+      width: 180px; height: 180px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--coral-light), var(--amber-light));
       display: flex;
@@ -1215,9 +1166,7 @@
       background: linear-gradient(135deg, var(--coral), var(--amber));
     }
 
-    .pricing-card:hover .pricing-circle {
-      transform: scale(1.05);
-    }
+    .pricing-card:hover .pricing-circle { transform: scale(1.05); }
 
     .pricing-currency {
       font-family: var(--font-display);
@@ -1239,9 +1188,7 @@
       line-height: 1;
     }
 
-    .pricing-card.featured .pricing-amount {
-      color: var(--warm-white);
-    }
+    .pricing-card.featured .pricing-amount { color: var(--warm-white); }
 
     .pricing-per {
       font-size: 0.8rem;
@@ -1302,9 +1249,7 @@
       border: 2px solid transparent;
     }
 
-    .faq-item:hover {
-      border-color: var(--amber-light);
-    }
+    .faq-item:hover { border-color: var(--amber-light); }
 
     .faq-item.open {
       border-color: var(--coral);
@@ -1334,8 +1279,7 @@
     .faq-question:hover { color: var(--coral); }
 
     .faq-icon-circle {
-      width: 36px;
-      height: 36px;
+      width: 36px; height: 36px;
       border-radius: 50%;
       background: var(--coral-light);
       color: var(--coral);
@@ -1382,10 +1326,8 @@
     .contact-section::before {
       content: '';
       position: absolute;
-      top: -80px;
-      right: -80px;
-      width: 300px;
-      height: 300px;
+      top: -80px; right: -80px;
+      width: 300px; height: 300px;
       border-radius: 50%;
       background: var(--coral-light);
       opacity: 0.5;
@@ -1395,10 +1337,8 @@
     .contact-section::after {
       content: '';
       position: absolute;
-      bottom: -100px;
-      left: -100px;
-      width: 350px;
-      height: 350px;
+      bottom: -100px; left: -100px;
+      width: 350px; height: 350px;
       border-radius: 50%;
       background: var(--amber-light);
       opacity: 0.5;
@@ -1426,10 +1366,8 @@
     .contact-info::before {
       content: '';
       position: absolute;
-      top: -50px;
-      right: -50px;
-      width: 200px;
-      height: 200px;
+      top: -50px; right: -50px;
+      width: 200px; height: 200px;
       border-radius: 50%;
       background: rgba(255, 255, 255, 0.1);
     }
@@ -1437,10 +1375,8 @@
     .contact-info::after {
       content: '';
       position: absolute;
-      bottom: -60px;
-      left: -60px;
-      width: 180px;
-      height: 180px;
+      bottom: -60px; left: -60px;
+      width: 180px; height: 180px;
       border-radius: 50%;
       background: rgba(255, 255, 255, 0.08);
     }
@@ -1483,9 +1419,7 @@
       flex-shrink: 0;
     }
 
-    .urgent-notice strong {
-      font-weight: 700;
-    }
+    .urgent-notice strong { font-weight: 700; }
 
     .contact-details {
       display: flex;
@@ -1518,8 +1452,7 @@
     }
 
     .contact-detail i {
-      width: 40px;
-      height: 40px;
+      width: 40px; height: 40px;
       background: var(--warm-white);
       color: var(--coral-dark);
       border-radius: 50%;
@@ -1567,9 +1500,7 @@
       gap: 12px;
     }
 
-    .contact-form h3 i {
-      color: var(--coral);
-    }
+    .contact-form h3 i { color: var(--coral); }
 
     .contact-form-subtitle {
       font-size: 0.95rem;
@@ -1604,9 +1535,7 @@
       margin-bottom: 18px;
     }
 
-    .form-group {
-      margin-bottom: 18px;
-    }
+    .form-group { margin-bottom: 18px; }
 
     .form-group label {
       display: block;
@@ -1671,11 +1600,9 @@
 
     .footer-blob {
       position: absolute;
-      top: -30px;
-      left: 50%;
+      top: -30px; left: 50%;
       transform: translateX(-50%);
-      width: 80px;
-      height: 80px;
+      width: 80px; height: 80px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--coral), var(--amber));
       display: flex;
@@ -1707,9 +1634,7 @@
       gap: 10px;
     }
 
-    .footer-brand i {
-      color: var(--amber);
-    }
+    .footer-brand i { color: var(--amber); }
 
     .footer-links {
       display: flex;
@@ -1735,8 +1660,7 @@
     }
 
     .footer-social a {
-      width: 42px;
-      height: 42px;
+      width: 42px; height: 42px;
       background: rgba(255, 214, 153, 0.15);
       border-radius: 50%;
       display: flex;
@@ -1890,15 +1814,12 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
+      *, *::before, *::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
       }
-
       .pet-blob,
       .about-circle-1,
       .about-circle-2,
@@ -1916,7 +1837,6 @@
   <header id="header">
     <div class="header-inner">
       <a href="#home" class="logo">
-        <!-- HEADER LOGO NOW USES pet4.jpg -->
         <span class="logo-icon"><img src="pet4.jpg" alt="PawStay logo"></span>
         PawStay
       </a>
@@ -1990,7 +1910,6 @@
       <div class="about-wrap">
         <div class="about-visual reveal">
           <div class="about-circle-main">
-            <!-- ABOUT SECTION USES pet5.jpg -->
             <img src="pet5.jpg" alt="PawStay pet">
           </div>
           <div class="about-circle-small about-circle-1"><i class="fas fa-heart"></i></div>
