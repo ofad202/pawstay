@@ -150,6 +150,13 @@
       font-size: 1.05rem;
       box-shadow: 0 4px 12px rgba(255, 107, 74, 0.3);
       transition: var(--transition);
+      overflow: hidden;
+    }
+
+    .logo-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .logo:hover .logo-icon {
@@ -245,8 +252,6 @@
       background: var(--mint);
       opacity: 0.35;
     }
-
-    /* ============ FLOATING PHOTO CARDS — REMOVED ============ */
 
     .hero-inner {
       display: grid;
@@ -585,11 +590,15 @@
       justify-content: center;
       position: relative;
       box-shadow: 0 20px 60px rgba(255, 107, 74, 0.2);
+      overflow: hidden;
     }
 
-    .about-circle-main i {
-      font-size: 8rem;
-      color: var(--warm-white);
+    /* ===== IMAGE INSIDE ABOUT CIRCLE ===== */
+    .about-circle-main img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
     }
 
     .about-circle-small {
@@ -1868,7 +1877,6 @@
       .section-title .script { font-size: 2rem; }
       .pet-blob { width: 260px; height: 260px; }
       .about-circle-main { width: 260px; height: 260px; }
-      .about-circle-main i { font-size: 6rem; }
       .about-circle-1 { width: 70px; height: 70px; font-size: 1rem; }
       .about-circle-2 { width: 60px; height: 60px; font-size: 1rem; }
       .about-circle-3 { width: 48px; height: 48px; font-size: 0.85rem; }
@@ -1909,7 +1917,8 @@
   <header id="header">
     <div class="header-inner">
       <a href="#home" class="logo">
-        <span class="logo-icon"><i class="fas fa-paw"></i></span>
+        <!-- LOGO NOW USES pet5.jpg -->
+        <span class="logo-icon"><img src="pet5.jpg" alt="PawStay logo"></span>
         PawStay
       </a>
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
@@ -1982,7 +1991,8 @@
       <div class="about-wrap">
         <div class="about-visual reveal">
           <div class="about-circle-main">
-            <i class="fas fa-cat"></i>
+            <!-- ABOUT IMAGE NOW USES pet5.jpg -->
+            <img src="pet5.jpg" alt="PawStay pet">
           </div>
           <div class="about-circle-small about-circle-1"><i class="fas fa-heart"></i></div>
           <div class="about-circle-small about-circle-2"><i class="fas fa-bone"></i></div>
