@@ -828,7 +828,6 @@
       color: rgba(255,255,255,0.9);
     }
 
-    /* ===== TWEAK 2: Trust line under price ===== */
     .service-trust {
       display: flex;
       justify-content: center;
@@ -894,7 +893,7 @@
       justify-content: center;
     }
 
-    /* ===== TWEAK 1: Mini How It Works strip ===== */
+    /* ===== Mini How It Works strip ===== */
     .how-mini-strip {
       margin-top: 56px;
       padding: 32px 24px;
@@ -964,7 +963,7 @@
       line-height: 1.5;
     }
 
-    /* ===== TWEAK 3: Not sure helper link ===== */
+    /* ===== Not sure helper link ===== */
     .not-sure-helper {
       margin-top: 32px;
       text-align: center;
@@ -1243,7 +1242,7 @@
     /* ============ CONTACT ============ */
     .contact-section {
       background: var(--cream-2);
-      padding: 70px 0;
+      padding: 70px 0 110px;   /* <-- FIX: extra bottom padding instead of footer margin */
       position: relative;
       overflow: hidden;
     }
@@ -1520,7 +1519,7 @@
       position: relative;
       color: var(--cream);
       border-radius: 60px 60px 0 0;
-      margin-top: 40px;
+      margin-top: 0;   /* <-- FIX: removed 40px margin-top that caused gray gap */
     }
 
     .footer-blob {
@@ -1856,7 +1855,6 @@
     </div>
   </section>
 
-  <!-- ============ SERVICES & PRICING (MERGED) ============ -->
   <section class="section section-cream-2" id="services">
     <div class="container">
       <div class="section-header reveal">
@@ -1866,7 +1864,6 @@
       </div>
       <div class="services-grid reveal">
 
-        <!-- Drop-In Card -->
         <div class="service-card">
           <div class="service-icon-circle"><i class="fas fa-home"></i></div>
           <div class="service-name">Drop-In Visit</div>
@@ -1876,7 +1873,6 @@
             <span class="service-price-amount">400</span>
             <span class="service-price-per">per visit</span>
           </div>
-          <!-- TWEAK 2: Trust line -->
           <div class="service-trust">
             <span><i class="fas fa-check-circle"></i> Free meet & greet</span>
             <span><i class="fas fa-check-circle"></i> No cancellation fee</span>
@@ -1890,7 +1886,6 @@
           <a href="#contact" class="btn btn-secondary service-btn">Book Drop-In</a>
         </div>
 
-        <!-- Daily Walk (Featured) -->
         <div class="service-card featured">
           <span class="service-badge">Most Popular</span>
           <div class="service-icon-circle"><i class="fas fa-walking"></i></div>
@@ -1901,7 +1896,6 @@
             <span class="service-price-amount">300</span>
             <span class="service-price-per">per walk</span>
           </div>
-          <!-- TWEAK 2: Trust line -->
           <div class="service-trust">
             <span><i class="fas fa-check-circle"></i> Free meet & greet</span>
             <span><i class="fas fa-check-circle"></i> No cancellation fee</span>
@@ -1916,7 +1910,6 @@
           <a href="#contact" class="btn btn-primary service-btn">Book a Walk</a>
         </div>
 
-        <!-- Overnight Card -->
         <div class="service-card">
           <div class="service-icon-circle"><i class="fas fa-moon"></i></div>
           <div class="service-name">Overnight Sitting</div>
@@ -1926,7 +1919,6 @@
             <span class="service-price-amount">1,200</span>
             <span class="service-price-per">per night</span>
           </div>
-          <!-- TWEAK 2: Trust line -->
           <div class="service-trust">
             <span><i class="fas fa-check-circle"></i> Free meet & greet</span>
             <span><i class="fas fa-check-circle"></i> No cancellation fee</span>
@@ -1943,7 +1935,6 @@
 
       </div>
 
-      <!-- TWEAK 1: Mini How It Works strip -->
       <div class="how-mini-strip reveal">
         <div class="how-mini-item">
           <div class="how-mini-icon">
@@ -1977,7 +1968,6 @@
         </div>
       </div>
 
-      <!-- TWEAK 3: Not sure helper link -->
       <div class="not-sure-helper reveal">
         Not sure which service fits your pet? 
         <a href="#contact">
