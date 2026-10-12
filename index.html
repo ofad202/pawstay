@@ -61,16 +61,19 @@
       position: relative;
     }
 
-    /* ===== FIXED FULL-PAGE CAT BACKGROUND ===== */
+    /* ===== FULL PAGE CAT BACKGROUND — attached to page, spans everything ===== */
+    /* Using position:absolute (not fixed) + body height stretch so it truly covers the page */
     body::before {
       content: '';
-      position: fixed;
+      position: absolute;
       top: 0;
       left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: url('hero-bg.jpg') center center / cover no-repeat;
-      opacity: 0.10;
+      right: 0;
+      bottom: 0;
+      min-height: 100%;
+      background: url('hero-bg.jpg') center top / cover no-repeat;
+      background-attachment: fixed;
+      opacity: 0.14;
       pointer-events: none;
       z-index: 0;
     }
@@ -209,7 +212,7 @@
 
     /* ============ HERO ============ */
     .hero {
-      background: transparent;   /* <-- now transparent so page-bg-cat shows through */
+      background: transparent;
       padding: 160px 0 0;
       position: relative;
       overflow: hidden;
@@ -491,9 +494,9 @@
       position: relative;
     }
 
-    /* Sections now use semi-transparent backgrounds so the fixed cat bg shows through */
-    .section-cream { background: rgba(255, 248, 240, 0.85); }
-    .section-cream-2 { background: rgba(255, 239, 224, 0.85); }
+    /* Sections now FULLY TRANSPARENT so the fixed cat bg shows through */
+    .section-cream { background: transparent; }
+    .section-cream-2 { background: transparent; }
 
     .section > .container {
       position: relative;
@@ -1242,7 +1245,7 @@
 
     /* ============ CONTACT ============ */
     .contact-section {
-      background: rgba(255, 239, 224, 0.85);
+      background: transparent;
       padding: 70px 0 110px;
       position: relative;
       overflow: hidden;
@@ -1824,7 +1827,7 @@
     </div>
   </section>
 
-  <section class="section section-cream" id="about">
+  <section class="section" id="about">
     <div class="container">
       <div class="section-header reveal">
         <div class="section-badge"><i class="fas fa-paw"></i> About PawStay</div>
@@ -1867,7 +1870,7 @@
     </div>
   </section>
 
-  <section class="section section-cream-2" id="services">
+  <section class="section" id="services">
     <div class="container">
       <div class="section-header reveal">
         <div class="section-badge"><i class="fas fa-tag"></i> Services & Pricing</div>
@@ -1991,7 +1994,7 @@
     </div>
   </section>
 
-  <section class="section section-cream" id="why">
+  <section class="section" id="why">
     <div class="container">
       <div class="section-header reveal">
         <div class="section-badge"><i class="fas fa-heart"></i> Why PawStay</div>
@@ -2033,7 +2036,7 @@
     </div>
   </section>
 
-  <section class="section section-cream-2" id="testimonials">
+  <section class="section" id="testimonials">
     <div class="container">
       <div class="section-header reveal">
         <div class="section-badge"><i class="fas fa-quote-left"></i> Testimonials</div>
@@ -2081,7 +2084,7 @@
     </div>
   </section>
 
-  <section class="section section-cream" id="faq">
+  <section class="section" id="faq">
     <div class="container">
       <div class="section-header reveal">
         <div class="section-badge"><i class="fas fa-question-circle"></i> FAQ</div>
