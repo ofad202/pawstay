@@ -67,7 +67,7 @@
       min-height: 100vh;
     }
 
-    /* ===== CAT BACKGROUND FIXED ON HTML — edge to edge, no side bars ===== */
+    /* ===== CAT BACKGROUND (fixed, whole page) ===== */
     html {
       background-image: url('hero-bg.jpg');
       background-size: cover;
@@ -76,7 +76,6 @@
       background-attachment: fixed;
     }
 
-    /* Warm overlay on top of the cat image so text is readable */
     body::before {
       content: '';
       position: fixed;
@@ -885,24 +884,31 @@
       margin-top: auto;
     }
 
-    .how-mini-strip {
+    /* ===== 3 SEPARATE HOW-IT-WORKS BOXES ===== */
+    .how-grid {
       margin-top: 56px;
-      padding: 32px 24px;
-      background: var(--bg-card);
-      border-radius: 28px;
-      box-shadow: 0 8px 28px rgba(69, 53, 40, 0.06);
-      border: 1.5px dashed var(--border);
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
-      position: relative;
     }
 
-    .how-mini-item {
+    .how-box {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 16px;
       text-align: left;
+      background: var(--bg-card);
+      padding: 28px 24px;
+      border-radius: 24px;
+      border: 1.5px dashed var(--border);
+      box-shadow: 0 8px 28px rgba(69, 53, 40, 0.06);
+      transition: var(--transition);
+    }
+
+    .how-box:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(232, 139, 120, 0.15);
+      border-color: var(--salmon-light);
     }
 
     .how-mini-icon {
@@ -940,18 +946,18 @@
 
     .how-mini-text h5 {
       font-family: var(--font-display);
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--text-dark);
-      margin-bottom: 2px;
+      margin-bottom: 4px;
     }
 
     .how-mini-text p {
-      font-size: 0.82rem;
+      font-size: 0.85rem;
       color: var(--text-muted);
-      line-height: 1.5;
+      line-height: 1.55;
     }
 
     .not-sure-helper {
@@ -1263,16 +1269,16 @@
       filter: blur(60px);
     }
 
+    /* === DEFAULT: BOTH COLUMNS STRETCH TO SAME HEIGHT === */
     .contact-wrapper {
       position: relative;
       z-index: 2;
       display: grid;
       grid-template-columns: 0.9fr 1.1fr;
       gap: 48px;
-      align-items: start;
+      align-items: stretch;
     }
 
-    /* === LEFT COLUMN: contact info + fixed cat frame === */
     .contact-left-stack {
       display: flex;
       flex-direction: column;
@@ -1286,6 +1292,7 @@
       color: #FFFFFF;
       position: relative;
       overflow: hidden;
+      flex-shrink: 0;
     }
 
     .contact-info::before {
@@ -1409,7 +1416,6 @@
       font-weight: 500;
     }
 
-    /* === FIXED SHAPE FRAME FOR CAT — never stretches === */
     .contact-cat-frame {
       position: relative;
       border-radius: 32px;
@@ -1470,12 +1476,22 @@
       font-size: 0.8rem;
     }
 
+    /* Form fills remaining height so both columns end at the same line */
     .contact-form {
       background: var(--bg-card);
       padding: 48px 40px;
       border-radius: 32px;
       box-shadow: 0 16px 48px rgba(69, 53, 40, 0.1);
       border: 1px solid rgba(238, 220, 200, 0.5);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .contact-form form {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
     }
 
     .contact-form h3 {
@@ -1567,6 +1583,19 @@
       border-color: var(--salmon);
       background: #FFFFFF;
       box-shadow: 0 0 0 4px rgba(232, 139, 120, 0.12);
+    }
+
+    /* Textarea grows to fill leftover vertical space */
+    .form-group.grow {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      margin-bottom: 0;
+    }
+
+    .form-group.grow textarea {
+      flex-grow: 1;
+      min-height: 140px;
     }
 
     .form-submit {
@@ -1713,11 +1742,12 @@
       .about-wrap { grid-template-columns: 1fr; gap: 60px; }
       .about-visual { min-height: 380px; }
       .services-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
-      .how-mini-strip { grid-template-columns: 1fr; gap: 20px; padding: 28px 22px; }
+      .how-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
       .why-grid { grid-template-columns: repeat(3, 1fr); }
       .testimonials-grid { grid-template-columns: repeat(3, 1fr); }
-      .contact-wrapper { grid-template-columns: 1fr; gap: 32px; }
+      .contact-wrapper { grid-template-columns: 1fr; gap: 32px; align-items: start; }
       .contact-left-stack { gap: 20px; }
+      .contact-form { height: auto; }
     }
 
     @media (max-width: 768px) {
@@ -1754,6 +1784,7 @@
       .services-grid,
       .why-grid,
       .testimonials-grid { grid-template-columns: 1fr; gap: 24px; }
+      .how-grid { grid-template-columns: 1fr; gap: 16px; }
       .service-card.featured { transform: scale(1); }
       .service-card.featured:hover { transform: translateY(-6px); }
       .testimonial-card:nth-child(1),
@@ -1998,8 +2029,9 @@
 
       </div>
 
-      <div class="how-mini-strip reveal">
-        <div class="how-mini-item">
+      <!-- === 3 SEPARATE BOXES FOR BOOK / PLAN / RELAX === -->
+      <div class="how-grid reveal">
+        <div class="how-box">
           <div class="how-mini-icon">
             <i class="fas fa-comments"></i>
             <span class="how-mini-step">1</span>
@@ -2009,7 +2041,7 @@
             <p>Send your details, then we schedule a free meet & greet.</p>
           </div>
         </div>
-        <div class="how-mini-item">
+        <div class="how-box">
           <div class="how-mini-icon">
             <i class="fas fa-clipboard-check"></i>
             <span class="how-mini-step">2</span>
@@ -2019,7 +2051,7 @@
             <p>We discuss routines, meds, and any special needs.</p>
           </div>
         </div>
-        <div class="how-mini-item">
+        <div class="how-box">
           <div class="how-mini-icon">
             <i class="fas fa-camera"></i>
             <span class="how-mini-step">3</span>
@@ -2227,7 +2259,6 @@
           </div>
         </div>
 
-        <!-- FIXED SHAPE CAT FRAME — never stretches, never distorts -->
         <div class="contact-cat-frame reveal">
           <img src="hero-bg.jpg" alt="Happy cat waiting for its sitter">
           <span class="contact-cat-tag">
@@ -2291,7 +2322,8 @@
             </div>
           </div>
 
-          <div class="form-group">
+          <!-- This textarea grows to fill remaining height so the form matches the left column -->
+          <div class="form-group grow">
             <label for="message">Temperament & Special Needs</label>
             <textarea id="message" name="message" placeholder="Describe your pet's temperament, any special needs, medications, or things we should know." required></textarea>
           </div>
