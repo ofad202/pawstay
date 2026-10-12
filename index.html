@@ -20,30 +20,22 @@
       --bg-soft: #F8E8D8;
       --bg-card: #FDF6EC;
       --bg-card-hover: #FFFBF4;
-      
       --salmon: #E88B78;
       --salmon-dark: #C96D5B;
       --salmon-light: #FBE4DD;
-      
       --gold: #E5B44D;
       --gold-light: #FBF0D8;
-      
       --sky: #88B8D4;
       --sky-light: #E6F0F6;
-      
       --sage: #9DBFA3;
       --sage-light: #E9F1EA;
-
       --text-dark: #453528;
       --text-body: #5A483A;
       --text-muted: #97836F;
-      
       --border: #EEDCC8;
-
       --font-display: 'Oswald', sans-serif;
       --font-body: 'Inter', sans-serif;
       --font-script: 'Caveat', cursive;
-
       --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
@@ -54,6 +46,11 @@
       text-rendering: optimizeLegibility;
       background-color: var(--bg-main);
       min-height: 100%;
+      background-image: url('hero-bg.jpg');
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
     }
 
     body {
@@ -65,15 +62,6 @@
       overflow-x: hidden;
       position: relative;
       min-height: 100vh;
-    }
-
-    /* ===== CAT BACKGROUND (fixed, whole page) ===== */
-    html {
-      background-image: url('hero-bg.jpg');
-      background-size: cover;
-      background-position: center top;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
     }
 
     body::before {
@@ -111,7 +99,6 @@
       z-index: 2;
     }
 
-    /* ============ HEADER ============ */
     header {
       position: fixed;
       top: 20px;
@@ -222,7 +209,6 @@
       transform: scale(1.08);
     }
 
-    /* ============ HERO ============ */
     .hero {
       background: transparent;
       padding: 160px 0 0;
@@ -464,7 +450,6 @@
     .floating-badge.badge-2 { bottom: 40px; right: -20px; transform: rotate(3deg); }
     .floating-badge.badge-3 { top: 50%; left: -30px; transform: rotate(-2deg); }
 
-    /* ============ SECTIONS ============ */
     .section {
       padding: 60px 0;
       position: relative;
@@ -528,7 +513,6 @@
       line-height: 1.7;
     }
 
-    /* ============ ABOUT ============ */
     .about-wrap {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -661,7 +645,6 @@
       letter-spacing: 0.03em;
     }
 
-    /* ============ SERVICES & PRICING ============ */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -884,7 +867,6 @@
       margin-top: auto;
     }
 
-    /* ===== 3 SEPARATE HOW-IT-WORKS BOXES ===== */
     .how-grid {
       margin-top: 56px;
       display: grid;
@@ -992,7 +974,6 @@
       font-size: 0.9rem;
     }
 
-    /* ============ WHY US ============ */
     .why-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -1061,7 +1042,6 @@
       line-height: 1.65;
     }
 
-    /* ============ TESTIMONIALS ============ */
     .testimonials-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -1155,7 +1135,6 @@
       color: var(--text-muted);
     }
 
-    /* ============ FAQ ============ */
     .faq-list {
       max-width: 860px;
       margin: 0 auto;
@@ -1269,7 +1248,7 @@
       filter: blur(60px);
     }
 
-    /* === DEFAULT: BOTH COLUMNS STRETCH TO SAME HEIGHT === */
+    /* === BOTH COLUMNS STRETCH TO SAME HEIGHT === */
     .contact-wrapper {
       position: relative;
       z-index: 2;
@@ -1283,6 +1262,7 @@
       display: flex;
       flex-direction: column;
       gap: 24px;
+      /* no height set → it will match the grid row height */
     }
 
     .contact-info {
@@ -1416,6 +1396,7 @@
       font-weight: 500;
     }
 
+    /* === CAT FRAME — now flex-grow:1 so it stretches to match form height === */
     .contact-cat-frame {
       position: relative;
       border-radius: 32px;
@@ -1423,10 +1404,10 @@
       background: var(--bg-card);
       border: 2px solid var(--border);
       box-shadow: 0 16px 48px rgba(69, 53, 40, 0.12);
-      aspect-ratio: 4 / 3;
       width: 100%;
-      flex-grow: 0;
-      flex-shrink: 0;
+      flex-grow: 1;      /* stretches to fill remaining column height */
+      flex-shrink: 1;
+      min-height: 200px;
     }
 
     .contact-cat-frame img {
@@ -1435,6 +1416,8 @@
       object-fit: cover;
       object-position: center;
       display: block;
+      position: absolute;
+      inset: 0;
     }
 
     .contact-cat-frame::after {
@@ -1476,7 +1459,7 @@
       font-size: 0.8rem;
     }
 
-    /* Form fills remaining height so both columns end at the same line */
+    /* === FORM fills the full height of its column === */
     .contact-form {
       background: var(--bg-card);
       padding: 48px 40px;
@@ -1492,6 +1475,7 @@
       display: flex;
       flex-direction: column;
       flex-grow: 1;
+      min-height: 0;
     }
 
     .contact-form h3 {
@@ -1518,8 +1502,8 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--salmon);
-      margin: 28px 0 16px;
-      padding-top: 24px;
+      margin: 24px 0 16px;
+      padding-top: 20px;
       border-top: 2px dashed var(--border);
       display: flex;
       align-items: center;
@@ -1535,10 +1519,10 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 16px;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
-    .form-group { margin-bottom: 18px; }
+    .form-group { margin-bottom: 16px; }
 
     .form-group label {
       display: block;
@@ -1573,7 +1557,6 @@
 
     .form-group textarea {
       border-radius: 20px;
-      min-height: 100px;
       resize: vertical;
     }
 
@@ -1591,17 +1574,20 @@
       flex-direction: column;
       flex-grow: 1;
       margin-bottom: 0;
+      min-height: 100px;
     }
 
     .form-group.grow textarea {
       flex-grow: 1;
-      min-height: 140px;
+      height: 100%;
+      min-height: 100px;
     }
 
     .form-submit {
       width: 100%;
       justify-content: center;
       margin-top: 24px;
+      flex-shrink: 0;
     }
 
     /* ============ FOOTER ============ */
@@ -1719,7 +1705,6 @@
       opacity: 0.85;
     }
 
-    /* ============ REVEAL ============ */
     .reveal {
       opacity: 0;
       transform: translateY(28px);
@@ -1731,7 +1716,6 @@
       transform: translateY(0);
     }
 
-    /* ============ RESPONSIVE ============ */
     @media (max-width: 1024px) {
       header { top: 12px; }
       .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 60px; padding-bottom: 60px; }
@@ -1748,6 +1732,7 @@
       .contact-wrapper { grid-template-columns: 1fr; gap: 32px; align-items: start; }
       .contact-left-stack { gap: 20px; }
       .contact-form { height: auto; }
+      .contact-cat-frame { min-height: 260px; }
     }
 
     @media (max-width: 768px) {
@@ -1794,7 +1779,7 @@
       .contact-info { padding: 40px 28px; }
       .contact-form { padding: 36px 24px; }
       .contact-info h2 { font-size: 1.9rem; }
-      .contact-cat-frame { aspect-ratio: 16 / 10; }
+      .contact-cat-frame { min-height: 240px; }
       .footer-inner { flex-direction: column; text-align: center; }
       .footer-links { justify-content: center; }
       .floating-badge { display: none; }
@@ -1823,7 +1808,7 @@
       .faq-question { padding: 20px 24px; font-size: 0.92rem; }
       .faq-item.open .faq-answer { padding: 0 24px 24px; }
       .how-mini-icon { width: 46px; height: 46px; font-size: 1.1rem; }
-      .contact-cat-frame { aspect-ratio: 1 / 1; }
+      .contact-cat-frame { min-height: 200px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -2029,7 +2014,6 @@
 
       </div>
 
-      <!-- === 3 SEPARATE BOXES FOR BOOK / PLAN / RELAX === -->
       <div class="how-grid reveal">
         <div class="how-box">
           <div class="how-mini-icon">
@@ -2259,6 +2243,7 @@
           </div>
         </div>
 
+        <!-- Cat frame now stretches to fill remaining space below the info card -->
         <div class="contact-cat-frame reveal">
           <img src="hero-bg.jpg" alt="Happy cat waiting for its sitter">
           <span class="contact-cat-tag">
@@ -2281,10 +2266,17 @@
               <input type="tel" id="phone" name="phone" placeholder="0917 123 4567" required>
             </div>
           </div>
+
           <div class="form-group">
             <label for="email">Email Address</label>
             <input type="email" id="email" name="email" placeholder="you@example.com" required>
           </div>
+
+          <div class="form-group">
+            <label for="address">Address (House / Street / Barangay / City)</label>
+            <input type="text" id="address" name="address" placeholder="123 Mabini St., Poblacion, Makati" required>
+          </div>
+
           <div class="form-group">
             <label for="service">Service Needed</label>
             <select id="service" name="service" required>
@@ -2322,7 +2314,7 @@
             </div>
           </div>
 
-          <!-- This textarea grows to fill remaining height so the form matches the left column -->
+          <!-- This textarea grows to fill remaining height -->
           <div class="form-group grow">
             <label for="message">Temperament & Special Needs</label>
             <textarea id="message" name="message" placeholder="Describe your pet's temperament, any special needs, medications, or things we should know." required></textarea>
