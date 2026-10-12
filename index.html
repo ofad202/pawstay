@@ -48,6 +48,7 @@
       scroll-behavior: smooth;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      background-color: var(--cream-2);
     }
 
     body {
@@ -55,8 +56,9 @@
       font-size: 17px;
       line-height: 1.75;
       color: var(--text-body);
-      background-color: var(--cream);
+      background-color: var(--cream-2);
       overflow-x: hidden;
+      position: relative;
     }
 
     .page-bg-cat {
@@ -66,7 +68,7 @@
       width: 100%;
       height: 100%;
       pointer-events: none;
-      z-index: 0;
+      z-index: 1;
       background: url('hero-bg.jpg') center/cover no-repeat;
       opacity: 0.08;
       mix-blend-mode: multiply;
@@ -680,7 +682,7 @@
       letter-spacing: 0.03em;
     }
 
-    /* ============ SERVICES & PRICING (MERGED) ============ */
+    /* ============ SERVICES & PRICING ============ */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -893,7 +895,6 @@
       justify-content: center;
     }
 
-    /* ===== Mini How It Works strip ===== */
     .how-mini-strip {
       margin-top: 56px;
       padding: 32px 24px;
@@ -963,7 +964,6 @@
       line-height: 1.5;
     }
 
-    /* ===== Not sure helper link ===== */
     .not-sure-helper {
       margin-top: 32px;
       text-align: center;
@@ -1242,7 +1242,7 @@
     /* ============ CONTACT ============ */
     .contact-section {
       background: var(--cream-2);
-      padding: 70px 0 110px;   /* <-- FIX: extra bottom padding instead of footer margin */
+      padding: 70px 0 110px;
       position: relative;
       overflow: hidden;
     }
@@ -1512,29 +1512,40 @@
       margin-top: 24px;
     }
 
-    /* ============ FOOTER ============ */
+    /* ============ FOOTER — SLIMMER ============ */
     footer {
       background: var(--brown);
-      padding: 64px 0 36px;
+      padding: 40px 0 28px;   /* <-- reduced from 90px top to 40px */
       position: relative;
       color: var(--cream);
-      border-radius: 60px 60px 0 0;
-      margin-top: 0;   /* <-- FIX: removed 40px margin-top that caused gray gap */
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--amber), transparent);
     }
 
     .footer-blob {
       position: absolute;
-      top: -30px; left: 50%;
+      top: -32px;   /* <-- moved closer to footer edge */
+      left: 50%;
       transform: translateX(-50%);
-      width: 80px; height: 80px;
+      width: 64px;   /* <-- smaller */
+      height: 64px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--coral), var(--amber));
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--warm-white);
-      font-size: 2rem;
-      box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+      font-size: 1.5rem;
+      box-shadow: 0 12px 32px rgba(255, 107, 74, 0.35);
+      border: 4px solid var(--cream-2);
     }
 
     .footer-inner {
@@ -1542,8 +1553,8 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 24px;
-      padding-top: 24px;
+      gap: 20px;
+      padding-top: 12px;   /* <-- reduced from 24px */
     }
 
     .footer-brand {
@@ -1603,8 +1614,8 @@
 
     .footer-bottom {
       text-align: center;
-      margin-top: 44px;
-      padding-top: 28px;
+      margin-top: 24px;      /* <-- reduced from 44px */
+      padding-top: 20px;     /* <-- reduced from 28px */
       border-top: 1px solid rgba(255, 214, 153, 0.15);
       font-size: 0.78rem;
       color: var(--amber-light);
@@ -1705,6 +1716,9 @@
       }
 
       .page-bg-cat { opacity: 0.06; }
+
+      footer { padding: 32px 0 24px; }
+      .footer-blob { width: 56px; height: 56px; font-size: 1.3rem; top: -28px; }
     }
 
     @media (max-width: 480px) {
