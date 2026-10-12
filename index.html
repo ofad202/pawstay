@@ -178,14 +178,7 @@
     .service-card.featured .service-features li { color: var(--text-dark); }
     .service-btn { width: 100%; justify-content: center; margin-top: auto; padding: 12px 20px; }
 
-    /* HOW MINI STRIP */
-    .how-mini-strip { margin-top: 26px; padding: 16px 18px; background: var(--bg-card); border-radius: 18px; box-shadow: 0 6px 20px rgba(69,53,40,0.06); border: 1.5px dashed var(--border); display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .how-mini-item { display: flex; align-items: center; gap: 12px; text-align: left; }
-    .how-mini-icon { width: 38px; height: 38px; border-radius: 50%; background: var(--salmon); color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; flex-shrink: 0; box-shadow: 0 5px 14px rgba(232,139,120,0.25); position: relative; }
-    .how-mini-step { position: absolute; top: -4px; right: -4px; width: 17px; height: 17px; border-radius: 50%; background: var(--text-dark); color: #FFFFFF; font-family: var(--font-display); font-size: 0.58rem; font-weight: 700; display: flex; align-items: center; justify-content: center; border: 2px solid var(--bg-card); }
-    .how-mini-text h5 { font-family: var(--font-display); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dark); margin-bottom: 1px; }
-    .how-mini-text p { font-size: 0.73rem; color: var(--text-muted); line-height: 1.4; }
-    .not-sure-helper { margin-top: 14px; text-align: center; font-size: 0.88rem; color: var(--text-body); }
+    .not-sure-helper { margin-top: 18px; text-align: center; font-size: 0.88rem; color: var(--text-body); }
     .not-sure-helper a { color: var(--salmon-dark); font-weight: 600; font-family: var(--font-display); letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.78rem; display: inline-flex; align-items: center; gap: 6px; padding: 3px 6px; transition: var(--transition); border-bottom: 2px solid transparent; }
     .not-sure-helper a:hover { border-bottom-color: var(--salmon); gap: 10px; }
 
@@ -200,7 +193,7 @@
     .why-item h4 { font-size: 0.86rem; margin-bottom: 2px; color: var(--text-dark); }
     .why-item p { font-size: 0.79rem; color: var(--text-body); line-height: 1.5; }
 
-    /* TESTIMONIALS — with arrows */
+    /* TESTIMONIALS */
     .testimonials-wrapper {
       position: relative;
     }
@@ -210,13 +203,13 @@
       gap: 18px;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
-      padding: 14px 44px 22px;      /* space for arrows */
+      padding: 14px 44px 22px;
       scroll-behavior: smooth;
-      scrollbar-width: none;        /* Firefox */
-      -ms-overflow-style: none;     /* old Edge/IE */
+      scrollbar-width: none;
+      -ms-overflow-style: none;
     }
     .testimonials-row::-webkit-scrollbar {
-      display: none;                /* Chrome/Safari */
+      display: none;
     }
 
     .testimonial-card {
@@ -343,7 +336,6 @@
       .hero-visual { order: -1; min-height: 320px; }
       .pet-blob { width: 300px; height: 300px; }
       .trust-strip { grid-template-columns: repeat(2, 1fr); }
-      .how-mini-strip { grid-template-columns: 1fr; gap: 12px; padding: 16px 18px; }
       .why-grid { grid-template-columns: repeat(2, 1fr); }
       .faq-grid { grid-template-columns: 1fr; }
       .contact-form { padding: 26px 24px; }
@@ -383,7 +375,6 @@
       .form-row, .form-row-3 { grid-template-columns: 1fr; }
       .pet-blob { animation: none; }
       .testimonial-card { flex: 0 0 260px; }
-      /* hide arrows on mobile, restore normal padding */
       .testimonial-arrow { display: none; }
       .testimonials-row { padding: 14px 6px 22px; }
     }
@@ -536,21 +527,6 @@
           <a href="#book" class="btn btn-secondary service-btn">Book Overnight</a>
         </div>
 
-      </div>
-
-      <div class="how-mini-strip reveal">
-        <div class="how-mini-item">
-          <div class="how-mini-icon"><i class="fas fa-comments"></i><span class="how-mini-step">1</span></div>
-          <div class="how-mini-text"><h5>Book &amp; Meet</h5><p>We schedule a free meet &amp; greet.</p></div>
-        </div>
-        <div class="how-mini-item">
-          <div class="how-mini-icon"><i class="fas fa-clipboard-check"></i><span class="how-mini-step">2</span></div>
-          <div class="how-mini-text"><h5>Plan the Care</h5><p>We discuss routines and special needs.</p></div>
-        </div>
-        <div class="how-mini-item">
-          <div class="how-mini-icon"><i class="fas fa-camera"></i><span class="how-mini-step">3</span></div>
-          <div class="how-mini-text"><h5>Relax &amp; Enjoy</h5><p>Daily photo updates while you're away.</p></div>
-        </div>
       </div>
 
       <div class="not-sure-helper reveal">
@@ -988,7 +964,7 @@
     if (row && prevBtn && nextBtn) {
       const getScrollAmount = () => {
         const card = row.querySelector('.testimonial-card');
-        const gap = 18; // matches CSS gap
+        const gap = 18;
         return card ? card.offsetWidth + gap : 318;
       };
 
