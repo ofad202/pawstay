@@ -2,7 +2,2328 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PawStay Pet Sitting | Trusted Pet Care When You're Away</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@300;400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      /* WARMER, SOFTER PALETTE */
+      --bg-main: #FBF3E8;         /* Warm peach cream */
+      --bg-soft: #F8E8D8;         /* Deeper peach cream */
+      --bg-card: #FDF6EC;          /* Warm off-white for cards (NOT pure white) */
+      --bg-card-hover: #FFFBF4;   /* Slightly brighter on hover */
+      
+      --salmon: #E88B78;           /* Warm salmon */
+      --salmon-dark: #C96D5B;      /* Deeper salmon */
+      --salmon-light: #FBE4DD;     /* Soft salmon tint */
+      
+      --gold: #E5B44D;              /* Warm honey gold */
+      --gold-light: #FBF0D8;        /* Soft honey tint */
+      
+      --sky: #88B8D4;               /* Muted sky */
+      --sky-light: #E6F0F6;         /* Soft sky tint */
+      
+      --sage: #9DBFA3;              /* Soft sage */
+      --sage-light: #E9F1EA;        /* Soft sage tint */
+
+      --text-dark: #453528;         /* Warm chocolate */
+      --text-body: #5A483A;         /* Warm body text */
+      --text-muted: #97836F;        /* Muted warm taupe */
+      
+      --border: #EEDCC8;            /* Warm border */
+
+      --font-display: 'Oswald', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-script: 'Caveat', cursive;
+
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      background-color: var(--bg-main);
+      min-height: 100%;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--text-body);
+      background-color: var(--bg-main);
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    /* ===== CAT BACKGROUND — attached to html so no side bars ===== */
+    /* Applied directly to html so it fills edge to edge, no fixed pseudo-element causing bands */
+    html {
+      background-image: url('hero-bg.jpg');
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+
+    /* Warm overlay on top of the cat image, fixed, no side bars */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(251, 243, 232, 0.88) 0%,
+        rgba(251, 243, 232, 0.92) 40%,
+        rgba(248, 232, 216, 0.94) 100%
+      );
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: var(--text-dark);
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    ul { list-style: none; }
+
+    .container {
+      width: 92%;
+      max-width: 1180px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ============ HEADER ============ */
+    header {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      width: 94%;
+      max-width: 1100px;
+      background: rgba(253, 246, 236, 0.94);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 60px;
+      border: 1.5px solid var(--border);
+      box-shadow: 0 8px 32px rgba(69, 53, 40, 0.08);
+      transition: var(--transition);
+    }
+
+    header.scrolled {
+      top: 12px;
+      background: rgba(253, 246, 236, 0.98);
+      box-shadow: 0 12px 40px rgba(69, 53, 40, 0.12);
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      padding: 6px 12px;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--warm-white);
+      font-size: 1.05rem;
+      box-shadow: 0 4px 12px rgba(229, 180, 77, 0.35);
+      transition: var(--transition);
+      overflow: hidden;
+    }
+
+    .logo-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .logo:hover .logo-icon {
+      transform: rotate(-12deg) scale(1.08);
+    }
+
+    nav ul {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    nav a {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      padding: 10px 18px;
+      border-radius: 50px;
+      transition: var(--transition);
+    }
+
+    nav a:hover {
+      background: var(--salmon-light);
+      color: var(--salmon-dark);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: var(--salmon);
+      border: none;
+      color: var(--warm-white);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: var(--transition);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .menu-toggle:hover {
+      transform: scale(1.08);
+    }
+
+    /* ============ HERO ============ */
+    .hero {
+      background: transparent;
+      padding: 160px 0 0;
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+      padding-bottom: 80px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--salmon-dark);
+      background: var(--salmon-light);
+      padding: 8px 18px;
+      border-radius: 50px;
+      margin-bottom: 28px;
+    }
+
+    .hero-eyebrow i {
+      font-size: 0.85rem;
+      animation: heart-beat 3s ease-in-out infinite;
+    }
+
+    @keyframes heart-beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.12); }
+    }
+
+    .hero h1 {
+      font-size: 4.2rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 24px;
+      line-height: 1.02;
+      letter-spacing: -0.01em;
+    }
+
+    .hero h1 .script {
+      font-family: var(--font-script);
+      text-transform: none;
+      color: var(--salmon);
+      font-size: 5rem;
+      letter-spacing: 0;
+      display: inline-block;
+      transform: rotate(-2deg);
+      margin: 0 4px;
+    }
+
+    .hero-description {
+      font-size: 1.1rem;
+      color: var(--text-body);
+      margin-bottom: 36px;
+      max-width: 520px;
+      font-weight: 400;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 34px;
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      border-radius: 50px;
+      transition: var(--transition);
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--salmon);
+      color: #FFFFFF;
+      box-shadow: 0 8px 24px rgba(232, 139, 120, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 32px rgba(232, 139, 120, 0.45);
+      background: var(--salmon-dark);
+    }
+
+    .btn-secondary {
+      background: var(--bg-card);
+      color: var(--text-dark);
+      border-color: var(--border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--salmon);
+      color: var(--salmon);
+      transform: translateY(-3px);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      padding-top: 32px;
+      border-top: 1px dashed rgba(69, 53, 40, 0.15);
+    }
+
+    .hero-stat {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-stat strong {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      line-height: 1;
+    }
+
+    .hero-stat span {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-family: var(--font-display);
+      margin-top: 4px;
+    }
+
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      min-height: 480px;
+    }
+
+    .pet-blob {
+      position: relative;
+      width: 440px;
+      height: 440px;
+      background: linear-gradient(135deg, var(--gold-light), var(--salmon-light));
+      border-radius: 60% 40% 55% 45% / 45% 55% 40% 60%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      animation: blob-morph 14s ease-in-out infinite;
+      box-shadow: 0 20px 60px rgba(232, 139, 120, 0.25);
+      will-change: border-radius;
+    }
+
+    @keyframes blob-morph {
+      0%, 100% { border-radius: 60% 40% 55% 45% / 45% 55% 40% 60%; }
+      50% { border-radius: 45% 55% 40% 60% / 60% 40% 55% 45%; }
+    }
+
+    .pet-blob-inner {
+      width: 88%;
+      height: 88%;
+      background: var(--bg-card);
+      border-radius: 60% 40% 55% 45% / 45% 55% 40% 60%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pet-blob-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .floating-badge {
+      position: absolute;
+      background: var(--bg-card);
+      border-radius: 20px;
+      padding: 14px 20px;
+      box-shadow: 0 12px 32px rgba(69, 53, 40, 0.12);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 4;
+      transition: var(--transition);
+    }
+
+    .floating-badge:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 16px 40px rgba(232, 139, 120, 0.25);
+    }
+
+    .floating-badge i {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .floating-badge span {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      letter-spacing: 0.04em;
+      line-height: 1.3;
+    }
+
+    .floating-badge.badge-1 { top: 20px; left: -20px; transform: rotate(-3deg); }
+    .floating-badge.badge-2 { bottom: 40px; right: -20px; transform: rotate(3deg); }
+    .floating-badge.badge-3 { top: 50%; left: -30px; transform: rotate(-2deg); }
+
+    /* ============ SECTIONS ============ */
+    .section {
+      padding: 60px 0;
+      position: relative;
+    }
+
+    .section-cream { background: transparent; }
+    .section-cream-2 { background: transparent; }
+
+    .section > .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 48px;
+    }
+
+    .section-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--salmon-dark);
+      background: var(--salmon-light);
+      padding: 8px 18px;
+      border-radius: 50px;
+      margin-bottom: 24px;
+    }
+
+    .section-badge i { font-size: 0.85rem; }
+
+    .section-title {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--text-dark);
+      line-height: 1.05;
+    }
+
+    .section-title .script {
+      font-family: var(--font-script);
+      text-transform: none;
+      color: var(--salmon);
+      font-size: 3.4rem;
+      letter-spacing: 0;
+      display: inline-block;
+      transform: rotate(-2deg);
+      margin: 0 4px;
+    }
+
+    .section-desc {
+      font-size: 1.08rem;
+      color: var(--text-body);
+      font-weight: 400;
+      line-height: 1.7;
+    }
+
+    /* ============ ABOUT ============ */
+    .about-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 480px;
+    }
+
+    .about-circle-main {
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--salmon-light), var(--gold-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(232, 139, 120, 0.2);
+      overflow: hidden;
+    }
+
+    .about-circle-main img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .about-circle-small {
+      position: absolute;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      font-size: 1.4rem;
+      box-shadow: 0 12px 32px rgba(69, 53, 40, 0.15);
+    }
+
+    .about-circle-1 {
+      top: 20px; right: 40px; width: 90px; height: 90px;
+      background: var(--salmon);
+      animation: float-1 6s ease-in-out infinite;
+    }
+
+    .about-circle-2 {
+      bottom: 40px; left: 20px; width: 80px; height: 80px;
+      background: var(--gold);
+      animation: float-2 8s ease-in-out infinite;
+    }
+
+    .about-circle-3 {
+      top: 60px; left: 40px; width: 60px; height: 60px;
+      background: var(--sage);
+      animation: float-2 10s ease-in-out infinite;
+    }
+
+    @keyframes float-1 {
+      0%, 100% { transform: translateY(0) rotate(0); }
+      50% { transform: translateY(-10px) rotate(4deg); }
+    }
+
+    @keyframes float-2 {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    .about-content p {
+      margin-bottom: 20px;
+      color: var(--text-body);
+      font-size: 1.05rem;
+      line-height: 1.85;
+    }
+
+    .about-content strong {
+      color: var(--text-dark);
+      font-weight: 700;
+      background: linear-gradient(transparent 60%, var(--gold-light) 60%);
+      padding: 0 2px;
+    }
+
+    .about-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .about-feature {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--bg-card);
+      padding: 16px 18px;
+      border-radius: 50px;
+      box-shadow: 0 4px 16px rgba(69, 53, 40, 0.05);
+      transition: var(--transition);
+    }
+
+    .about-feature:hover {
+      transform: translateX(4px);
+      box-shadow: 0 8px 24px rgba(232, 139, 120, 0.15);
+    }
+
+    .about-feature i {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    .about-feature span {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      letter-spacing: 0.03em;
+    }
+
+    /* ============ SERVICES & PRICING ============ */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      align-items: start;
+    }
+
+    .service-card {
+      background: var(--bg-card);
+      padding: 48px 32px 40px;
+      border-radius: 32px;
+      transition: var(--transition);
+      box-shadow: 0 12px 40px rgba(69, 53, 40, 0.07);
+      position: relative;
+      text-align: center;
+      border: 1px solid rgba(238, 220, 200, 0.5);
+    }
+
+    .service-card.featured {
+      background: linear-gradient(180deg, var(--bg-card) 0%, var(--salmon-light) 100%);
+      transform: scale(1.04);
+      box-shadow: 0 20px 60px rgba(232, 139, 120, 0.2);
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 48px rgba(232, 139, 120, 0.18);
+      background: var(--bg-card-hover);
+    }
+
+    .service-card.featured:hover {
+      transform: scale(1.04) translateY(-6px);
+      background: linear-gradient(180deg, var(--bg-card-hover) 0%, var(--salmon-light) 100%);
+    }
+
+    .service-badge {
+      position: absolute;
+      top: -16px; left: 50%;
+      transform: translateX(-50%);
+      background: var(--salmon);
+      color: #FFFFFF;
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 8px 22px;
+      border-radius: 50px;
+      box-shadow: 0 8px 20px rgba(232, 139, 120, 0.35);
+      white-space: nowrap;
+    }
+
+    .service-icon-circle {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--gold-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: var(--salmon-dark);
+      margin: 0 auto 20px;
+      transition: var(--transition);
+    }
+
+    .service-card.featured .service-icon-circle {
+      background: var(--salmon);
+      color: #FFFFFF;
+    }
+
+    .service-card:hover .service-icon-circle {
+      transform: rotate(-10deg) scale(1.08);
+    }
+
+    .service-name {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+
+    .service-tagline {
+      font-size: 0.92rem;
+      color: var(--text-body);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .service-price-circle {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: var(--gold-light);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .service-card.featured .service-price-circle {
+      background: var(--gold);
+    }
+
+    .service-card:hover .service-price-circle {
+      transform: scale(1.05);
+    }
+
+    .service-price-currency {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: -4px;
+    }
+
+    .service-card.featured .service-price-currency {
+      color: rgba(255,255,255,0.95);
+    }
+
+    .service-price-amount {
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      line-height: 1;
+    }
+
+    .service-card.featured .service-price-amount {
+      color: #FFFFFF;
+    }
+
+    .service-price-per {
+      font-size: 0.78rem;
+      color: var(--text-body);
+      font-family: var(--font-display);
+      letter-spacing: 0.08em;
+      margin-top: 4px;
+    }
+
+    .service-card.featured .service-price-per {
+      color: rgba(255,255,255,0.95);
+    }
+
+    .service-trust {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-family: var(--font-display);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 2px dashed var(--border);
+    }
+
+    .service-trust i {
+      color: var(--salmon);
+      font-size: 0.7rem;
+    }
+
+    .service-trust span {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .service-card.featured .service-trust {
+      color: var(--text-body);
+      border-bottom-color: rgba(69, 53, 40, 0.1);
+    }
+
+    .service-features {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
+      text-align: left;
+    }
+
+    .service-features li {
+      font-size: 0.92rem;
+      color: var(--text-body);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.6;
+    }
+
+    .service-features li i {
+      color: var(--salmon);
+      font-size: 0.85rem;
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+
+    .service-card.featured .service-features li {
+      color: var(--text-dark);
+    }
+
+    .service-btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .how-mini-strip {
+      margin-top: 56px;
+      padding: 32px 24px;
+      background: var(--bg-card);
+      border-radius: 28px;
+      box-shadow: 0 8px 28px rgba(69, 53, 40, 0.06);
+      border: 1.5px dashed var(--border);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      position: relative;
+    }
+
+    .how-mini-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      text-align: left;
+    }
+
+    .how-mini-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: var(--salmon);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      box-shadow: 0 6px 18px rgba(232, 139, 120, 0.25);
+      position: relative;
+    }
+
+    .how-mini-step {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--text-dark);
+      color: #FFFFFF;
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--bg-card);
+    }
+
+    .how-mini-text h5 {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      margin-bottom: 2px;
+    }
+
+    .how-mini-text p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .not-sure-helper {
+      margin-top: 32px;
+      text-align: center;
+      font-size: 0.98rem;
+      color: var(--text-body);
+    }
+
+    .not-sure-helper a {
+      color: var(--salmon-dark);
+      font-weight: 600;
+      font-family: var(--font-display);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 8px;
+      border-radius: 8px;
+      transition: var(--transition);
+      border-bottom: 2px solid transparent;
+    }
+
+    .not-sure-helper a:hover {
+      border-bottom-color: var(--salmon);
+      gap: 10px;
+    }
+
+    .not-sure-helper a i {
+      font-size: 0.9rem;
+    }
+
+    /* ============ WHY US ============ */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .why-item {
+      background: var(--bg-card);
+      padding: 36px 28px;
+      border-radius: 24px;
+      text-align: center;
+      transition: var(--transition);
+      box-shadow: 0 6px 24px rgba(69, 53, 40, 0.05);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(238, 220, 200, 0.5);
+    }
+
+    .why-item::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 60%; height: 4px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .why-item:hover::before { opacity: 1; }
+
+    .why-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(229, 180, 77, 0.2);
+      background: var(--bg-card-hover);
+    }
+
+    .why-icon-badge {
+      width: 70px; height: 70px;
+      border-radius: 50%;
+      background: var(--gold-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--salmon-dark);
+      margin: 0 auto 20px;
+      transition: var(--transition);
+    }
+
+    .why-item:hover .why-icon-badge {
+      background: var(--salmon);
+      color: #FFFFFF;
+      transform: rotate(-8deg) scale(1.05);
+    }
+
+    .why-item h4 {
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+      color: var(--text-dark);
+    }
+
+    .why-item p {
+      font-size: 0.92rem;
+      color: var(--text-body);
+      line-height: 1.65;
+    }
+
+    /* ============ TESTIMONIALS ============ */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .testimonial-card {
+      background: var(--bg-card);
+      padding: 32px 28px;
+      border-radius: 20px;
+      box-shadow: 0 12px 40px rgba(69, 53, 40, 0.08);
+      position: relative;
+      transition: var(--transition);
+      border: 1px solid rgba(238, 220, 200, 0.5);
+    }
+
+    .testimonial-card:nth-child(1) { transform: rotate(-2deg); }
+    .testimonial-card:nth-child(2) { transform: rotate(1deg); }
+    .testimonial-card:nth-child(3) { transform: rotate(-1deg); }
+
+    .testimonial-card:hover {
+      transform: rotate(0deg) translateY(-6px);
+      box-shadow: 0 20px 48px rgba(232, 139, 120, 0.18);
+      background: var(--bg-card-hover);
+    }
+
+    .testimonial-tape {
+      position: absolute;
+      top: -14px; left: 50%;
+      transform: translateX(-50%) rotate(-2deg);
+      width: 80px; height: 28px;
+      background: var(--gold-light);
+      opacity: 0.95;
+      border-radius: 4px;
+    }
+
+    .testimonial-stars {
+      color: var(--gold);
+      font-size: 1.1rem;
+      letter-spacing: 3px;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .testimonial-text {
+      font-size: 0.98rem;
+      color: var(--text-body);
+      line-height: 1.75;
+      margin-bottom: 20px;
+      font-style: italic;
+      text-align: center;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding-top: 18px;
+      border-top: 1px dashed var(--border);
+    }
+
+    .testimonial-avatar {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: var(--salmon);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1rem;
+      color: #FFFFFF;
+      flex-shrink: 0;
+    }
+
+    .testimonial-info { text-align: left; }
+
+    .testimonial-info strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text-dark);
+    }
+
+    .testimonial-info span {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* ============ FAQ ============ */
+    .faq-list {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .faq-item {
+      background: var(--bg-card);
+      border-radius: 20px;
+      transition: var(--transition);
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(69, 53, 40, 0.05);
+      border: 2px solid transparent;
+    }
+
+    .faq-item:hover { border-color: var(--gold-light); }
+
+    .faq-item.open {
+      border-color: var(--salmon);
+      box-shadow: 0 12px 32px rgba(232, 139, 120, 0.15);
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 24px 32px;
+      text-align: left;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      transition: color var(--transition);
+    }
+
+    .faq-question:hover { color: var(--salmon); }
+
+    .faq-icon-circle {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--salmon-light);
+      color: var(--salmon);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+      transition: var(--transition);
+    }
+
+    .faq-item.open .faq-icon-circle {
+      background: var(--salmon);
+      color: #FFFFFF;
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+      padding: 0 32px;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 500px;
+      padding: 0 32px 28px;
+    }
+
+    .faq-answer p {
+      font-size: 0.98rem;
+      color: var(--text-body);
+      line-height: 1.8;
+    }
+
+    /* ============ CONTACT ============ */
+    .contact-section {
+      background: transparent;
+      padding: 70px 0 110px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-section::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: var(--salmon-light);
+      opacity: 0.5;
+      filter: blur(60px);
+    }
+
+    .contact-section::after {
+      content: '';
+      position: absolute;
+      bottom: -100px; left: -100px;
+      width: 350px; height: 350px;
+      border-radius: 50%;
+      background: var(--gold-light);
+      opacity: 0.5;
+      filter: blur(60px);
+    }
+
+    .contact-wrapper {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .contact-info {
+      background: var(--salmon);
+      padding: 56px 40px;
+      border-radius: 32px;
+      color: #FFFFFF;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-info::before {
+      content: '';
+      position: absolute;
+      top: -50px; right: -50px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .contact-info::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; left: -60px;
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .contact-info-inner {
+      position: relative;
+      z-index: 2;
+    }
+
+    .contact-info h2 {
+      font-size: 2.4rem;
+      color: #FFFFFF;
+      margin-bottom: 16px;
+      line-height: 1.1;
+    }
+
+    .contact-info p {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.92);
+      margin-bottom: 24px;
+      line-height: 1.8;
+    }
+
+    .urgent-notice {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px dashed rgba(255, 255, 255, 0.4);
+      padding: 14px 18px;
+      border-radius: 16px;
+      margin-bottom: 24px;
+      font-size: 0.9rem;
+      color: #FFFFFF;
+      line-height: 1.5;
+    }
+
+    .urgent-notice i {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .urgent-notice strong { font-weight: 700; }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 18px;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 50px;
+      transition: var(--transition);
+    }
+
+    .contact-detail:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateX(4px);
+    }
+
+    .contact-detail.messenger-detail {
+      background: rgba(255, 255, 255, 0.18);
+      border: 1.5px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .contact-detail.messenger-detail:hover {
+      background: rgba(255, 255, 255, 0.28);
+    }
+
+    .contact-detail i {
+      width: 40px; height: 40px;
+      background: #FFFFFF;
+      color: var(--salmon-dark);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-detail-text {
+      display: flex;
+      flex-direction: column;
+      color: #FFFFFF;
+    }
+
+    .contact-detail-label {
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-bottom: 2px;
+    }
+
+    .contact-detail-value {
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .contact-form {
+      background: var(--bg-card);
+      padding: 48px 40px;
+      border-radius: 32px;
+      box-shadow: 0 16px 48px rgba(69, 53, 40, 0.1);
+      border: 1px solid rgba(238, 220, 200, 0.5);
+    }
+
+    .contact-form h3 {
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .contact-form h3 i { color: var(--salmon); }
+
+    .contact-form-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+
+    .form-section-title {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--salmon);
+      margin: 28px 0 16px;
+      padding-top: 24px;
+      border-top: 2px dashed var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .form-section-title i {
+      color: var(--salmon);
+      font-size: 0.9rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .form-group { margin-bottom: 18px; }
+
+    .form-group label {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 20px;
+      font-family: var(--font-body);
+      font-size: 0.98rem;
+      color: var(--text-dark);
+      background: #FFFFFF;
+      border: 2px solid transparent;
+      border-radius: 50px;
+      transition: var(--transition);
+      outline: none;
+    }
+
+    .form-group input[type="date"] {
+      cursor: pointer;
+      font-family: var(--font-body);
+    }
+
+    .form-group textarea {
+      border-radius: 20px;
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--salmon);
+      background: #FFFFFF;
+      box-shadow: 0 0 0 4px rgba(232, 139, 120, 0.12);
+    }
+
+    .form-submit {
+      width: 100%;
+      justify-content: center;
+      margin-top: 24px;
+    }
+
+    /* ============ FOOTER ============ */
+    footer {
+      background: var(--text-dark);
+      padding: 40px 0 28px;
+      position: relative;
+      color: var(--bg-main);
+      z-index: 2;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .footer-blob {
+      position: absolute;
+      top: -32px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--salmon);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      font-size: 1.5rem;
+      box-shadow: 0 12px 32px rgba(232, 139, 120, 0.35);
+      border: 4px solid var(--bg-main);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding-top: 12px;
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-brand i { color: var(--gold); }
+
+    .footer-links {
+      display: flex;
+      gap: 26px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      transition: color var(--transition);
+    }
+
+    .footer-links a:hover { color: #FFFFFF; }
+
+    .footer-social {
+      display: flex;
+      gap: 12px;
+    }
+
+    .footer-social a {
+      width: 42px; height: 42px;
+      background: rgba(255, 214, 153, 0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-light);
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+
+    .footer-social a:hover {
+      background: var(--salmon);
+      color: #FFFFFF;
+      transform: translateY(-3px) rotate(-8deg);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 214, 153, 0.15);
+      font-size: 0.78rem;
+      color: var(--gold-light);
+      letter-spacing: 0.08em;
+      font-family: var(--font-display);
+      text-transform: uppercase;
+      line-height: 1.8;
+      opacity: 0.85;
+    }
+
+    /* ============ REVEAL ============ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 1024px) {
+      header { top: 12px; }
+      .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 60px; padding-bottom: 60px; }
+      .hero-eyebrow, .hero-description, .hero-actions, .hero-stats { margin-left: auto; margin-right: auto; justify-content: center; }
+      .hero-description { max-width: 560px; }
+      .hero-visual { order: -1; min-height: 380px; }
+      .pet-blob { width: 340px; height: 340px; }
+      .about-wrap { grid-template-columns: 1fr; gap: 60px; }
+      .about-visual { min-height: 380px; }
+      .services-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+      .how-mini-strip { grid-template-columns: 1fr; gap: 20px; padding: 28px 22px; }
+      .why-grid { grid-template-columns: repeat(3, 1fr); }
+      .testimonials-grid { grid-template-columns: repeat(3, 1fr); }
+      .contact-wrapper { grid-template-columns: 1fr; gap: 32px; }
+    }
+
+    @media (max-width: 768px) {
+      html { background-attachment: scroll; }
+      header { top: 10px; width: 96%; }
+      .header-inner { padding: 10px 16px; }
+      .logo { font-size: 1.05rem; padding: 4px 8px; }
+      .logo-icon { width: 32px; height: 32px; font-size: 0.85rem; }
+      .menu-toggle { display: flex; }
+      nav {
+        position: absolute;
+        top: calc(100% + 12px);
+        left: 0;
+        width: 100%;
+        background: var(--bg-card);
+        border-radius: 24px;
+        border: 1.5px solid var(--border);
+        box-shadow: 0 12px 32px rgba(69, 53, 40, 0.12);
+        display: none;
+        padding: 16px;
+      }
+      nav.active { display: block; }
+      nav ul { flex-direction: column; gap: 4px; padding: 0; }
+      nav ul li { width: 100%; }
+      nav a { display: block; padding: 14px 20px; border-radius: 50px; text-align: center; }
+      .hero { padding: 130px 0 0; min-height: auto; }
+      .hero h1 { font-size: 2.4rem; }
+      .hero h1 .script { font-size: 2.8rem; }
+      .hero-stats { gap: 20px; }
+      .section { padding: 40px 0; }
+      .section-title { font-size: 2rem; }
+      .section-title .script { font-size: 2.4rem; }
+      .section-header { margin-bottom: 32px; }
+      .services-grid,
+      .why-grid,
+      .testimonials-grid { grid-template-columns: 1fr; gap: 24px; }
+      .service-card.featured { transform: scale(1); }
+      .service-card.featured:hover { transform: translateY(-6px); }
+      .testimonial-card:nth-child(1),
+      .testimonial-card:nth-child(2),
+      .testimonial-card:nth-child(3) { transform: rotate(0deg); }
+      .about-features { grid-template-columns: 1fr; }
+      .contact-info { padding: 40px 28px; }
+      .contact-form { padding: 36px 24px; }
+      .contact-info h2 { font-size: 1.9rem; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; }
+      .floating-badge { display: none; }
+      .form-row { grid-template-columns: 1fr; }
+
+      .pet-blob { animation: none; }
+
+      .contact-section::before,
+      .contact-section::after {
+        filter: none !important;
+        opacity: 0.2 !important;
+      }
+
+      footer { padding: 32px 0 24px; }
+      .footer-blob { width: 56px; height: 56px; font-size: 1.3rem; top: -28px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2rem; }
+      .hero h1 .script { font-size: 2.3rem; }
+      .hero-actions { flex-direction: column; width: 100%; }
+      .hero-actions .btn { width: 100%; justify-content: center; }
+      .section-title { font-size: 1.7rem; }
+      .section-title .script { font-size: 2rem; }
+      .pet-blob { width: 260px; height: 260px; }
+      .about-circle-main { width: 260px; height: 260px; }
+      .about-circle-1 { width: 70px; height: 70px; font-size: 1rem; }
+      .about-circle-2 { width: 60px; height: 60px; font-size: 1rem; }
+      .about-circle-3 { width: 48px; height: 48px; font-size: 0.85rem; }
+      .service-price-circle { width: 140px; height: 140px; }
+      .service-price-amount { font-size: 2.4rem; }
+      .faq-question { padding: 20px 24px; font-size: 0.92rem; }
+      .faq-item.open .faq-answer { padding: 0 24px 24px; }
+      .how-mini-icon { width: 46px; height: 46px; font-size: 1.1rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .pet-blob,
+      .about-circle-1,
+      .about-circle-2,
+      .about-circle-3,
+      .hero-eyebrow i {
+        animation: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header id="header">
+    <div class="header-inner">
+      <a href="#home" class="logo">
+        <span class="logo-icon"><img src="pet4.jpg" alt="PawStay logo"></span>
+        PawStay
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav id="mainNav">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#why">Why Us</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Book Now</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <div class="hero-eyebrow"><i class="fas fa-heart"></i> Trusted by Pet Parents in Metro Manila</div>
+        <h1>Your pets,<br>cared for <span class="script">always.</span></h1>
+        <p class="hero-description">
+          Professional pet sitting, dog walking, and overnight care — delivered with love, patience, and daily photo updates. Travel with peace of mind.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary"><i class="fas fa-paw"></i> Book a Sitter</a>
+          <a href="#services" class="btn btn-secondary"><i class="fas fa-list"></i> Our Services</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><strong>500+</strong><span>Happy Pets</span></div>
+          <div class="hero-stat"><strong>4.9★</strong><span>Avg Rating</span></div>
+          <div class="hero-stat"><strong>7 Days</strong><span>Available</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="pet-blob">
+          <div class="pet-blob-inner">
+            <img src="hero-pet.jpg" alt="Happy pet">
+          </div>
+        </div>
+        <div class="floating-badge badge-1">
+          <i class="fas fa-shield-alt"></i>
+          <span>Vetted<br>Sitters</span>
+        </div>
+        <div class="floating-badge badge-2">
+          <i class="fas fa-camera"></i>
+          <span>Daily Photo<br>Updates</span>
+        </div>
+        <div class="floating-badge badge-3">
+          <i class="fas fa-heart"></i>
+          <span>Pet-First<br>Care</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-badge"><i class="fas fa-paw"></i> About PawStay</div>
+        <h2 class="section-title">A warm hand <span class="script">for your pets</span></h2>
+        <p class="section-desc">Built on trust, reliability, and genuine love for animals — PawStay treats your pets like family.</p>
+      </div>
+      <div class="about-wrap">
+        <div class="about-visual reveal">
+          <div class="about-circle-main">
+            <img src="pet5.jpg" alt="PawStay pet">
+          </div>
+          <div class="about-circle-small about-circle-1"><i class="fas fa-heart"></i></div>
+          <div class="about-circle-small about-circle-2"><i class="fas fa-bone"></i></div>
+          <div class="about-circle-small about-circle-3"><i class="fas fa-star"></i></div>
+        </div>
+        <div class="about-content reveal">
+          <p><strong>PawStay Pet Sitting</strong> is a local pet care service offering in-home visits, daily walks, and overnight stays for dogs, cats, and small pets. Whether you're traveling, working late, or just need a helping hand — we're here.</p>
+          <p>Every sitter is vetted, pet-first, and trained to handle different temperaments and needs. We send you regular photo updates and detailed reports, so you always know how your pet is doing — even when you're miles away.</p>
+          <p>No cages, no kennels, no stress. Just warm, personal care in the comfort of your pet's own home.</p>
+          <div class="about-features">
+            <div class="about-feature">
+              <i class="fas fa-shield-alt"></i>
+              <span>Vetted Sitters</span>
+            </div>
+            <div class="about-feature">
+              <i class="fas fa-camera"></i>
+              <span>Photo Updates</span>
+            </div>
+            <div class="about-feature">
+              <i class="fas fa-heart"></i>
+              <span>Pet-First Care</span>
+            </div>
+            <div class="about-feature">
+              <i class="fas fa-clock"></i>
+              <span>7 Days a Week</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-badge"><i class="fas fa-tag"></i> Services & Pricing</div>
+        <h2 class="section-title">Simple, <span class="script">honest rates</span></h2>
+        <p class="section-desc">No hidden fees. Multi-pet discounts available. Pick the care that fits your pet's needs.</p>
+      </div>
+      <div class="services-grid reveal">
+
+        <div class="service-card">
+          <div class="service-icon-circle"><i class="fas fa-home"></i></div>
+          <div class="service-name">Drop-In Visit</div>
+          <p class="service-tagline">Feeding, playtime, and companionship while you're away.</p>
+          <div class="service-price-circle">
+            <span class="service-price-currency">₱</span>
+            <span class="service-price-amount">400</span>
+            <span class="service-price-per">per visit</span>
+          </div>
+          <div class="service-trust">
+            <span><i class="fas fa-check-circle"></i> Free meet & greet</span>
+            <span><i class="fas fa-check-circle"></i> No cancellation fee</span>
+          </div>
+          <ul class="service-features">
+            <li><i class="fas fa-check"></i> Feeding & fresh water</li>
+            <li><i class="fas fa-check"></i> Playtime & companionship</li>
+            <li><i class="fas fa-check"></i> Litter / waste cleanup</li>
+            <li><i class="fas fa-check"></i> Photo updates sent</li>
+          </ul>
+          <a href="#contact" class="btn btn-secondary service-btn">Book Drop-In</a>
+        </div>
+
+        <div class="service-card featured">
+          <span class="service-badge">Most Popular</span>
+          <div class="service-icon-circle"><i class="fas fa-walking"></i></div>
+          <div class="service-name">Daily Dog Walk</div>
+          <p class="service-tagline">30–60 minute walks to keep your dog active and happy.</p>
+          <div class="service-price-circle">
+            <span class="service-price-currency">₱</span>
+            <span class="service-price-amount">300</span>
+            <span class="service-price-per">per walk</span>
+          </div>
+          <div class="service-trust">
+            <span><i class="fas fa-check-circle"></i> Free meet & greet</span>
+            <span><i class="fas fa-check-circle"></i> No cancellation fee</span>
+          </div>
+          <ul class="service-features">
+            <li><i class="fas fa-check"></i> 30–60 minute walk</li>
+            <li><i class="fas fa-check"></i> Fresh water refill</li>
+            <li><i class="fas fa-check"></i> Paw cleaning after walk</li>
+            <li><i class="fas fa-check"></i> Route updates & photos</li>
+            <li><i class="fas fa-check"></i> Discount for 5x/week</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary service-btn">Book a Walk</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon-circle"><i class="fas fa-moon"></i></div>
+          <div class="service-name">Overnight Sitting</div>
+          <p class="service-tagline">Full overnight care in your home — familiar and stress-free.</p>
+          <div class="service-price-circle">
+            <span class="service-price-currency">₱</span>
+            <span class="service-price-amount">1,200</span>
+            <span class="service-price-per">per night</span>
+          </div>
+          <div class="service-trust">
+            <span><i class="fas fa-check-circle"></i> Free meet & greet</span>
+            <span><i class="fas fa-check-circle"></i> No cancellation fee</span>
+          </div>
+          <ul class="service-features">
+            <li><i class="fas fa-check"></i> Overnight stay in your home</li>
+            <li><i class="fas fa-check"></i> Evening & morning feeding</li>
+            <li><i class="fas fa-check"></i> Multiple walks included</li>
+            <li><i class="fas fa-check"></i> Medication administration</li>
+            <li><i class="fas fa-check"></i> Continuous updates</li>
+          </ul>
+          <a href="#contact" class="btn btn-secondary service-btn">Book Overnight</a>
+        </div>
+
+      </div>
+
+      <div class="how-mini-strip reveal">
+        <div class="how-mini-item">
+          <div class="how-mini-icon">
+            <i class="fas fa-comments"></i>
+            <span class="how-mini-step">1</span>
+          </div>
+          <div class="how-mini-text">
+            <h5>Book & Meet</h5>
+            <p>Send your details, then we schedule a free meet & greet.</p>
+          </div>
+        </div>
+        <div class="how-mini-item">
+          <div class="how-mini-icon">
+            <i class="fas fa-clipboard-check"></i>
+            <span class="how-mini-step">2</span>
+          </div>
+          <div class="how-mini-text">
+            <h5>Plan the Care</h5>
+            <p>We discuss routines, meds, and any special needs.</p>
+          </div>
+        </div>
+        <div class="how-mini-item">
+          <div class="how-mini-icon">
+            <i class="fas fa-camera"></i>
+            <span class="how-mini-step">3</span>
+          </div>
+          <div class="how-mini-text">
+            <h5>Relax & Enjoy</h5>
+            <p>Daily photo updates until you're back home.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="not-sure-helper reveal">
+        Not sure which service fits your pet? 
+        <a href="#contact">
+          <i class="fas fa-comment-dots"></i>
+          Message us on Messenger
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" id="why">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-badge"><i class="fas fa-heart"></i> Why PawStay</div>
+        <h2 class="section-title">More than <span class="script">just sitting</span></h2>
+        <p class="section-desc">Every pet gets personal attention, genuine love, and professional care.</p>
+      </div>
+      <div class="why-grid reveal">
+        <div class="why-item">
+          <div class="why-icon-badge"><i class="fas fa-user-shield"></i></div>
+          <h4>Trusted Sitters</h4>
+          <p>Every sitter is vetted, experienced, and passionate about animal care.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-icon-badge"><i class="fas fa-mobile-alt"></i></div>
+          <h4>Live Updates</h4>
+          <p>Photos, videos, and messages sent throughout every visit — always.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-icon-badge"><i class="fas fa-heartbeat"></i></div>
+          <h4>Health-Aware</h4>
+          <p>Trained to handle medications, senior pets, and special dietary needs.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-icon-badge"><i class="fas fa-lock"></i></div>
+          <h4>Fully Insured</h4>
+          <p>Your home and pet are covered. Peace of mind for every booking.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-icon-badge"><i class="fas fa-clock"></i></div>
+          <h4>Flexible Timing</h4>
+          <p>Early mornings, late evenings, weekends, and holidays — we're here.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-icon-badge"><i class="fas fa-star"></i></div>
+          <h4>5-Star Rated</h4>
+          <p>Rated by real pet parents across Metro Manila. See our reviews below.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="testimonials">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-badge"><i class="fas fa-quote-left"></i> Testimonials</div>
+        <h2 class="section-title">What pet parents <span class="script">are saying</span></h2>
+        <p class="section-desc">Real reviews from clients who trust PawStay with their fur babies.</p>
+      </div>
+      <div class="testimonials-grid reveal">
+        <div class="testimonial-card">
+          <div class="testimonial-tape"></div>
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Our dog Mochi is usually anxious around strangers, but PawStay handled her with so much patience. We got photos every day — it really put our minds at ease."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">M</div>
+            <div class="testimonial-info">
+              <strong>Maria S.</strong>
+              <span>Dog Owner · Quezon City</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-tape"></div>
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"I travel a lot for work, and PawStay has become my go-to. They follow my cat's feeding schedule perfectly and always clean the litter box before leaving."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">J</div>
+            <div class="testimonial-info">
+              <strong>James R.</strong>
+              <span>Cat Owner · Makati</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-tape"></div>
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Booked an overnight sitter for a 3-day trip. Came home to a spotless house and a very happy dog. Worth every peso — highly recommended."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">A</div>
+            <div class="testimonial-info">
+              <strong>Andrea L.</strong>
+              <span>Dog Owner · Marikina</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-badge"><i class="fas fa-question-circle"></i> FAQ</div>
+        <h2 class="section-title">Questions? <span class="script">We've got answers.</span></h2>
+        <p class="section-desc">Everything you need to know before booking your first visit.</p>
+      </div>
+      <div class="faq-list reveal">
+        <div class="faq-item">
+          <button class="faq-question">
+            Are your sitters background-checked?
+            <span class="faq-icon-circle"><i class="fas fa-chevron-down"></i></span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. Every PawStay sitter goes through a vetting process that includes a background check, reference verification, and an in-person interview. We only hire sitters who genuinely love animals.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            Do you offer a free meet-and-greet?
+            <span class="faq-icon-circle"><i class="fas fa-chevron-down"></i></span>
+          </button>
+          <div class="faq-answer">
+            <p>Absolutely. Before your first booking, we schedule a free meet-and-greet so you, your pet, and your assigned sitter can get to know each other. This helps your pet feel comfortable and lets us understand their routine.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            How do I pay for the service?
+            <span class="faq-icon-circle"><i class="fas fa-chevron-down"></i></span>
+          </button>
+          <div class="faq-answer">
+            <p>After we confirm your booking and send you a fee summary, you can pay via <strong>GCash, Maya, Bank Transfer, or Cash</strong>. We'll send the exact payment details — account number, GCash number, or bank info — along with your confirmation so you know exactly where to send your payment.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            When do I need to pay?
+            <span class="faq-icon-circle"><i class="fas fa-chevron-down"></i></span>
+          </button>
+          <div class="faq-answer">
+            <p>We require a <strong>50% downpayment</strong> to confirm and reserve your slot. The remaining balance is settled <strong>after the service is completed</strong> — once we've sent you the daily photo updates and completion report. No payment is required for cancellations made before the booking starts.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section" id="contact">
+    <div class="container contact-wrapper">
+      <div class="contact-info reveal">
+        <div class="contact-info-inner">
+          <h2>Book a<br>Sitter Today</h2>
+          <p>Tell us about your pet and your schedule. We'll reply within a few hours with availability and next steps.</p>
+
+          <div class="urgent-notice">
+            <i class="fas fa-bolt"></i>
+            <span><strong>Urgent?</strong> Message us directly on Messenger for faster replies.</span>
+          </div>
+
+          <div class="contact-details">
+            <a href="https://m.me/PawStayPH" target="_blank" class="contact-detail messenger-detail">
+              <i class="fab fa-facebook-messenger"></i>
+              <div class="contact-detail-text">
+                <span class="contact-detail-label">Messenger (Fastest)</span>
+                <span class="contact-detail-value">@PawStayPH</span>
+              </div>
+            </a>
+            <a href="tel:+639535216790" class="contact-detail">
+              <i class="fas fa-phone"></i>
+              <div class="contact-detail-text">
+                <span class="contact-detail-label">Phone / Viber</span>
+                <span class="contact-detail-value">+63 953 521 6790</span>
+              </div>
+            </a>
+            <div class="contact-detail">
+              <i class="fas fa-map-marker-alt"></i>
+              <div class="contact-detail-text">
+                <span class="contact-detail-label">Service Area</span>
+                <span class="contact-detail-value">Metro Manila</span>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <i class="fas fa-clock"></i>
+              <div class="contact-detail-text">
+                <span class="contact-detail-label">Available</span>
+                <span class="contact-detail-value">Mon – Sun · 6AM – 10PM</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form reveal">
+        <h3><i class="fas fa-paw"></i> Booking Request</h3>
+        <p class="contact-form-subtitle">Fill out the form and we'll be in touch shortly.</p>
+        <form action="https://formspree.io/f/mnpjzdwz" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="Juan Dela Cruz" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Mobile Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="0917 123 4567" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="service">Service Needed</label>
+            <select id="service" name="service" required>
+              <option value="">Select a service...</option>
+              <option value="walk">Daily Dog Walking</option>
+              <option value="dropin">Drop-In Visit</option>
+              <option value="overnight">Overnight Sitting</option>
+              <option value="other">Other / Not Sure</option>
+            </select>
+          </div>
+
+          <div class="form-section-title">
+            <i class="fas fa-paw"></i> Pet Information
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="pet_name">Pet Name</label>
+              <input type="text" id="pet_name" name="pet_name" placeholder="Mochi" required>
+            </div>
+            <div class="form-group">
+              <label for="pet_breed">Breed</label>
+              <input type="text" id="pet_breed" name="pet_breed" placeholder="Shih Tzu" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="pet_age">Pet Age</label>
+              <input type="text" id="pet_age" name="pet_age" placeholder="3 years" required>
+            </div>
+            <div class="form-group">
+              <label for="booking_date">Preferred Booking Date</label>
+              <input type="date" id="booking_date" name="booking_date" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Temperament & Special Needs</label>
+            <textarea id="message" name="message" placeholder="Describe your pet's temperament, any special needs, medications, or things we should know." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary form-submit">
+            <i class="fas fa-paper-plane"></i> Send Booking Request
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-blob"><i class="fas fa-paw"></i></div>
+    <div class="container">
+      <div class="footer-inner">
+        <a href="#home" class="footer-brand">
+          <i class="fas fa-paw"></i> PawStay Pet Sitting
+        </a>
+        <div class="footer-links">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#why">Why Us</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Book Now</a>
+        </div>
+        <div class="footer-social">
+          <a href="https://m.me/PawStayPH" target="_blank" aria-label="Messenger"><i class="fab fa-facebook-messenger"></i></a>
+          <a href="mailto:joseombrog93@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <a href="tel:+639535216790" aria-label="Phone"><i class="fas fa-phone"></i></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 PawStay Pet Sitting · All rights reserved<br>
+        Serving Metro Manila · Fully Insured · Pet-First Care
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    const menuToggle = document.getElementById('menuToggle');
+    const mainNav = document.getElementById('mainNav');
+    menuToggle.addEventListener('click', () => {
+      mainNav.classList.toggle('active');
+      const icon = menuToggle.querySelector('i');
+      icon.classList.toggle('fa-bars');
+      icon.classList.toggle('fa-times');
+    });
+
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        mainNav.classList.remove('active');
+        const icon = menuToggle.querySelector('i');
+        icon.classList.add('fa-bars');
+        icon.classList.remove('fa-times');
+      });
+    });
+
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          e.preventDefault();
+          const offset = 100;
+          const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+          window.scrollTo({ top: elementPosition - offset, behavior: 'smooth' });
+        }
+      });
+    });
+
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        item.classList.toggle('open');
+      });
+    });
+
+    const bookingDate = document.getElementById('booking_date');
+    if (bookingDate) {
+      const today = new Date();
+      const minDate = new Date(today);
+      minDate.setDate(today.getDate() + 3);
+
+      const yyyy = minDate.getFullYear();
+      const mm = String(minDate.getMonth() + 1).padStart(2, '0');
+      const dd = String(minDate.getDate()).padStart(2, '0');
+
+      bookingDate.min = `${yyyy}-${mm}-${dd}`;
+    }
+  </script>
+</body>
+</html>
   <title>PawStay Pet Sitting | Trusted Pet Care When You're Away</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
