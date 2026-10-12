@@ -67,7 +67,6 @@
       min-height: 100vh;
     }
 
-    /* Soft warm overlay across the whole page */
     body::before {
       content: '';
       position: fixed;
@@ -654,11 +653,12 @@
     }
 
     /* ============ SERVICES & PRICING ============ */
+    /* ==== UNIFORM CARD HEIGHTS FIX ==== */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 32px;
-      align-items: start;
+      align-items: stretch; /* Ensures all cards are equal height */
     }
 
     .service-card {
@@ -670,6 +670,8 @@
       position: relative;
       text-align: center;
       border: 1px solid rgba(238, 220, 200, 0.5);
+      display: flex;          /* Flex column so content stacks */
+      flex-direction: column;
     }
 
     .service-card.featured {
@@ -718,6 +720,7 @@
       color: var(--salmon-dark);
       margin: 0 auto 20px;
       transition: var(--transition);
+      flex-shrink: 0;
     }
 
     .service-card.featured .service-icon-circle {
@@ -758,6 +761,7 @@
       margin: 0 auto 16px;
       position: relative;
       transition: var(--transition);
+      flex-shrink: 0;
     }
 
     .service-card.featured .service-price-circle {
@@ -818,6 +822,7 @@
       margin-bottom: 24px;
       padding-bottom: 20px;
       border-bottom: 2px dashed var(--border);
+      flex-shrink: 0;
     }
 
     .service-trust i {
@@ -842,6 +847,7 @@
       gap: 12px;
       margin-bottom: 32px;
       text-align: left;
+      flex-grow: 1; /* Pushes button to bottom */
     }
 
     .service-features li {
@@ -867,6 +873,7 @@
     .service-btn {
       width: 100%;
       justify-content: center;
+      margin-top: auto; /* Aligns all buttons at the bottom */
     }
 
     .how-mini-strip {
@@ -1234,7 +1241,6 @@
       align-items: start;
     }
 
-    /* === LEFT COLUMN STACK: contact info card + framed cat image below === */
     .contact-left-stack {
       display: flex;
       flex-direction: column;
@@ -1373,7 +1379,7 @@
       font-weight: 500;
     }
 
-    /* === FRAMED CAT IMAGE — fills the gap under contact info === */
+    /* === FIXED CUTE FRAME FOR THE CAT === */
     .contact-cat-frame {
       position: relative;
       border-radius: 32px;
@@ -1382,18 +1388,23 @@
       border: 2px solid var(--border);
       box-shadow: 0 16px 48px rgba(69, 53, 40, 0.12);
       flex-grow: 1;
-      min-height: 260px;
       display: flex;
+      /* Fixed aspect ratio so the cat never distorts or zooms with page zoom */
+      aspect-ratio: 4 / 3;
+      width: 100%;
     }
 
+    /* The image now uses "contain" so it never crops or stretches */
     .contact-cat-frame img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
+      object-position: center;
       display: block;
+      background: var(--salmon-light); /* Soft background behind the cat */
+      padding: 12px; /* Padding so the cat sits nicely inside the frame */
     }
 
-    /* subtle warm tint over the image so it fits the palette */
     .contact-cat-frame::after {
       content: '';
       position: absolute;
@@ -1406,7 +1417,6 @@
       pointer-events: none;
     }
 
-    /* A small caption tag floating on top of the framed cat */
     .contact-cat-tag {
       position: absolute;
       top: 16px;
@@ -1682,7 +1692,6 @@
       .testimonials-grid { grid-template-columns: repeat(3, 1fr); }
       .contact-wrapper { grid-template-columns: 1fr; gap: 32px; }
       .contact-left-stack { gap: 20px; }
-      .contact-cat-frame { min-height: 320px; }
     }
 
     @media (max-width: 768px) {
@@ -1727,7 +1736,7 @@
       .contact-info { padding: 40px 28px; }
       .contact-form { padding: 36px 24px; }
       .contact-info h2 { font-size: 1.9rem; }
-      .contact-cat-frame { min-height: 240px; }
+      .contact-cat-frame { aspect-ratio: 16 / 10; }
       .footer-inner { flex-direction: column; text-align: center; }
       .footer-links { justify-content: center; }
       .floating-badge { display: none; }
@@ -1756,7 +1765,7 @@
       .faq-question { padding: 20px 24px; font-size: 0.92rem; }
       .faq-item.open .faq-answer { padding: 0 24px 24px; }
       .how-mini-icon { width: 46px; height: 46px; font-size: 1.1rem; }
-      .contact-cat-frame { min-height: 200px; }
+      .contact-cat-frame { aspect-ratio: 1 / 1; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -2147,7 +2156,6 @@
   <section class="contact-section" id="contact">
     <div class="container contact-wrapper">
 
-      <!-- LEFT STACK: contact info + framed cat image below -->
       <div class="contact-left-stack">
         <div class="contact-info reveal">
           <div class="contact-info-inner">
@@ -2192,7 +2200,7 @@
           </div>
         </div>
 
-        <!-- FRAMED CAT IMAGE filling the bottom-left gap -->
+        <!-- FIXED CUTE FRAME FOR THE CAT — no zoom, no distortion -->
         <div class="contact-cat-frame reveal">
           <img src="hero-bg.jpg" alt="Happy cat waiting for its sitter">
           <span class="contact-cat-tag">
