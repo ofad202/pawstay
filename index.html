@@ -67,6 +67,7 @@
       min-height: 100vh;
     }
 
+    /* Soft warm overlay across the whole page */
     body::before {
       content: '';
       position: fixed;
@@ -657,7 +658,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 32px;
-      align-items: stretch;
+      align-items: start;
     }
 
     .service-card {
@@ -669,8 +670,6 @@
       position: relative;
       text-align: center;
       border: 1px solid rgba(238, 220, 200, 0.5);
-      display: flex;
-      flex-direction: column;
     }
 
     .service-card.featured {
@@ -719,7 +718,6 @@
       color: var(--salmon-dark);
       margin: 0 auto 20px;
       transition: var(--transition);
-      flex-shrink: 0;
     }
 
     .service-card.featured .service-icon-circle {
@@ -760,7 +758,6 @@
       margin: 0 auto 16px;
       position: relative;
       transition: var(--transition);
-      flex-shrink: 0;
     }
 
     .service-card.featured .service-price-circle {
@@ -821,7 +818,6 @@
       margin-bottom: 24px;
       padding-bottom: 20px;
       border-bottom: 2px dashed var(--border);
-      flex-shrink: 0;
     }
 
     .service-trust i {
@@ -846,7 +842,6 @@
       gap: 12px;
       margin-bottom: 32px;
       text-align: left;
-      flex-grow: 1;
     }
 
     .service-features li {
@@ -872,7 +867,6 @@
     .service-btn {
       width: 100%;
       justify-content: center;
-      margin-top: auto;
     }
 
     .how-mini-strip {
@@ -1238,7 +1232,14 @@
       grid-template-columns: 0.9fr 1.1fr;
       gap: 48px;
       align-items: start;
-      margin-bottom: 40px;
+    }
+
+    /* === LEFT COLUMN STACK: contact info card + framed cat image below === */
+    .contact-left-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      height: 100%;
     }
 
     .contact-info {
@@ -1248,6 +1249,7 @@
       color: #FFFFFF;
       position: relative;
       overflow: hidden;
+      flex-shrink: 0;
     }
 
     .contact-info::before {
@@ -1371,6 +1373,67 @@
       font-weight: 500;
     }
 
+    /* === FRAMED CAT IMAGE — fills the gap under contact info === */
+    .contact-cat-frame {
+      position: relative;
+      border-radius: 32px;
+      overflow: hidden;
+      background: var(--bg-card);
+      border: 2px solid var(--border);
+      box-shadow: 0 16px 48px rgba(69, 53, 40, 0.12);
+      flex-grow: 1;
+      min-height: 260px;
+      display: flex;
+    }
+
+    .contact-cat-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* subtle warm tint over the image so it fits the palette */
+    .contact-cat-frame::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(251, 243, 232, 0.05) 0%,
+        rgba(232, 139, 120, 0.08) 100%
+      );
+      pointer-events: none;
+    }
+
+    /* A small caption tag floating on top of the framed cat */
+    .contact-cat-tag {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      z-index: 3;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(253, 246, 236, 0.94);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      color: var(--salmon-dark);
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 8px 14px;
+      border-radius: 50px;
+      box-shadow: 0 4px 14px rgba(69, 53, 40, 0.15);
+    }
+
+    .contact-cat-tag i {
+      color: var(--salmon);
+      font-size: 0.8rem;
+    }
+
     .contact-form {
       background: var(--bg-card);
       padding: 48px 40px;
@@ -1474,66 +1537,6 @@
       width: 100%;
       justify-content: center;
       margin-top: 24px;
-    }
-
-    /* ============ FULL-WIDTH CAT BANNER ============ */
-    .contact-cat-banner {
-      position: relative;
-      border-radius: 32px;
-      overflow: hidden;
-      background: var(--salmon-light);
-      border: 2px solid var(--border);
-      box-shadow: 0 16px 48px rgba(69, 53, 40, 0.12);
-      aspect-ratio: 16 / 5;
-      width: 100%;
-      z-index: 2;
-    }
-
-    .contact-cat-banner img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 35%;
-      display: block;
-    }
-
-    .contact-cat-banner::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        90deg,
-        rgba(251, 243, 232, 0.15) 0%,
-        rgba(232, 139, 120, 0.1) 100%
-      );
-      pointer-events: none;
-    }
-
-    .contact-cat-tag {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      z-index: 3;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(253, 246, 236, 0.94);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      color: var(--salmon-dark);
-      font-family: var(--font-display);
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      padding: 10px 18px;
-      border-radius: 50px;
-      box-shadow: 0 4px 14px rgba(69, 53, 40, 0.15);
-    }
-
-    .contact-cat-tag i {
-      color: var(--salmon);
-      font-size: 0.85rem;
     }
 
     /* ============ FOOTER ============ */
@@ -1678,7 +1681,8 @@
       .why-grid { grid-template-columns: repeat(3, 1fr); }
       .testimonials-grid { grid-template-columns: repeat(3, 1fr); }
       .contact-wrapper { grid-template-columns: 1fr; gap: 32px; }
-      .contact-cat-banner { aspect-ratio: 16 / 6; }
+      .contact-left-stack { gap: 20px; }
+      .contact-cat-frame { min-height: 320px; }
     }
 
     @media (max-width: 768px) {
@@ -1723,8 +1727,7 @@
       .contact-info { padding: 40px 28px; }
       .contact-form { padding: 36px 24px; }
       .contact-info h2 { font-size: 1.9rem; }
-      .contact-cat-banner { aspect-ratio: 16 / 7; }
-      .contact-cat-tag { font-size: 0.62rem; padding: 8px 14px; top: 14px; left: 14px; }
+      .contact-cat-frame { min-height: 240px; }
       .footer-inner { flex-direction: column; text-align: center; }
       .footer-links { justify-content: center; }
       .floating-badge { display: none; }
@@ -1753,8 +1756,7 @@
       .faq-question { padding: 20px 24px; font-size: 0.92rem; }
       .faq-item.open .faq-answer { padding: 0 24px 24px; }
       .how-mini-icon { width: 46px; height: 46px; font-size: 1.1rem; }
-      .contact-cat-banner { aspect-ratio: 4 / 3; }
-      .contact-cat-tag { font-size: 0.58rem; padding: 6px 12px; top: 12px; left: 12px; }
+      .contact-cat-frame { min-height: 200px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -2144,46 +2146,58 @@
 
   <section class="contact-section" id="contact">
     <div class="container contact-wrapper">
-      <div class="contact-info reveal">
-        <div class="contact-info-inner">
-          <h2>Book a<br>Sitter Today</h2>
-          <p>Tell us about your pet and your schedule. We'll reply within a few hours with availability and next steps.</p>
 
-          <div class="urgent-notice">
-            <i class="fas fa-bolt"></i>
-            <span><strong>Urgent?</strong> Message us directly on Messenger for faster replies.</span>
-          </div>
+      <!-- LEFT STACK: contact info + framed cat image below -->
+      <div class="contact-left-stack">
+        <div class="contact-info reveal">
+          <div class="contact-info-inner">
+            <h2>Book a<br>Sitter Today</h2>
+            <p>Tell us about your pet and your schedule. We'll reply within a few hours with availability and next steps.</p>
 
-          <div class="contact-details">
-            <a href="https://m.me/PawStayPH" target="_blank" class="contact-detail messenger-detail">
-              <i class="fab fa-facebook-messenger"></i>
-              <div class="contact-detail-text">
-                <span class="contact-detail-label">Messenger (Fastest)</span>
-                <span class="contact-detail-value">@PawStayPH</span>
+            <div class="urgent-notice">
+              <i class="fas fa-bolt"></i>
+              <span><strong>Urgent?</strong> Message us directly on Messenger for faster replies.</span>
+            </div>
+
+            <div class="contact-details">
+              <a href="https://m.me/PawStayPH" target="_blank" class="contact-detail messenger-detail">
+                <i class="fab fa-facebook-messenger"></i>
+                <div class="contact-detail-text">
+                  <span class="contact-detail-label">Messenger (Fastest)</span>
+                  <span class="contact-detail-value">@PawStayPH</span>
+                </div>
+              </a>
+              <a href="tel:+639535216790" class="contact-detail">
+                <i class="fas fa-phone"></i>
+                <div class="contact-detail-text">
+                  <span class="contact-detail-label">Phone / Viber</span>
+                  <span class="contact-detail-value">+63 953 521 6790</span>
+                </div>
+              </a>
+              <div class="contact-detail">
+                <i class="fas fa-map-marker-alt"></i>
+                <div class="contact-detail-text">
+                  <span class="contact-detail-label">Service Area</span>
+                  <span class="contact-detail-value">Metro Manila</span>
+                </div>
               </div>
-            </a>
-            <a href="tel:+639535216790" class="contact-detail">
-              <i class="fas fa-phone"></i>
-              <div class="contact-detail-text">
-                <span class="contact-detail-label">Phone / Viber</span>
-                <span class="contact-detail-value">+63 953 521 6790</span>
-              </div>
-            </a>
-            <div class="contact-detail">
-              <i class="fas fa-map-marker-alt"></i>
-              <div class="contact-detail-text">
-                <span class="contact-detail-label">Service Area</span>
-                <span class="contact-detail-value">Metro Manila</span>
+              <div class="contact-detail">
+                <i class="fas fa-clock"></i>
+                <div class="contact-detail-text">
+                  <span class="contact-detail-label">Available</span>
+                  <span class="contact-detail-value">Mon – Sun · 6AM – 10PM</span>
+                </div>
               </div>
             </div>
-            <div class="contact-detail">
-              <i class="fas fa-clock"></i>
-              <div class="contact-detail-text">
-                <span class="contact-detail-label">Available</span>
-                <span class="contact-detail-value">Mon – Sun · 6AM – 10PM</span>
-              </div>
-            </div>
           </div>
+        </div>
+
+        <!-- FRAMED CAT IMAGE filling the bottom-left gap -->
+        <div class="contact-cat-frame reveal">
+          <img src="hero-bg.jpg" alt="Happy cat waiting for its sitter">
+          <span class="contact-cat-tag">
+            <i class="fas fa-cat"></i> Ready for cuddles
+          </span>
         </div>
       </div>
 
@@ -2251,16 +2265,6 @@
             <i class="fas fa-paper-plane"></i> Send Booking Request
           </button>
         </form>
-      </div>
-    </div>
-
-    <!-- FULL-WIDTH CAT BANNER BELOW BOTH COLUMNS -->
-    <div class="container">
-      <div class="contact-cat-banner reveal">
-        <img src="hero-bg.jpg" alt="Happy cat waiting for its sitter">
-        <span class="contact-cat-tag">
-          <i class="fas fa-cat"></i> Ready for cuddles
-        </span>
       </div>
     </div>
   </section>
