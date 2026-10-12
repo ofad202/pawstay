@@ -61,7 +61,19 @@
       position: relative;
     }
 
-    /* .page-bg-cat — REMOVED */
+    /* ===== FIXED FULL-PAGE CAT BACKGROUND ===== */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: url('hero-bg.jpg') center center / cover no-repeat;
+      opacity: 0.10;
+      pointer-events: none;
+      z-index: 0;
+    }
 
     h1, h2, h3, h4, h5 {
       font-family: var(--font-display);
@@ -197,8 +209,7 @@
 
     /* ============ HERO ============ */
     .hero {
-      background: linear-gradient(rgba(255, 248, 240, 0.88), rgba(255, 248, 240, 0.78)),
-                  url('hero-bg.jpg') center/cover no-repeat;
+      background: transparent;   /* <-- now transparent so page-bg-cat shows through */
       padding: 160px 0 0;
       position: relative;
       overflow: hidden;
@@ -480,8 +491,9 @@
       position: relative;
     }
 
-    .section-cream { background: var(--cream); }
-    .section-cream-2 { background: var(--cream-2); }
+    /* Sections now use semi-transparent backgrounds so the fixed cat bg shows through */
+    .section-cream { background: rgba(255, 248, 240, 0.85); }
+    .section-cream-2 { background: rgba(255, 239, 224, 0.85); }
 
     .section > .container {
       position: relative;
@@ -1230,7 +1242,7 @@
 
     /* ============ CONTACT ============ */
     .contact-section {
-      background: var(--cream-2);
+      background: rgba(255, 239, 224, 0.85);
       padding: 70px 0 110px;
       position: relative;
       overflow: hidden;
@@ -1507,6 +1519,7 @@
       padding: 40px 0 28px;
       position: relative;
       color: var(--cream);
+      z-index: 2;
     }
 
     footer::before {
@@ -1745,8 +1758,6 @@
   </style>
 </head>
 <body>
-
-  <!-- page-bg-cat REMOVED -->
 
   <header id="header">
     <div class="header-inner">
