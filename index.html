@@ -49,7 +49,6 @@ header.scrolled{top:8px;background:rgba(253,246,236,0.98);box-shadow:0 10px 30px
 nav ul{display:flex;gap:4px;align-items:center}
 nav a{font-family:var(--font-display);font-size:0.72rem;font-weight:500;letter-spacing:0.13em;text-transform:uppercase;color:var(--text-dark);padding:8px 15px;border-radius:50px;transition:var(--transition);cursor:pointer}
 nav a:hover{background:var(--salmon-light);color:var(--salmon-dark)}
-nav a.active{background:var(--salmon);color:#FFFFFF;box-shadow:0 6px 14px rgba(232,139,120,0.32)}
 .menu-toggle{display:none;background:var(--salmon);border:none;color:#FFFFFF;width:40px;height:40px;border-radius:50%;font-size:0.95rem;cursor:pointer;transition:var(--transition);align-items:center;justify-content:center}
 .menu-toggle:hover{transform:scale(1.08)}
 
@@ -94,19 +93,9 @@ nav a.active{background:var(--salmon);color:#FFFFFF;box-shadow:0 6px 14px rgba(2
 .floating-badge.badge-2{bottom:26px;right:-14px;transform:rotate(3deg)}
 .floating-badge.badge-3{top:50%;left:-22px;transform:rotate(-2deg)}
 
-/* Sections - Compact padding for tighter flow */
-.section{
-  position:relative;
-  padding:70px 0 50px;
-  scroll-margin-top:100px;
-}
-.section > .container{
-  width:92%;
-  max-width:1140px;
-  margin:0 auto;
-  position:relative;
-  z-index:2;
-}
+/* Sections */
+.section{position:relative;padding:70px 0 50px;scroll-margin-top:100px}
+.section > .container{width:92%;max-width:1140px;margin:0 auto;position:relative;z-index:2}
 .section-header{text-align:center;max-width:660px;margin:0 auto 28px}
 .section-title{font-size:2.4rem;font-weight:700;margin-bottom:12px;color:var(--text-dark);line-height:1.05}
 .section-title .script{font-family:var(--font-script);text-transform:none;color:var(--salmon);font-size:2.75rem;letter-spacing:0;display:inline-block;transform:rotate(-2deg);margin:0 4px}
@@ -345,7 +334,6 @@ PawStay
 </div>
 </header>
 
-<!-- HOME / HERO -->
 <section class="hero" id="home">
 <div class="hero-inner">
 <div class="hero-text">
@@ -373,7 +361,6 @@ PawStay
 </div>
 </section>
 
-<!-- SERVICES -->
 <section class="section" id="services">
 <div class="container">
 <div class="section-header reveal">
@@ -434,7 +421,6 @@ Not sure which service fits your pet?
 </div>
 </section>
 
-<!-- WHY US -->
 <section class="section" id="why">
 <div class="container">
 <div class="section-header reveal">
@@ -467,7 +453,6 @@ Not sure which service fits your pet?
 </div>
 </section>
 
-<!-- TESTIMONIALS -->
 <section class="section" id="reviews">
 <div class="container">
 <div class="section-header reveal">
@@ -488,7 +473,6 @@ Not sure which service fits your pet?
 </div>
 </section>
 
-<!-- FAQ -->
 <section class="section" id="faq">
 <div class="container">
 <div class="section-header reveal">
@@ -521,7 +505,6 @@ Not sure which service fits your pet?
 </div>
 </section>
 
-<!-- BOOKING -->
 <section class="section" id="book">
 <div class="container">
 <div class="section-header reveal">
@@ -562,7 +545,6 @@ Questions before booking?
 </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
 <div class="footer-blob"><i class="fas fa-paw"></i></div>
 <div class="container">
@@ -610,9 +592,8 @@ const mainNav=document.getElementById('mainNav');
 function closeMobileMenu(){mainNav.classList.remove('active');const icon=menuToggle.querySelector('i');icon.classList.add('fa-bars');icon.classList.remove('fa-times')}
 menuToggle.addEventListener('click',()=>{mainNav.classList.toggle('active');const icon=menuToggle.querySelector('i');icon.classList.toggle('fa-bars');icon.classList.toggle('fa-times')});
 
+/* Smooth scroll only — no highlight tracking */
 const routeIds=['home','services','why','reviews','faq','book'];
-const navLinks=document.querySelectorAll('nav a[data-route]');
-
 document.querySelectorAll('[data-route]').forEach(el=>{
   el.addEventListener('click',function(e){
     const id=this.dataset.route;
@@ -626,18 +607,7 @@ document.querySelectorAll('[data-route]').forEach(el=>{
   })
 });
 
-const sections=routeIds.map(id=>document.getElementById(id)).filter(Boolean);
-function updateActiveNav(){
-  const scrollPos=window.scrollY+180;
-  let current=sections[0].id;
-  sections.forEach(sec=>{if(sec.offsetTop<=scrollPos)current=sec.id});
-  if(window.innerHeight+window.scrollY>=document.body.scrollHeight-4){current=sections[sections.length-1].id}
-  navLinks.forEach(link=>{link.classList.toggle('active',link.dataset.route===current)})
-}
-window.addEventListener('scroll',updateActiveNav,{passive:true});
-window.addEventListener('resize',updateActiveNav);
-updateActiveNav();
-
+/* Reveal on scroll */
 const revealEls=document.querySelectorAll('.reveal');
 if('IntersectionObserver' in window&&!prefersReducedMotion){
   const revealObserver=new IntersectionObserver(entries=>{
@@ -650,10 +620,12 @@ if('IntersectionObserver' in window&&!prefersReducedMotion){
   revealEls.forEach(el=>el.classList.add('active'))
 }
 
+/* FAQ accordion */
 document.querySelectorAll('.faq-question').forEach(btn=>{
   btn.addEventListener('click',()=>{btn.parentElement.classList.toggle('open')})
 });
 
+/* Booking date min: 3 days from today */
 const bookingDate=document.getElementById('booking_date');
 if(bookingDate){
   const today=new Date();
@@ -665,6 +637,7 @@ if(bookingDate){
   bookingDate.min=`${yyyy}-${mm}-${dd}`
 }
 
+/* Testimonial arrows */
 const row=document.getElementById('testimonialsRow');
 const prevBtn=document.getElementById('testimonialPrev');
 const nextBtn=document.getElementById('testimonialNext');
@@ -690,6 +663,7 @@ if(row&&prevBtn&&nextBtn){
   updateArrows()
 }
 
+/* Initial hash scroll */
 window.addEventListener('load',()=>{
   const hash=location.hash.substring(1);
   if(hash&&routeIds.includes(hash)){
