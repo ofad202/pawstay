@@ -133,14 +133,14 @@
     .floating-badge.badge-3 { top: 50%; left: -22px; transform: rotate(-2deg); }
 
     /* SECTIONS */
-    .section { padding: 38px 0; position: relative; }
+    .section { padding: 44px 0; position: relative; }
     .section > .container { position: relative; z-index: 2; }
-    .section-header { text-align: center; max-width: 660px; margin: 0 auto 26px; }
-    .section-badge { display: inline-flex; align-items: center; gap: 7px; font-family: var(--font-display); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--salmon-dark); background: var(--salmon-light); padding: 6px 15px; border-radius: 50px; margin-bottom: 13px; }
+    .section-header { text-align: center; max-width: 660px; margin: 0 auto 32px; }
+    .section-badge { display: inline-flex; align-items: center; gap: 7px; font-family: var(--font-display); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--salmon-dark); background: var(--salmon-light); padding: 6px 15px; border-radius: 50px; margin-bottom: 14px; }
     .section-badge i { font-size: 0.78rem; }
-    .section-title { font-size: 2.15rem; font-weight: 700; margin-bottom: 10px; color: var(--text-dark); line-height: 1.05; }
-    .section-title .script { font-family: var(--font-script); text-transform: none; color: var(--salmon); font-size: 2.45rem; letter-spacing: 0; display: inline-block; transform: rotate(-2deg); margin: 0 4px; }
-    .section-desc { font-size: 0.96rem; color: var(--text-body); line-height: 1.6; }
+    .section-title { font-size: 2.4rem; font-weight: 700; margin-bottom: 12px; color: var(--text-dark); line-height: 1.05; }
+    .section-title .script { font-family: var(--font-script); text-transform: none; color: var(--salmon); font-size: 2.75rem; letter-spacing: 0; display: inline-block; transform: rotate(-2deg); margin: 0 4px; }
+    .section-desc { font-size: 1rem; color: var(--text-body); line-height: 1.65; }
 
     /* SERVICES */
     .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; align-items: stretch; }
@@ -171,7 +171,7 @@
     .service-card.featured .service-features li { color: var(--text-dark); }
     .service-btn { width: 100%; justify-content: center; margin-top: auto; padding: 12px 20px; }
 
-    .not-sure-helper { margin-top: 18px; text-align: center; font-size: 0.88rem; color: var(--text-body); }
+    .not-sure-helper { margin-top: 22px; text-align: center; font-size: 0.88rem; color: var(--text-body); }
     .not-sure-helper a { color: var(--salmon-dark); font-weight: 600; font-family: var(--font-display); letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.78rem; display: inline-flex; align-items: center; gap: 6px; padding: 3px 6px; transition: var(--transition); border-bottom: 2px solid transparent; }
     .not-sure-helper a:hover { border-bottom-color: var(--salmon); gap: 10px; }
 
@@ -257,10 +257,8 @@
     .testimonial-arrow.prev { left: 0; }
     .testimonial-arrow.next { right: 0; }
 
-    /* BOOK SECTION */
-    .book-section { padding: 38px 0 56px; position: relative; }
-
-    .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 32px; align-items: start; }
+    /* FAQ SECTION */
+    .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
     .faq-item { background: var(--bg-card); border-radius: 14px; transition: var(--transition); overflow: hidden; box-shadow: 0 3px 12px rgba(69,53,40,0.05); border: 2px solid transparent; }
     .faq-item:hover { border-color: var(--gold-light); }
     .faq-item.open { border-color: var(--salmon); box-shadow: 0 10px 26px rgba(232,139,120,0.15); }
@@ -341,10 +339,10 @@
       .hero h1 { font-size: 2.2rem; }
       .hero h1 .script { font-size: 2.5rem; }
       .hero-stats { gap: 18px; }
-      .section, .book-section { padding: 28px 0; }
-      .section-title { font-size: 1.75rem; }
-      .section-title .script { font-size: 2rem; }
-      .section-header { margin-bottom: 22px; }
+      .section { padding: 32px 0; }
+      .section-title { font-size: 1.9rem; }
+      .section-title .script { font-size: 2.2rem; }
+      .section-header { margin-bottom: 24px; }
       .services-grid, .why-grid { grid-template-columns: 1fr; gap: 18px; }
       .service-card.featured { transform: scale(1); }
       .service-card.featured:hover { transform: translateY(-5px); }
@@ -365,8 +363,8 @@
       .hero h1 .script { font-size: 2.1rem; }
       .hero-actions { flex-direction: column; width: 100%; }
       .hero-actions .btn { width: 100%; justify-content: center; }
-      .section-title { font-size: 1.5rem; }
-      .section-title .script { font-size: 1.75rem; }
+      .section-title { font-size: 1.6rem; }
+      .section-title .script { font-size: 1.85rem; }
       .pet-blob { width: 240px; height: 240px; }
       .service-price-amount { font-size: 1.9rem; }
       .faq-question { padding: 12px 16px; font-size: 0.78rem; }
@@ -396,6 +394,7 @@
           <li><a href="#services">Services</a></li>
           <li><a href="#why">Why Us</a></li>
           <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#faq">FAQ</a></li>
           <li><a href="#book">Book Now</a></li>
         </ul>
       </nav>
@@ -438,9 +437,8 @@
   <section class="section" id="services">
     <div class="container">
       <div class="section-header reveal">
-        <div class="section-badge"><i class="fas fa-tag"></i> Services & Pricing</div>
-        <h2 class="section-title">Simple, <span class="script">honest rates</span></h2>
-        <p class="section-desc">No hidden fees. Multi-pet discounts available. Pick the care that fits your pet's needs.</p>
+        <h2 class="section-title">Services & <span class="script">Pricing</span></h2>
+        <p class="section-desc">Simple, honest rates — no hidden fees. Multi-pet discounts available.</p>
       </div>
       <div class="services-grid reveal">
 
@@ -522,9 +520,8 @@
   <section class="section" id="why">
     <div class="container">
       <div class="section-header reveal">
-        <div class="section-badge"><i class="fas fa-heart"></i> Why PawStay</div>
-        <h2 class="section-title">More than <span class="script">just sitting</span></h2>
-        <p class="section-desc">Every pet gets personal attention, genuine love, and professional care.</p>
+        <h2 class="section-title">Why <span class="script">PawStay</span></h2>
+        <p class="section-desc">More than just sitting — every pet gets personal attention, genuine love, and professional care.</p>
       </div>
 
       <div class="why-grid reveal">
@@ -574,13 +571,12 @@
     </div>
   </section>
 
-  <!-- TESTIMONIALS WITH ARROWS -->
+  <!-- TESTIMONIALS -->
   <section class="section" id="reviews">
     <div class="container">
       <div class="section-header reveal">
-        <div class="section-badge"><i class="fas fa-quote-left"></i> Testimonials</div>
-        <h2 class="section-title">What pet parents <span class="script">are saying</span></h2>
-        <p class="section-desc">Real reviews from clients who trust PawStay with their fur babies.</p>
+        <h2 class="section-title"><span class="script">Real</span> Testimonials</h2>
+        <p class="section-desc">What pet parents are saying about PawStay.</p>
       </div>
     </div>
 
@@ -649,13 +645,12 @@
     </div>
   </section>
 
-  <!-- BOOK: FAQ + FORM -->
-  <section class="book-section" id="book">
+  <!-- FAQ -->
+  <section class="section" id="faq">
     <div class="container">
       <div class="section-header reveal">
-        <div class="section-badge"><i class="fas fa-question-circle"></i> FAQ &amp; Booking</div>
-        <h2 class="section-title">Questions? <span class="script">Let's book your sitter.</span></h2>
-        <p class="section-desc">Quick answers below — then fill out the form and we'll be in touch shortly.</p>
+        <h2 class="section-title">Common <span class="script">FAQ</span></h2>
+        <p class="section-desc">Quick answers to the questions we hear most.</p>
       </div>
 
       <div class="faq-grid reveal">
@@ -713,6 +708,16 @@
             <p>Yes — <strong>cash on completion</strong> is accepted. For overnight or multi-day bookings, we recommend GCash, Maya, or bank transfer.</p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section class="section" id="book">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2 class="section-title">Easy <span class="script">Booking</span></h2>
+        <p class="section-desc">Fill out the form and we'll be in touch shortly.</p>
       </div>
 
       <div class="contact-form reveal">
