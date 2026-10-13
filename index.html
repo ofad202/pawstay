@@ -41,6 +41,7 @@
       background-position: center top;
       background-repeat: no-repeat;
       background-attachment: fixed;
+      overflow-x: hidden;
     }
 
     body {
@@ -81,25 +82,32 @@
     .container { width: 92%; max-width: 1140px; margin: 0 auto; position: relative; z-index: 2; }
 
     /* ============ VIEW SYSTEM ============ */
-    .view {
-      display: none;
-      flex: 1;
-    }
-    .view.active {
-      display: block;
-      animation: viewFadeIn 0.4s ease;
-    }
+    .view { display: none; flex: 1; }
+    .view.active { display: block; animation: viewFadeIn 0.45s ease; }
     .hero.view.active { display: flex; }
 
     @keyframes viewFadeIn {
-      from { opacity: 0; transform: translateY(12px); }
+      from { opacity: 0; transform: translateY(14px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
+    /* Section views are flex columns so the scroll indicator can sit at the bottom */
     .section.view {
+      display: none;
       padding-top: 130px;
-      padding-bottom: 80px;
-      min-height: calc(100vh - 140px);
+      padding-bottom: 40px;
+      min-height: 100vh;
+    }
+
+    .section.view.active {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .section.view > .container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
     }
 
     /* Header */
@@ -164,6 +172,51 @@
     .section-title { font-size: 2.4rem; font-weight: 700; margin-bottom: 12px; color: var(--text-dark); line-height: 1.05; }
     .section-title .script { font-family: var(--font-script); text-transform: none; color: var(--salmon); font-size: 2.75rem; letter-spacing: 0; display: inline-block; transform: rotate(-2deg); margin: 0 4px; }
     .section-desc { font-size: 1rem; color: var(--text-body); line-height: 1.65; }
+
+    /* ============ SCROLL INDICATOR ============ */
+    .scroll-indicator {
+      margin-top: auto;
+      padding-top: 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-display);
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      opacity: 0.55;
+      pointer-events: none;
+      user-select: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .scroll-indicator i {
+      font-size: 0.85rem;
+      color: var(--salmon);
+      animation: scroll-bob 2.2s ease-in-out infinite;
+    }
+
+    @keyframes scroll-bob {
+      0%, 100% { transform: translateY(-3px); opacity: 0.6; }
+      50% { transform: translateY(3px); opacity: 1; }
+    }
+
+    /* Hero's indicator is absolutely positioned at the bottom */
+    .hero .scroll-indicator {
+      position: absolute;
+      bottom: 26px;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+      padding-top: 0;
+      z-index: 5;
+    }
+
+    /* On the last view (Booking), no indicator */
+    #book .scroll-indicator { display: none; }
 
     /* SERVICES */
     .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; align-items: stretch; }
@@ -363,10 +416,11 @@
       .hero h1 { font-size: 2.2rem; }
       .hero h1 .script { font-size: 2.5rem; }
       .hero-stats { gap: 18px; }
-      .section.view { padding-top: 110px; padding-bottom: 50px; min-height: auto; }
+      .section.view { padding-top: 110px; padding-bottom: 40px; min-height: auto; }
       .section-title { font-size: 1.9rem; }
       .section-title .script { font-size: 2.2rem; }
       .section-header { margin-bottom: 28px; }
+      .scroll-indicator { padding-top: 36px; }
       .services-grid, .why-grid { grid-template-columns: 1fr; gap: 18px; }
       .service-card.featured { transform: scale(1); }
       .service-card.featured:hover { transform: translateY(-5px); }
@@ -398,7 +452,7 @@
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
-      .pet-blob, .hero-eyebrow i { animation: none !important; }
+      .pet-blob, .hero-eyebrow i, .scroll-indicator i { animation: none !important; }
     }
   </style>
 </head>
@@ -454,6 +508,10 @@
         <div class="floating-badge badge-2"><i class="fas fa-camera"></i><span>Daily Photo<br>Updates</span></div>
         <div class="floating-badge badge-3"><i class="fas fa-heart"></i><span>Pet-First<br>Care</span></div>
       </div>
+    </div>
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <i class="fas fa-chevron-down"></i>
     </div>
   </section>
 
@@ -537,6 +595,11 @@
           <i class="fas fa-comment-dots"></i> Message us on Messenger
         </a>
       </div>
+
+      <div class="scroll-indicator">
+        <span>Scroll</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
     </div>
   </section>
 
@@ -592,6 +655,11 @@
           </div>
         </div>
       </div>
+
+      <div class="scroll-indicator">
+        <span>Scroll</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
     </div>
   </section>
 
@@ -604,7 +672,7 @@
       </div>
     </div>
 
-    <div class="container">
+    <div class="container" style="flex: 1; display: flex; flex-direction: column;">
       <div class="testimonials-wrapper">
         <button class="testimonial-arrow prev" id="testimonialPrev" aria-label="Previous review">
           <i class="fas fa-chevron-left"></i>
@@ -665,6 +733,11 @@
         <button class="testimonial-arrow next" id="testimonialNext" aria-label="Next review">
           <i class="fas fa-chevron-right"></i>
         </button>
+      </div>
+
+      <div class="scroll-indicator">
+        <span>Scroll</span>
+        <i class="fas fa-chevron-down"></i>
       </div>
     </div>
   </section>
@@ -732,6 +805,11 @@
             <p>Yes — <strong>cash on completion</strong> is accepted. For overnight or multi-day bookings, we recommend GCash, Maya, or bank transfer.</p>
           </div>
         </div>
+      </div>
+
+      <div class="scroll-indicator">
+        <span>Scroll</span>
+        <i class="fas fa-chevron-down"></i>
       </div>
     </div>
   </section>
@@ -827,10 +905,17 @@
           </button>
         </form>
       </div>
+
+      <div class="not-sure-helper" style="margin-top: 32px;">
+        Questions before booking?
+        <a href="https://m.me/PawStayPH" target="_blank">
+          <i class="fas fa-comment-dots"></i> Message us on Messenger
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- FOOTER (always visible) -->
+  <!-- FOOTER -->
   <footer>
     <div class="footer-blob"><i class="fas fa-paw"></i></div>
     <div class="container">
@@ -907,11 +992,12 @@
       icon.classList.toggle('fa-times');
     });
 
-    // ============ VIEW SYSTEM (with working browser history) ============
+    // ============ VIEW SYSTEM ============
     const validRoutes = ['home', 'services', 'why', 'reviews', 'faq', 'book'];
     const defaultRoute = 'home';
+    let currentRoute = defaultRoute;
+    let transitioning = false;
 
-    // Reveal observer (shared)
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -924,41 +1010,54 @@
     function showView(route) {
       if (!validRoutes.includes(route)) route = defaultRoute;
 
-      // Hide all views, show target
+      transitioning = true;
+      setTimeout(() => { transitioning = false; }, 800);
+
       document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
       const target = document.getElementById(route);
       if (target) target.classList.add('active');
 
-      // Sync nav highlight
       document.querySelectorAll('nav a[data-route]').forEach(l => {
         l.classList.toggle('active', l.dataset.route === route);
       });
 
-      // Restart reveal animations for this view
       target.querySelectorAll('.reveal').forEach(el => {
         el.classList.remove('active');
         void el.offsetWidth;
       });
       target.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-      // Reset page scroll
       window.scrollTo({ top: 0, behavior: 'auto' });
+      currentRoute = route;
     }
 
     function navigateTo(route, pushHistory = true) {
       if (!validRoutes.includes(route)) route = defaultRoute;
+      if (route === currentRoute) return;
 
       if (pushHistory) {
-        // Push new hash so back/forward works
         if (location.hash !== '#' + route) {
           history.pushState({ route }, '', '#' + route);
         }
       }
-
       showView(route);
     }
 
-    // Handle all clickable elements with data-route
+    function goToNext() {
+      const idx = validRoutes.indexOf(currentRoute);
+      if (idx < validRoutes.length - 1) {
+        navigateTo(validRoutes[idx + 1], true);
+      }
+    }
+
+    function goToPrev() {
+      const idx = validRoutes.indexOf(currentRoute);
+      if (idx > 0) {
+        navigateTo(validRoutes[idx - 1], true);
+      }
+    }
+
+    // Click navigation
     document.querySelectorAll('[data-route]').forEach(el => {
       el.addEventListener('click', function(e) {
         e.preventDefault();
@@ -968,20 +1067,92 @@
       });
     });
 
-    // Handle browser back/forward
+    // Browser back/forward
     window.addEventListener('popstate', (e) => {
       const route = (e.state && e.state.route) ? e.state.route : (location.hash ? location.hash.substring(1) : defaultRoute);
       showView(route);
     });
 
-    // Initialize on page load
+    // ============ SCROLL-DRIVEN NAVIGATION ============
+    function atBottom() {
+      const scrollY = Math.max(0, window.scrollY);
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      return scrollY >= maxScroll - 30;
+    }
+
+    function atTop() {
+      return Math.max(0, window.scrollY) <= 30;
+    }
+
+    // Desktop wheel
+    window.addEventListener('wheel', (e) => {
+      if (transitioning) {
+        if (atBottom() && e.deltaY > 0) e.preventDefault();
+        if (atTop() && e.deltaY < 0) e.preventDefault();
+        return;
+      }
+      if (Math.abs(e.deltaY) < 8) return;
+
+      if (e.deltaY > 0 && atBottom()) {
+        e.preventDefault();
+        goToNext();
+      } else if (e.deltaY < 0 && atTop()) {
+        e.preventDefault();
+        goToPrev();
+      }
+    }, { passive: false });
+
+    // Mobile touch
+    let touchStartY = 0;
+    let touchStartTime = 0;
+
+    window.addEventListener('touchstart', (e) => {
+      touchStartY = e.touches[0].clientY;
+      touchStartTime = Date.now();
+    }, { passive: true });
+
+    window.addEventListener('touchend', (e) => {
+      if (transitioning) return;
+
+      const touchEndY = e.changedTouches[0].clientY;
+      const swipeDistance = touchStartY - touchEndY; // positive = swiped up
+      const duration = Date.now() - touchStartTime;
+
+      // Only handle quick swipes (a slow drag is probably reading/scrolling content)
+      if (duration > 400 || Math.abs(swipeDistance) < 60) return;
+
+      if (swipeDistance > 0 && atBottom()) {
+        goToNext();
+      } else if (swipeDistance < 0 && atTop()) {
+        goToPrev();
+      }
+    }, { passive: true });
+
+    // Keyboard
+    window.addEventListener('keydown', (e) => {
+      if (transitioning) return;
+
+      if (['PageDown', 'ArrowDown', ' '].includes(e.key)) {
+        if (atBottom()) {
+          e.preventDefault();
+          goToNext();
+        }
+      } else if (['PageUp', 'ArrowUp'].includes(e.key)) {
+        if (atTop()) {
+          e.preventDefault();
+          goToPrev();
+        }
+      }
+    });
+
+    // Initialize
     const initialRoute = location.hash ? location.hash.substring(1) : defaultRoute;
     if (location.hash) {
-      // Replace so back doesn't loop
       history.replaceState({ route: initialRoute }, '', '#' + initialRoute);
     } else {
       history.replaceState({ route: defaultRoute }, '', '#' + defaultRoute);
     }
+    currentRoute = '';
     showView(initialRoute);
 
     // FAQ accordion
