@@ -42,6 +42,7 @@
       background-repeat: no-repeat;
       background-attachment: fixed;
       overflow-x: hidden;
+      overscroll-behavior: none;
     }
 
     body {
@@ -55,6 +56,7 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      overscroll-behavior: none;
     }
 
     body::before {
@@ -91,12 +93,15 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* Section views are flex columns so the scroll indicator can sit at the bottom */
     .section.view {
       display: none;
       padding-top: 130px;
       padding-bottom: 40px;
       min-height: 100vh;
+    }
+
+    @supports (min-height: 100svh) {
+      .section.view { min-height: 100svh; }
     }
 
     .section.view.active {
@@ -134,7 +139,10 @@
     .menu-toggle:hover { transform: scale(1.08); }
 
     /* HERO */
-    .hero { padding: 108px 0 28px; position: relative; overflow: hidden; align-items: center; min-height: 100vh; }
+    .hero { padding: 108px 0 60px; position: relative; overflow: hidden; align-items: center; min-height: 100vh; }
+    @supports (min-height: 100svh) {
+      .hero { min-height: 100svh; }
+    }
     .hero-inner { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 44px; align-items: center; position: relative; z-index: 2; width: 92%; max-width: 1140px; margin: 0 auto; }
     .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; color: var(--salmon-dark); background: var(--salmon-light); padding: 6px 15px; border-radius: 50px; margin-bottom: 16px; }
     .hero-eyebrow i { font-size: 0.78rem; animation: heart-beat 3s ease-in-out infinite; }
@@ -173,7 +181,7 @@
     .section-title .script { font-family: var(--font-script); text-transform: none; color: var(--salmon); font-size: 2.75rem; letter-spacing: 0; display: inline-block; transform: rotate(-2deg); margin: 0 4px; }
     .section-desc { font-size: 1rem; color: var(--text-body); line-height: 1.65; }
 
-    /* ============ SCROLL INDICATOR ============ */
+    /* SCROLL INDICATOR */
     .scroll-indicator {
       margin-top: auto;
       padding-top: 48px;
@@ -192,31 +200,128 @@
       user-select: none;
       transition: opacity 0.3s ease;
     }
-
     .scroll-indicator i {
       font-size: 0.85rem;
       color: var(--salmon);
       animation: scroll-bob 2.2s ease-in-out infinite;
     }
-
     @keyframes scroll-bob {
       0%, 100% { transform: translateY(-3px); opacity: 0.6; }
       50% { transform: translateY(3px); opacity: 1; }
     }
-
-    /* Hero's indicator is absolutely positioned at the bottom */
     .hero .scroll-indicator {
       position: absolute;
-      bottom: 26px;
+      bottom: 22px;
       left: 50%;
       transform: translateX(-50%);
       margin-top: 0;
       padding-top: 0;
       z-index: 5;
     }
-
-    /* On the last view (Booking), no indicator */
     #book .scroll-indicator { display: none; }
+
+    /* ============ PROMISE BLOCK (Why Us) ============ */
+    .promise {
+      background: linear-gradient(135deg, var(--salmon-light) 0%, var(--bg-card) 100%);
+      border: 1.5px solid rgba(232,139,120,0.3);
+      border-radius: 24px;
+      padding: 32px 36px;
+      margin-bottom: 24px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 24px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .promise::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(229,180,77,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .promise-icon {
+      width: 68px; height: 68px;
+      border-radius: 50%;
+      background: var(--salmon);
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.55rem;
+      box-shadow: 0 12px 28px rgba(232,139,120,0.4);
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .promise-content { position: relative; z-index: 1; }
+    .promise-label {
+      font-family: var(--font-script);
+      font-size: 1.2rem;
+      color: var(--salmon);
+      display: block;
+      margin-bottom: 2px;
+      transform: rotate(-2deg);
+      transform-origin: left;
+    }
+    .promise-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+    .promise-text {
+      font-size: 0.92rem;
+      line-height: 1.65;
+      color: var(--text-body);
+      margin-bottom: 10px;
+    }
+    .promise-signature {
+      font-family: var(--font-script);
+      font-size: 1.15rem;
+      color: var(--salmon-dark);
+    }
+
+    /* ============ STATS STRIP (Why Us) ============ */
+    .stats-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(238,220,200,0.6);
+      border-radius: 16px;
+      padding: 20px 14px;
+      text-align: center;
+      transition: var(--transition);
+    }
+    .stat-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(232,139,120,0.15);
+      border-color: var(--salmon);
+    }
+    .stat-card strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-card span {
+      font-family: var(--font-display);
+      font-size: 0.66rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
 
     /* SERVICES */
     .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; align-items: stretch; }
@@ -264,7 +369,6 @@
 
     /* TESTIMONIALS */
     .testimonials-wrapper { position: relative; }
-
     .testimonials-row {
       display: flex;
       gap: 18px;
@@ -333,8 +437,32 @@
     .testimonial-arrow.prev { left: 0; }
     .testimonial-arrow.next { right: 0; }
 
-    /* FAQ SECTION */
+    /* FAQ */
     .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+
+    .faq-category {
+      grid-column: 1 / -1;
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--salmon-dark);
+      margin-top: 20px;
+      margin-bottom: 4px;
+      padding-left: 4px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .faq-category:first-child { margin-top: 0; }
+    .faq-category::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
     .faq-item { background: var(--bg-card); border-radius: 14px; transition: var(--transition); overflow: hidden; box-shadow: 0 3px 12px rgba(69,53,40,0.05); border: 2px solid transparent; }
     .faq-item:hover { border-color: var(--gold-light); }
     .faq-item.open { border-color: var(--salmon); box-shadow: 0 10px 26px rgba(232,139,120,0.15); }
@@ -343,8 +471,62 @@
     .faq-icon-circle { width: 26px; height: 26px; border-radius: 50%; background: var(--salmon-light); color: var(--salmon); display: flex; align-items: center; justify-content: center; font-size: 0.66rem; flex-shrink: 0; transition: var(--transition); }
     .faq-item.open .faq-icon-circle { background: var(--salmon); color: #FFFFFF; transform: rotate(180deg); }
     .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease; padding: 0 20px; }
-    .faq-item.open .faq-answer { max-height: 400px; padding: 0 20px 16px; }
+    .faq-item.open .faq-answer { max-height: 500px; padding: 0 20px 16px; }
     .faq-answer p { font-size: 0.87rem; color: var(--text-body); line-height: 1.65; }
+
+    /* FAQ CONTACT */
+    .faq-contact {
+      background: var(--bg-card);
+      border: 1.5px dashed var(--border);
+      border-radius: 20px;
+      padding: 26px 28px;
+      margin-top: 32px;
+      text-align: center;
+    }
+    .faq-contact h4 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+    .faq-contact p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+    .faq-contact-options {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .faq-contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      border-radius: 50px;
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: var(--bg-main);
+      color: var(--text-dark);
+      border: 1.5px solid var(--border);
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    .faq-contact-btn:hover {
+      background: var(--salmon);
+      color: #fff;
+      border-color: var(--salmon);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(232,139,120,0.3);
+    }
+    .faq-contact-btn i { font-size: 0.8rem; }
 
     /* FORM */
     .contact-form { background: var(--bg-card); padding: 34px 38px; border-radius: 24px; box-shadow: 0 14px 40px rgba(69,53,40,0.1); border: 1px solid rgba(238,220,200,0.5); max-width: 840px; margin: 0 auto; }
@@ -412,15 +594,21 @@
       nav ul { flex-direction: column; gap: 3px; padding: 0; }
       nav ul li { width: 100%; }
       nav a { display: block; padding: 12px 20px; border-radius: 50px; text-align: center; }
-      .hero { padding: 96px 0 40px; min-height: auto; }
+      .hero { padding: 96px 0 80px; }
       .hero h1 { font-size: 2.2rem; }
       .hero h1 .script { font-size: 2.5rem; }
       .hero-stats { gap: 18px; }
-      .section.view { padding-top: 110px; padding-bottom: 40px; min-height: auto; }
+      .section.view { padding-top: 100px; padding-bottom: 30px; }
       .section-title { font-size: 1.9rem; }
       .section-title .script { font-size: 2.2rem; }
       .section-header { margin-bottom: 28px; }
-      .scroll-indicator { padding-top: 36px; }
+      .scroll-indicator { padding-top: 32px; }
+
+      .promise { grid-template-columns: 1fr; text-align: center; padding: 26px 22px; gap: 16px; }
+      .promise-icon { margin: 0 auto; }
+      .promise-label { transform-origin: center; }
+      .stats-strip { grid-template-columns: repeat(2, 1fr); }
+
       .services-grid, .why-grid { grid-template-columns: 1fr; gap: 18px; }
       .service-card.featured { transform: scale(1); }
       .service-card.featured:hover { transform: translateY(-5px); }
@@ -434,6 +622,9 @@
       .testimonial-card { flex: 0 0 280px; }
       .testimonial-arrow { display: none; }
       .testimonials-row { padding: 14px 6px 22px; }
+      .faq-contact { padding: 22px 20px; }
+      .faq-contact-options { flex-direction: column; }
+      .faq-contact-btn { width: 100%; justify-content: center; }
     }
 
     @media (max-width: 480px) {
@@ -611,6 +802,26 @@
         <p class="section-desc">More than just sitting — every pet gets personal attention, genuine love, and professional care.</p>
       </div>
 
+      <!-- Our Promise -->
+      <div class="promise">
+        <div class="promise-icon"><i class="fas fa-heart"></i></div>
+        <div class="promise-content">
+          <span class="promise-label">our promise</span>
+          <h3 class="promise-title">Every pet treated like our own</h3>
+          <p class="promise-text">We don't just watch your pets — we build a real relationship with them. From the first meet &amp; greet to the last photo update, you'll always know exactly how your fur baby is doing. If anything feels off, we tell you. If they're happy, we celebrate with you.</p>
+          <span class="promise-signature">— Jose, founder of PawStay</span>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-strip">
+        <div class="stat-card"><strong>500+</strong><span>Happy Pets</span></div>
+        <div class="stat-card"><strong>4.9★</strong><span>Avg Rating</span></div>
+        <div class="stat-card"><strong>7 Days</strong><span>Available</span></div>
+        <div class="stat-card"><strong>100%</strong><span>Insured</span></div>
+      </div>
+
+      <!-- Why cards -->
       <div class="why-grid">
         <div class="why-item">
           <div class="why-icon-badge"><i class="fas fa-user-shield"></i></div>
@@ -751,6 +962,10 @@
       </div>
 
       <div class="faq-grid">
+
+        <!-- Category: Booking & Payment -->
+        <div class="faq-category">Booking &amp; Payment</div>
+
         <div class="faq-item">
           <button class="faq-question">
             Are your sitters background-checked?
@@ -760,6 +975,7 @@
             <p>Yes. Every PawStay sitter goes through a background check, reference verification, and an in-person interview.</p>
           </div>
         </div>
+
         <div class="faq-item">
           <button class="faq-question">
             Do you offer a free meet-and-greet?
@@ -769,6 +985,7 @@
             <p>Absolutely. Before your first booking, we schedule a free meet-and-greet so you, your pet, and your sitter can get to know each other.</p>
           </div>
         </div>
+
         <div class="faq-item">
           <button class="faq-question">
             How far in advance should I book?
@@ -778,6 +995,7 @@
             <p>We recommend booking at least <strong>3–5 days in advance</strong> for regular visits, and <strong>1–2 weeks in advance</strong> for overnight stays or holiday periods.</p>
           </div>
         </div>
+
         <div class="faq-item">
           <button class="faq-question">
             How do I pay for the service?
@@ -787,6 +1005,7 @@
             <p>After we confirm your booking, you can pay via <strong>GCash, Maya, Bank Transfer, or Cash</strong>. We'll send the exact payment details with your confirmation.</p>
           </div>
         </div>
+
         <div class="faq-item">
           <button class="faq-question">
             When do I need to pay?
@@ -796,14 +1015,70 @@
             <p>We require a <strong>50% downpayment</strong> to reserve your slot. The remaining balance is settled after the service is completed.</p>
           </div>
         </div>
+
         <div class="faq-item">
           <button class="faq-question">
-            Do you accept cash?
+            Can I cancel or reschedule?
             <span class="faq-icon-circle"><i class="fas fa-chevron-down"></i></span>
           </button>
           <div class="faq-answer">
-            <p>Yes — <strong>cash on completion</strong> is accepted. For overnight or multi-day bookings, we recommend GCash, Maya, or bank transfer.</p>
+            <p>Yes. Cancellations or reschedules made <strong>at least 48 hours in advance</strong> are free. Same-day changes may incur a small fee since your sitter's time is reserved just for you.</p>
           </div>
+        </div>
+
+        <!-- Category: Care & Safety -->
+        <div class="faq-category">Care &amp; Safety</div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            What if my pet needs medication?
+            <span class="faq-icon-circle"><i class="fas fa-chevron-down"></i></span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes — we can administer oral and topical medications, including daily pills and insulin shots. We'll confirm exact dosages and timing during the meet &amp; greet and log every dose.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            What if there's an emergency?
+            <span class="faq-icon-circle"><i class="fas fa-chevron-down"></i></span>
+          </button>
+          <div class="faq-answer">
+            <p>We contact you immediately. If you're unreachable, we use your vet's info and emergency contact on file. In a real emergency, we'll take your pet to the nearest 24-hour clinic and stay with them until you arrive.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            Do you handle senior or special-needs pets?
+            <span class="faq-icon-circle"><i class="fas fa-chevron-down"></i></span>
+          </button>
+          <div class="faq-answer">
+            <p>Absolutely. A large part of our work is with senior pets and pets who need extra patience. We're trained to handle mobility issues, dietary restrictions, and gentle-care requirements.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            What if my pet gets anxious without me?
+            <span class="faq-icon-circle"><i class="fas fa-chevron-down"></i></span>
+          </button>
+          <div class="faq-answer">
+            <p>We plan for this during the meet &amp; greet. We follow your pet's routine closely, bring familiar comforts, and send extra updates on the first day. Most pets settle within 24 hours with the right routine.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Still have questions -->
+      <div class="faq-contact">
+        <h4>Still have questions?</h4>
+        <p>We're happy to help — reach out any time.</p>
+        <div class="faq-contact-options">
+          <a href="https://m.me/PawStayPH" target="_blank" class="faq-contact-btn"><i class="fab fa-facebook-messenger"></i> Messenger</a>
+          <a href="tel:+639535216790" class="faq-contact-btn"><i class="fas fa-phone"></i> Call Us</a>
+          <a href="mailto:joseombrog93@gmail.com" class="faq-contact-btn"><i class="fas fa-envelope"></i> Email</a>
         </div>
       </div>
 
@@ -996,7 +1271,8 @@
     const validRoutes = ['home', 'services', 'why', 'reviews', 'faq', 'book'];
     const defaultRoute = 'home';
     let currentRoute = defaultRoute;
-    let transitioning = false;
+    let transitionLocked = false;
+    let transitionTimer = null;
 
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -1010,8 +1286,10 @@
     function showView(route) {
       if (!validRoutes.includes(route)) route = defaultRoute;
 
-      transitioning = true;
-      setTimeout(() => { transitioning = false; }, 800);
+      // Lock transitions
+      if (transitionTimer) clearTimeout(transitionTimer);
+      transitionLocked = true;
+      transitionTimer = setTimeout(() => { transitionLocked = false; }, 1100);
 
       document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
       const target = document.getElementById(route);
@@ -1027,7 +1305,10 @@
       });
       target.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-      window.scrollTo({ top: 0, behavior: 'auto' });
+      // Force scroll to top (works reliably on mobile)
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+
       currentRoute = route;
     }
 
@@ -1045,16 +1326,12 @@
 
     function goToNext() {
       const idx = validRoutes.indexOf(currentRoute);
-      if (idx < validRoutes.length - 1) {
-        navigateTo(validRoutes[idx + 1], true);
-      }
+      if (idx < validRoutes.length - 1) navigateTo(validRoutes[idx + 1], true);
     }
 
     function goToPrev() {
       const idx = validRoutes.indexOf(currentRoute);
-      if (idx > 0) {
-        navigateTo(validRoutes[idx - 1], true);
-      }
+      if (idx > 0) navigateTo(validRoutes[idx - 1], true);
     }
 
     // Click navigation
@@ -1073,64 +1350,85 @@
       showView(route);
     });
 
-    // ============ SCROLL-DRIVEN NAVIGATION ============
+    // ============ EDGE DETECTION ============
     function atBottom() {
-      const scrollY = Math.max(0, window.scrollY);
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-      return scrollY >= maxScroll - 30;
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop || 0;
+      const scrollHeight = Math.max(
+        document.documentElement.scrollHeight,
+        document.body.scrollHeight
+      );
+      const clientHeight = window.innerHeight;
+      return scrollTop + clientHeight >= scrollHeight - 15;
     }
 
     function atTop() {
-      return Math.max(0, window.scrollY) <= 30;
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop || 0;
+      return scrollTop <= 10;
     }
 
-    // Desktop wheel
+    // ============ DESKTOP: WHEEL ============
+    let wheelLock = false;
+
     window.addEventListener('wheel', (e) => {
-      if (transitioning) {
+      if (transitionLocked || wheelLock) {
         if (atBottom() && e.deltaY > 0) e.preventDefault();
         if (atTop() && e.deltaY < 0) e.preventDefault();
         return;
       }
-      if (Math.abs(e.deltaY) < 8) return;
+      if (Math.abs(e.deltaY) < 12) return;
 
       if (e.deltaY > 0 && atBottom()) {
         e.preventDefault();
+        wheelLock = true;
+        setTimeout(() => { wheelLock = false; }, 900);
         goToNext();
       } else if (e.deltaY < 0 && atTop()) {
         e.preventDefault();
+        wheelLock = true;
+        setTimeout(() => { wheelLock = false; }, 900);
         goToPrev();
       }
     }, { passive: false });
 
-    // Mobile touch
+    // ============ MOBILE: TOUCH ============
     let touchStartY = 0;
     let touchStartTime = 0;
+    let touchTriggered = false;
 
     window.addEventListener('touchstart', (e) => {
+      if (transitionLocked) return;
       touchStartY = e.touches[0].clientY;
       touchStartTime = Date.now();
+      touchTriggered = false;
     }, { passive: true });
 
-    window.addEventListener('touchend', (e) => {
-      if (transitioning) return;
+    window.addEventListener('touchmove', (e) => {
+      if (transitionLocked || touchTriggered) return;
 
-      const touchEndY = e.changedTouches[0].clientY;
-      const swipeDistance = touchStartY - touchEndY; // positive = swiped up
-      const duration = Date.now() - touchStartTime;
+      const currentY = e.touches[0].clientY;
+      const totalDiff = touchStartY - currentY; // positive = finger moved up (scrolling content down)
+      const elapsed = Date.now() - touchStartTime;
 
-      // Only handle quick swipes (a slow drag is probably reading/scrolling content)
-      if (duration > 400 || Math.abs(swipeDistance) < 60) return;
+      // Swipe must be intentional: at least 70px in under 700ms
+      if (Math.abs(totalDiff) < 70) return;
+      if (elapsed > 700) return;
 
-      if (swipeDistance > 0 && atBottom()) {
+      if (totalDiff > 0 && atBottom()) {
+        touchTriggered = true;
         goToNext();
-      } else if (swipeDistance < 0 && atTop()) {
+      } else if (totalDiff < 0 && atTop()) {
+        touchTriggered = true;
         goToPrev();
       }
     }, { passive: true });
 
-    // Keyboard
+    window.addEventListener('touchend', () => {
+      touchTriggered = false;
+    }, { passive: true });
+
+    // ============ KEYBOARD ============
     window.addEventListener('keydown', (e) => {
-      if (transitioning) return;
+      if (transitionLocked) return;
 
       if (['PageDown', 'ArrowDown', ' '].includes(e.key)) {
         if (atBottom()) {
