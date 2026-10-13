@@ -42,7 +42,6 @@
       background-repeat: no-repeat;
       background-attachment: fixed;
       overflow-x: hidden;
-      overscroll-behavior: none;
     }
 
     body {
@@ -56,7 +55,6 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      overscroll-behavior: none;
     }
 
     body::before {
@@ -181,44 +179,118 @@
     .section-title .script { font-family: var(--font-script); text-transform: none; color: var(--salmon); font-size: 2.75rem; letter-spacing: 0; display: inline-block; transform: rotate(-2deg); margin: 0 4px; }
     .section-desc { font-size: 1rem; color: var(--text-body); line-height: 1.65; }
 
-    /* SCROLL INDICATOR */
-    .scroll-indicator {
+    /* ============ VIEW NAV (Prev / Next) ============ */
+    .view-nav {
       margin-top: auto;
       padding-top: 48px;
+      width: 100%;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .view-nav-inner {
       display: flex;
-      flex-direction: column;
       align-items: center;
-      gap: 10px;
+      justify-content: space-between;
+      width: 100%;
+      gap: 12px;
+      min-height: 64px;
+    }
+
+    .view-nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 22px;
+      background: var(--bg-card);
+      border: 1.5px solid var(--border);
+      border-radius: 50px;
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: inherit;
+      text-align: left;
+      max-width: 280px;
+    }
+
+    .view-nav-btn:hover {
+      border-color: var(--salmon);
+      background: var(--bg-card-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(232,139,120,0.18);
+    }
+
+    .view-nav-btn:active {
+      transform: translateY(0);
+    }
+
+    .view-nav-btn i {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--salmon-light);
+      color: var(--salmon-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.75rem;
+      transition: var(--transition);
+    }
+
+    .view-nav-btn:hover i {
+      background: var(--salmon);
+      color: #fff;
+    }
+
+    .view-nav-text {
+      display: block;
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    .view-nav-label {
+      display: block;
       font-family: var(--font-display);
-      font-size: 0.6rem;
-      font-weight: 500;
-      letter-spacing: 0.3em;
+      font-size: 0.56rem;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--text-muted);
-      opacity: 0.55;
-      pointer-events: none;
-      user-select: none;
-      transition: opacity 0.3s ease;
+      margin-bottom: 3px;
+      line-height: 1;
     }
-    .scroll-indicator i {
+
+    .view-nav-title {
+      display: block;
+      font-family: var(--font-display);
       font-size: 0.85rem;
-      color: var(--salmon);
-      animation: scroll-bob 2.2s ease-in-out infinite;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      line-height: 1.15;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
-    @keyframes scroll-bob {
-      0%, 100% { transform: translateY(-3px); opacity: 0.6; }
-      50% { transform: translateY(3px); opacity: 1; }
-    }
-    .hero .scroll-indicator {
+
+    .view-nav-btn.next { text-align: right; }
+    .view-nav-btn.next .view-nav-text { order: 1; }
+    .view-nav-btn.next i { order: 2; }
+    .view-nav-btn.next:only-child { margin-left: auto; }
+
+    /* Hero's nav is absolutely positioned at the bottom of the hero */
+    .hero .view-nav {
       position: absolute;
-      bottom: 22px;
+      bottom: 30px;
       left: 50%;
       transform: translateX(-50%);
-      margin-top: 0;
+      width: 90%;
+      max-width: 720px;
       padding-top: 0;
+      margin-top: 0;
       z-index: 5;
     }
-    #book .scroll-indicator { display: none; }
 
     /* ============ PROMISE BLOCK (Why Us) ============ */
     .promise {
@@ -594,7 +666,7 @@
       nav ul { flex-direction: column; gap: 3px; padding: 0; }
       nav ul li { width: 100%; }
       nav a { display: block; padding: 12px 20px; border-radius: 50px; text-align: center; }
-      .hero { padding: 96px 0 80px; }
+      .hero { padding: 96px 0 100px; }
       .hero h1 { font-size: 2.2rem; }
       .hero h1 .script { font-size: 2.5rem; }
       .hero-stats { gap: 18px; }
@@ -602,7 +674,14 @@
       .section-title { font-size: 1.9rem; }
       .section-title .script { font-size: 2.2rem; }
       .section-header { margin-bottom: 28px; }
-      .scroll-indicator { padding-top: 32px; }
+
+      .view-nav { padding-top: 36px; }
+      .view-nav-inner { gap: 8px; min-height: 56px; }
+      .view-nav-btn { padding: 10px 16px; gap: 10px; max-width: 48%; }
+      .view-nav-btn i { width: 26px; height: 26px; font-size: 0.65rem; }
+      .view-nav-btn .view-nav-label { display: none; }
+      .view-nav-btn .view-nav-title { font-size: 0.72rem; }
+      .hero .view-nav { bottom: 24px; }
 
       .promise { grid-template-columns: 1fr; text-align: center; padding: 26px 22px; gap: 16px; }
       .promise-icon { margin: 0 auto; }
@@ -639,11 +718,14 @@
       .faq-question { padding: 12px 16px; font-size: 0.78rem; }
       .faq-item.open .faq-answer { padding: 0 16px 14px; }
       .testimonial-card { flex: 0 0 260px; }
+      .view-nav-btn { padding: 10px 14px; gap: 8px; }
+      .view-nav-btn i { width: 24px; height: 24px; font-size: 0.6rem; }
+      .view-nav-btn .view-nav-title { font-size: 0.65rem; }
     }
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
-      .pet-blob, .hero-eyebrow i, .scroll-indicator i { animation: none !important; }
+      .pet-blob, .hero-eyebrow i { animation: none !important; }
     }
   </style>
 </head>
@@ -700,10 +782,7 @@
         <div class="floating-badge badge-3"><i class="fas fa-heart"></i><span>Pet-First<br>Care</span></div>
       </div>
     </div>
-    <div class="scroll-indicator">
-      <span>Scroll</span>
-      <i class="fas fa-chevron-down"></i>
-    </div>
+    <div class="view-nav" data-nav></div>
   </section>
 
   <!-- SERVICES -->
@@ -787,10 +866,7 @@
         </a>
       </div>
 
-      <div class="scroll-indicator">
-        <span>Scroll</span>
-        <i class="fas fa-chevron-down"></i>
-      </div>
+      <div class="view-nav" data-nav></div>
     </div>
   </section>
 
@@ -802,7 +878,6 @@
         <p class="section-desc">More than just sitting — every pet gets personal attention, genuine love, and professional care.</p>
       </div>
 
-      <!-- Our Promise -->
       <div class="promise">
         <div class="promise-icon"><i class="fas fa-heart"></i></div>
         <div class="promise-content">
@@ -813,7 +888,6 @@
         </div>
       </div>
 
-      <!-- Stats -->
       <div class="stats-strip">
         <div class="stat-card"><strong>500+</strong><span>Happy Pets</span></div>
         <div class="stat-card"><strong>4.9★</strong><span>Avg Rating</span></div>
@@ -821,7 +895,6 @@
         <div class="stat-card"><strong>100%</strong><span>Insured</span></div>
       </div>
 
-      <!-- Why cards -->
       <div class="why-grid">
         <div class="why-item">
           <div class="why-icon-badge"><i class="fas fa-user-shield"></i></div>
@@ -867,10 +940,7 @@
         </div>
       </div>
 
-      <div class="scroll-indicator">
-        <span>Scroll</span>
-        <i class="fas fa-chevron-down"></i>
-      </div>
+      <div class="view-nav" data-nav></div>
     </div>
   </section>
 
@@ -881,9 +951,7 @@
         <h2 class="section-title"><span class="script">Real</span> Testimonials</h2>
         <p class="section-desc">What pet parents are saying about PawStay.</p>
       </div>
-    </div>
 
-    <div class="container" style="flex: 1; display: flex; flex-direction: column;">
       <div class="testimonials-wrapper">
         <button class="testimonial-arrow prev" id="testimonialPrev" aria-label="Previous review">
           <i class="fas fa-chevron-left"></i>
@@ -946,10 +1014,7 @@
         </button>
       </div>
 
-      <div class="scroll-indicator">
-        <span>Scroll</span>
-        <i class="fas fa-chevron-down"></i>
-      </div>
+      <div class="view-nav" data-nav></div>
     </div>
   </section>
 
@@ -963,7 +1028,6 @@
 
       <div class="faq-grid">
 
-        <!-- Category: Booking & Payment -->
         <div class="faq-category">Booking &amp; Payment</div>
 
         <div class="faq-item">
@@ -1026,7 +1090,6 @@
           </div>
         </div>
 
-        <!-- Category: Care & Safety -->
         <div class="faq-category">Care &amp; Safety</div>
 
         <div class="faq-item">
@@ -1071,7 +1134,6 @@
 
       </div>
 
-      <!-- Still have questions -->
       <div class="faq-contact">
         <h4>Still have questions?</h4>
         <p>We're happy to help — reach out any time.</p>
@@ -1082,10 +1144,7 @@
         </div>
       </div>
 
-      <div class="scroll-indicator">
-        <span>Scroll</span>
-        <i class="fas fa-chevron-down"></i>
-      </div>
+      <div class="view-nav" data-nav></div>
     </div>
   </section>
 
@@ -1187,6 +1246,8 @@
           <i class="fas fa-comment-dots"></i> Message us on Messenger
         </a>
       </div>
+
+      <div class="view-nav" data-nav></div>
     </div>
   </section>
 
@@ -1271,8 +1332,15 @@
     const validRoutes = ['home', 'services', 'why', 'reviews', 'faq', 'book'];
     const defaultRoute = 'home';
     let currentRoute = defaultRoute;
-    let transitionLocked = false;
-    let transitionTimer = null;
+
+    const routeLabels = {
+      home: 'Home',
+      services: 'Services',
+      why: 'Why Us',
+      reviews: 'Reviews',
+      faq: 'FAQ',
+      book: 'Booking'
+    };
 
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -1283,13 +1351,51 @@
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
+    // ============ BUILD VIEW NAVS (Prev / Next buttons) ============
+    function buildViewNavs() {
+      document.querySelectorAll('[data-nav]').forEach(nav => {
+        const currentId = nav.closest('.view').id;
+        const idx = validRoutes.indexOf(currentId);
+        const prevRoute = idx > 0 ? validRoutes[idx - 1] : null;
+        const nextRoute = idx < validRoutes.length - 1 ? validRoutes[idx + 1] : null;
+
+        let html = '<div class="view-nav-inner">';
+
+        if (prevRoute) {
+          html += `
+            <button class="view-nav-btn prev" data-route="${prevRoute}" type="button">
+              <i class="fas fa-arrow-left"></i>
+              <span class="view-nav-text">
+                <span class="view-nav-label">Previous</span>
+                <span class="view-nav-title">${routeLabels[prevRoute]}</span>
+              </span>
+            </button>
+          `;
+        }
+
+        if (nextRoute) {
+          html += `
+            <button class="view-nav-btn next" data-route="${nextRoute}" type="button">
+              <span class="view-nav-text">
+                <span class="view-nav-label">Up Next</span>
+                <span class="view-nav-title">${routeLabels[nextRoute]}</span>
+              </span>
+              <i class="fas fa-arrow-right"></i>
+            </button>
+          `;
+        }
+
+        html += '</div>';
+        nav.innerHTML = html;
+      });
+    }
+
+    // Build first, so the buttons exist before we wire clicks
+    buildViewNavs();
+
+    // ============ SHOW VIEW ============
     function showView(route) {
       if (!validRoutes.includes(route)) route = defaultRoute;
-
-      // Lock transitions
-      if (transitionTimer) clearTimeout(transitionTimer);
-      transitionLocked = true;
-      transitionTimer = setTimeout(() => { transitionLocked = false; }, 1100);
 
       document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
       const target = document.getElementById(route);
@@ -1305,9 +1411,8 @@
       });
       target.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-      // Force scroll to top (works reliably on mobile)
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
+      // Reset scroll position reliably
+      window.scrollTo({ top: 0, behavior: 'auto' });
 
       currentRoute = route;
     }
@@ -1324,17 +1429,7 @@
       showView(route);
     }
 
-    function goToNext() {
-      const idx = validRoutes.indexOf(currentRoute);
-      if (idx < validRoutes.length - 1) navigateTo(validRoutes[idx + 1], true);
-    }
-
-    function goToPrev() {
-      const idx = validRoutes.indexOf(currentRoute);
-      if (idx > 0) navigateTo(validRoutes[idx - 1], true);
-    }
-
-    // Click navigation
+    // Wire click handlers on all data-route elements (nav links, CTAs, prev/next buttons)
     document.querySelectorAll('[data-route]').forEach(el => {
       el.addEventListener('click', function(e) {
         e.preventDefault();
@@ -1348,99 +1443,6 @@
     window.addEventListener('popstate', (e) => {
       const route = (e.state && e.state.route) ? e.state.route : (location.hash ? location.hash.substring(1) : defaultRoute);
       showView(route);
-    });
-
-    // ============ EDGE DETECTION ============
-    function atBottom() {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop || 0;
-      const scrollHeight = Math.max(
-        document.documentElement.scrollHeight,
-        document.body.scrollHeight
-      );
-      const clientHeight = window.innerHeight;
-      return scrollTop + clientHeight >= scrollHeight - 15;
-    }
-
-    function atTop() {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop || 0;
-      return scrollTop <= 10;
-    }
-
-    // ============ DESKTOP: WHEEL ============
-    let wheelLock = false;
-
-    window.addEventListener('wheel', (e) => {
-      if (transitionLocked || wheelLock) {
-        if (atBottom() && e.deltaY > 0) e.preventDefault();
-        if (atTop() && e.deltaY < 0) e.preventDefault();
-        return;
-      }
-      if (Math.abs(e.deltaY) < 12) return;
-
-      if (e.deltaY > 0 && atBottom()) {
-        e.preventDefault();
-        wheelLock = true;
-        setTimeout(() => { wheelLock = false; }, 900);
-        goToNext();
-      } else if (e.deltaY < 0 && atTop()) {
-        e.preventDefault();
-        wheelLock = true;
-        setTimeout(() => { wheelLock = false; }, 900);
-        goToPrev();
-      }
-    }, { passive: false });
-
-    // ============ MOBILE: TOUCH ============
-    let touchStartY = 0;
-    let touchStartTime = 0;
-    let touchTriggered = false;
-
-    window.addEventListener('touchstart', (e) => {
-      if (transitionLocked) return;
-      touchStartY = e.touches[0].clientY;
-      touchStartTime = Date.now();
-      touchTriggered = false;
-    }, { passive: true });
-
-    window.addEventListener('touchmove', (e) => {
-      if (transitionLocked || touchTriggered) return;
-
-      const currentY = e.touches[0].clientY;
-      const totalDiff = touchStartY - currentY; // positive = finger moved up (scrolling content down)
-      const elapsed = Date.now() - touchStartTime;
-
-      // Swipe must be intentional: at least 70px in under 700ms
-      if (Math.abs(totalDiff) < 70) return;
-      if (elapsed > 700) return;
-
-      if (totalDiff > 0 && atBottom()) {
-        touchTriggered = true;
-        goToNext();
-      } else if (totalDiff < 0 && atTop()) {
-        touchTriggered = true;
-        goToPrev();
-      }
-    }, { passive: true });
-
-    window.addEventListener('touchend', () => {
-      touchTriggered = false;
-    }, { passive: true });
-
-    // ============ KEYBOARD ============
-    window.addEventListener('keydown', (e) => {
-      if (transitionLocked) return;
-
-      if (['PageDown', 'ArrowDown', ' '].includes(e.key)) {
-        if (atBottom()) {
-          e.preventDefault();
-          goToNext();
-        }
-      } else if (['PageUp', 'ArrowUp'].includes(e.key)) {
-        if (atTop()) {
-          e.preventDefault();
-          goToPrev();
-        }
-      }
     });
 
     // Initialize
