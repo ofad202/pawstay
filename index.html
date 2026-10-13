@@ -81,19 +81,21 @@
     .container { width: 92%; max-width: 1140px; margin: 0 auto; position: relative; z-index: 2; }
 
     /* ============ VIEW SYSTEM ============ */
-    .view { display: none; }
+    .view {
+      display: none;
+      flex: 1;
+    }
     .view.active {
       display: block;
-      animation: viewFadeIn 0.45s ease;
+      animation: viewFadeIn 0.4s ease;
     }
     .hero.view.active { display: flex; }
 
     @keyframes viewFadeIn {
-      from { opacity: 0; transform: translateY(14px); }
+      from { opacity: 0; transform: translateY(12px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* Non-hero views need to clear the fixed header */
     .section.view {
       padding-top: 130px;
       padding-bottom: 80px;
@@ -404,7 +406,7 @@
 
   <header id="header">
     <div class="header-inner">
-      <a href="#home" class="logo" data-target="home">
+      <a href="#home" class="logo" data-route="home">
         <span class="logo-icon"><img src="pet4.jpg" alt="PawStay logo"></span>
         PawStay
       </a>
@@ -413,18 +415,18 @@
       </button>
       <nav id="mainNav">
         <ul>
-          <li><a href="#services" data-target="services">Services</a></li>
-          <li><a href="#why" data-target="why">Why Us</a></li>
-          <li><a href="#reviews" data-target="reviews">Reviews</a></li>
-          <li><a href="#faq" data-target="faq">FAQ</a></li>
-          <li><a href="#book" data-target="book">Book Now</a></li>
+          <li><a href="#services" data-route="services">Services</a></li>
+          <li><a href="#why" data-route="why">Why Us</a></li>
+          <li><a href="#reviews" data-route="reviews">Reviews</a></li>
+          <li><a href="#faq" data-route="faq">FAQ</a></li>
+          <li><a href="#book" data-route="book">Book Now</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <!-- HOME / HERO -->
-  <section class="hero view active" id="home">
+  <section class="hero view" id="home">
     <div class="hero-inner">
       <div class="hero-text">
         <div class="hero-eyebrow"><i class="fas fa-heart"></i> Trusted by Pet Parents in Metro Manila</div>
@@ -433,8 +435,8 @@
           Professional pet sitting, dog walking, and overnight care — delivered with love, patience, and daily photo updates. Travel with peace of mind.
         </p>
         <div class="hero-actions">
-          <a href="#book" class="btn btn-primary" data-target="book"><i class="fas fa-paw"></i> Book a Sitter</a>
-          <a href="#services" class="btn btn-secondary" data-target="services"><i class="fas fa-list"></i> Our Services</a>
+          <a href="#book" class="btn btn-primary" data-route="book"><i class="fas fa-paw"></i> Book a Sitter</a>
+          <a href="#services" class="btn btn-secondary" data-route="services"><i class="fas fa-list"></i> Our Services</a>
         </div>
         <div class="hero-stats">
           <div class="hero-stat"><strong>500+</strong><span>Happy Pets</span></div>
@@ -481,7 +483,7 @@
             <li><i class="fas fa-check"></i> Litter / waste cleanup</li>
             <li><i class="fas fa-check"></i> Photo updates sent</li>
           </ul>
-          <a href="#book" class="btn btn-secondary service-btn" data-target="book">Book Drop-In</a>
+          <a href="#book" class="btn btn-secondary service-btn" data-route="book">Book Drop-In</a>
         </div>
 
         <div class="service-card featured">
@@ -503,7 +505,7 @@
             <li><i class="fas fa-check"></i> Route updates &amp; photos</li>
             <li><i class="fas fa-check"></i> Discount for 5x/week</li>
           </ul>
-          <a href="#book" class="btn btn-primary service-btn" data-target="book">Book a Walk</a>
+          <a href="#book" class="btn btn-primary service-btn" data-route="book">Book a Walk</a>
         </div>
 
         <div class="service-card">
@@ -524,7 +526,7 @@
             <li><i class="fas fa-check"></i> Medication administration</li>
             <li><i class="fas fa-check"></i> Continuous updates</li>
           </ul>
-          <a href="#book" class="btn btn-secondary service-btn" data-target="book">Book Overnight</a>
+          <a href="#book" class="btn btn-secondary service-btn" data-route="book">Book Overnight</a>
         </div>
 
       </div>
@@ -905,41 +907,11 @@
       icon.classList.toggle('fa-times');
     });
 
-    // ============ VIEW SWITCHER ============
-    const views = document.querySelectorAll('.view');
-    const navLinks = document.querySelectorAll('nav a[data-target]');
+    // ============ VIEW SYSTEM (with working browser history) ============
+    const validRoutes = ['home', 'services', 'why', 'reviews', 'faq', 'book'];
+    const defaultRoute = 'home';
 
-    function switchView(targetId, fromNavClick = false) {
-      const target = document.getElementById(targetId);
-      if (!target || !target.classList.contains('view')) return;
-
-      // Hide all, show target
-      views.forEach(v => v.classList.remove('active'));
-      target.classList.add('active');
-
-      // Sync nav highlight (only highlight nav items, not logo)
-      navLinks.forEach(l => {
-        l.classList.toggle('active', l.dataset.target === targetId);
-      });
-
-      // Reset page scroll to top so the new view starts fresh
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-
-      // Re-trigger reveal animations inside the visible view
-      target.querySelectorAll('.reveal').forEach(el => {
-        el.classList.remove('active');
-        // force reflow so animation restarts
-        void el.offsetWidth;
-      });
-
-      // Observe reveals within the newly active view
-      target.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-      // If mobile, close menu
-      if (fromNavClick) closeMobileMenu();
-    }
-
-    // Reveal observer
+    // Reveal observer (shared)
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -949,15 +921,68 @@
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-    document.querySelectorAll('.view.active .reveal').forEach(el => revealObserver.observe(el));
+    function showView(route) {
+      if (!validRoutes.includes(route)) route = defaultRoute;
 
-    // Wire all clickable elements with data-target
-    document.querySelectorAll('[data-target]').forEach(el => {
+      // Hide all views, show target
+      document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+      const target = document.getElementById(route);
+      if (target) target.classList.add('active');
+
+      // Sync nav highlight
+      document.querySelectorAll('nav a[data-route]').forEach(l => {
+        l.classList.toggle('active', l.dataset.route === route);
+      });
+
+      // Restart reveal animations for this view
+      target.querySelectorAll('.reveal').forEach(el => {
+        el.classList.remove('active');
+        void el.offsetWidth;
+      });
+      target.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+      // Reset page scroll
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+
+    function navigateTo(route, pushHistory = true) {
+      if (!validRoutes.includes(route)) route = defaultRoute;
+
+      if (pushHistory) {
+        // Push new hash so back/forward works
+        if (location.hash !== '#' + route) {
+          history.pushState({ route }, '', '#' + route);
+        }
+      }
+
+      showView(route);
+    }
+
+    // Handle all clickable elements with data-route
+    document.querySelectorAll('[data-route]').forEach(el => {
       el.addEventListener('click', function(e) {
         e.preventDefault();
-        switchView(this.dataset.target, this.closest('nav') !== null);
+        const route = this.dataset.route;
+        navigateTo(route, true);
+        if (this.closest('nav')) closeMobileMenu();
       });
     });
+
+    // Handle browser back/forward
+    window.addEventListener('popstate', (e) => {
+      const route = (e.state && e.state.route) ? e.state.route : (location.hash ? location.hash.substring(1) : defaultRoute);
+      showView(route);
+    });
+
+    // Initialize on page load
+    const initialRoute = location.hash ? location.hash.substring(1) : defaultRoute;
+    if (location.hash) {
+      // Replace so back doesn't loop
+      history.replaceState({ route: initialRoute }, '', '#' + initialRoute);
+    } else {
+      history.replaceState({ route: defaultRoute }, '', '#' + defaultRoute);
+    }
+    showView(initialRoute);
 
     // FAQ accordion
     document.querySelectorAll('.faq-question').forEach(btn => {
