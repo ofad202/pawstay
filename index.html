@@ -194,7 +194,7 @@
       gap: 18px;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
-      padding: 14px 6px 22px;
+      padding: 14px 44px 22px;
       scroll-behavior: smooth;
       scrollbar-width: none;
       -ms-overflow-style: none;
@@ -228,6 +228,34 @@
     .testimonial-info { text-align: left; }
     .testimonial-info strong { display: block; font-family: var(--font-display); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-dark); }
     .testimonial-info span { font-size: 0.7rem; color: var(--text-muted); }
+
+    .testimonial-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border);
+      background: var(--bg-card);
+      color: var(--salmon-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 5;
+      box-shadow: 0 8px 22px rgba(69,53,40,0.12);
+      transition: var(--transition);
+    }
+    .testimonial-arrow:hover {
+      background: var(--salmon);
+      color: #fff;
+      border-color: var(--salmon);
+      transform: translateY(-50%) scale(1.06);
+    }
+    .testimonial-arrow:focus-visible { outline: 3px solid var(--salmon); outline-offset: 2px; }
+    .testimonial-arrow.prev { left: 0; }
+    .testimonial-arrow.next { right: 0; }
 
     /* BOOK SECTION */
     .book-section { padding: 38px 0 56px; position: relative; }
@@ -328,6 +356,8 @@
       .form-row, .form-row-3 { grid-template-columns: 1fr; }
       .pet-blob { animation: none; }
       .testimonial-card { flex: 0 0 260px; }
+      .testimonial-arrow { display: none; }
+      .testimonials-row { padding: 14px 6px 22px; }
     }
 
     @media (max-width: 480px) {
@@ -544,7 +574,7 @@
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
+  <!-- TESTIMONIALS WITH ARROWS -->
   <section class="section" id="reviews">
     <div class="container">
       <div class="section-header reveal">
@@ -556,6 +586,10 @@
 
     <div class="container">
       <div class="testimonials-wrapper reveal">
+        <button class="testimonial-arrow prev" id="testimonialPrev" aria-label="Previous review">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+
         <div class="testimonials-row" id="testimonialsRow">
           <div class="testimonial-card">
             <div class="testimonial-tape"></div>
@@ -607,6 +641,10 @@
             </div>
           </div>
         </div>
+
+        <button class="testimonial-arrow next" id="testimonialNext" aria-label="Next review">
+          <i class="fas fa-chevron-right"></i>
+        </button>
       </div>
     </div>
   </section>
@@ -886,6 +924,42 @@
       const mm = String(minDate.getMonth() + 1).padStart(2, '0');
       const dd = String(minDate.getDate()).padStart(2, '0');
       bookingDate.min = `${yyyy}-${mm}-${dd}`;
+    }
+
+    // Testimonial arrows
+    const row = document.getElementById('testimonialsRow');
+    const prevBtn = document.getElementById('testimonialPrev');
+    const nextBtn = document.getElementById('testimonialNext');
+
+    if (row && prevBtn && nextBtn) {
+      const getScrollAmount = () => {
+        const card = row.querySelector('.testimonial-card');
+        const gap = 18;
+        return card ? card.offsetWidth + gap : 318;
+      };
+
+      const updateArrows = () => {
+        const maxScroll = row.scrollWidth - row.clientWidth;
+        const atStart = row.scrollLeft <= 2;
+        const atEnd = row.scrollLeft >= maxScroll - 2;
+
+        prevBtn.style.opacity = atStart ? '0.4' : '1';
+        prevBtn.style.pointerEvents = atStart ? 'none' : 'auto';
+        nextBtn.style.opacity = atEnd ? '0.4' : '1';
+        nextBtn.style.pointerEvents = atEnd ? 'none' : 'auto';
+      };
+
+      prevBtn.addEventListener('click', () => {
+        row.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+      });
+
+      nextBtn.addEventListener('click', () => {
+        row.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+      });
+
+      row.addEventListener('scroll', updateArrows);
+      window.addEventListener('resize', updateArrows);
+      updateArrows();
     }
   </script>
 </body>
