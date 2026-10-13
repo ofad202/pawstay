@@ -15,7 +15,7 @@
 
 html{
   scroll-behavior:smooth;
-  scroll-padding-top:90px;
+  scroll-padding-top:110px;
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
   background-color:var(--bg-main);
@@ -94,11 +94,11 @@ nav a.active{background:var(--salmon);color:#FFFFFF;box-shadow:0 6px 14px rgba(2
 .floating-badge.badge-2{bottom:26px;right:-14px;transform:rotate(3deg)}
 .floating-badge.badge-3{top:50%;left:-22px;transform:rotate(-2deg)}
 
-/* Sections - Removed min-height and scroll-snap to eliminate gaps */
+/* Sections - Standardized padding & scroll offset for perfect landing */
 .section{
   position:relative;
-  padding:80px 0;
-  scroll-margin-top:90px; /* Ensures smooth landing below the fixed header */
+  padding:110px 0 80px;
+  scroll-margin-top:110px;
 }
 .section > .container{
   width:92%;
@@ -262,7 +262,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;back
 .form-row-3{grid-template-columns:1fr 1fr}
 }
 @media (max-width:768px){
-html{background-attachment:scroll;scroll-padding-top:80px}
+html{background-attachment:scroll;scroll-padding-top:100px}
 header{top:8px;width:96%}
 .header-inner{padding:8px 14px}
 .logo{font-size:0.98rem;padding:3px 6px}
@@ -277,7 +277,7 @@ nav a{display:block;padding:12px 20px;border-radius:50px;text-align:center}
 .hero h1{font-size:2.2rem}
 .hero h1 .script{font-size:2.5rem}
 .hero-stats{gap:18px}
-.section{padding:70px 0;scroll-margin-top:70px}
+.section{padding:100px 0 60px;scroll-margin-top:100px}
 .section-title{font-size:1.9rem}
 .section-title .script{font-size:2.2rem}
 .section-header{margin-bottom:28px}
