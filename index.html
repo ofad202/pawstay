@@ -142,13 +142,6 @@
     .section-title .script { font-family: var(--font-script); text-transform: none; color: var(--salmon); font-size: 2.45rem; letter-spacing: 0; display: inline-block; transform: rotate(-2deg); margin: 0 4px; }
     .section-desc { font-size: 0.96rem; color: var(--text-body); line-height: 1.6; }
 
-    /* TRUST STRIP */
-    .trust-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 820px; margin: 0 auto 24px; }
-    .trust-pill { display: flex; align-items: center; gap: 10px; background: var(--bg-card); padding: 10px 15px; border-radius: 50px; box-shadow: 0 4px 14px rgba(69,53,40,0.05); border: 1px solid rgba(238,220,200,0.5); transition: var(--transition); }
-    .trust-pill:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(232,139,120,0.15); }
-    .trust-pill i { width: 28px; height: 28px; border-radius: 50%; background: var(--gold); color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; flex-shrink: 0; }
-    .trust-pill span { font-family: var(--font-display); font-size: 0.74rem; font-weight: 600; color: var(--text-dark); letter-spacing: 0.03em; }
-
     /* SERVICES */
     .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; align-items: stretch; }
     .service-card { background: var(--bg-card); padding: 26px 22px 22px; border-radius: 24px; transition: var(--transition); box-shadow: 0 10px 30px rgba(69,53,40,0.07); position: relative; text-align: center; border: 1px solid rgba(238,220,200,0.5); display: flex; flex-direction: column; }
@@ -194,23 +187,19 @@
     .why-item p { font-size: 0.79rem; color: var(--text-body); line-height: 1.5; }
 
     /* TESTIMONIALS */
-    .testimonials-wrapper {
-      position: relative;
-    }
+    .testimonials-wrapper { position: relative; }
 
     .testimonials-row {
       display: flex;
       gap: 18px;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
-      padding: 14px 44px 22px;
+      padding: 14px 6px 22px;
       scroll-behavior: smooth;
       scrollbar-width: none;
       -ms-overflow-style: none;
     }
-    .testimonials-row::-webkit-scrollbar {
-      display: none;
-    }
+    .testimonials-row::-webkit-scrollbar { display: none; }
 
     .testimonial-card {
       flex: 0 0 300px;
@@ -239,40 +228,6 @@
     .testimonial-info { text-align: left; }
     .testimonial-info strong { display: block; font-family: var(--font-display); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-dark); }
     .testimonial-info span { font-size: 0.7rem; color: var(--text-muted); }
-
-    .testimonial-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      border: 1.5px solid var(--border);
-      background: var(--bg-card);
-      color: var(--salmon-dark);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 5;
-      box-shadow: 0 8px 22px rgba(69,53,40,0.12);
-      transition: var(--transition);
-    }
-    .testimonial-arrow:hover {
-      background: var(--salmon);
-      color: #fff;
-      border-color: var(--salmon);
-      transform: translateY(-50%) scale(1.06);
-    }
-    .testimonial-arrow:focus-visible {
-      outline: 3px solid var(--salmon);
-      outline-offset: 2px;
-    }
-    .testimonial-arrow.prev { left: 0; }
-    .testimonial-arrow.next { right: 0; }
-
-    .scroll-hint { text-align: center; font-size: 0.7rem; color: var(--text-muted); font-family: var(--font-display); letter-spacing: 0.08em; text-transform: uppercase; margin-top: -6px; }
-    .scroll-hint i { margin-right: 5px; color: var(--salmon); }
 
     /* BOOK SECTION */
     .book-section { padding: 38px 0 56px; position: relative; }
@@ -335,7 +290,6 @@
       .hero-description { max-width: 520px; }
       .hero-visual { order: -1; min-height: 320px; }
       .pet-blob { width: 300px; height: 300px; }
-      .trust-strip { grid-template-columns: repeat(2, 1fr); }
       .why-grid { grid-template-columns: repeat(2, 1fr); }
       .faq-grid { grid-template-columns: 1fr; }
       .contact-form { padding: 26px 24px; }
@@ -363,7 +317,6 @@
       .section-title { font-size: 1.75rem; }
       .section-title .script { font-size: 2rem; }
       .section-header { margin-bottom: 22px; }
-      .trust-strip { grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
       .services-grid, .why-grid { grid-template-columns: 1fr; gap: 18px; }
       .service-card.featured { transform: scale(1); }
       .service-card.featured:hover { transform: translateY(-5px); }
@@ -375,8 +328,6 @@
       .form-row, .form-row-3 { grid-template-columns: 1fr; }
       .pet-blob { animation: none; }
       .testimonial-card { flex: 0 0 260px; }
-      .testimonial-arrow { display: none; }
-      .testimonials-row { padding: 14px 6px 22px; }
     }
 
     @media (max-width: 480px) {
@@ -387,7 +338,6 @@
       .section-title { font-size: 1.5rem; }
       .section-title .script { font-size: 1.75rem; }
       .pet-blob { width: 240px; height: 240px; }
-      .trust-strip { grid-template-columns: 1fr; }
       .service-price-amount { font-size: 1.9rem; }
       .faq-question { padding: 12px 16px; font-size: 0.78rem; }
       .faq-item.open .faq-answer { padding: 0 16px 14px; }
@@ -547,13 +497,6 @@
         <p class="section-desc">Every pet gets personal attention, genuine love, and professional care.</p>
       </div>
 
-      <div class="trust-strip reveal">
-        <div class="trust-pill"><i class="fas fa-shield-alt"></i><span>Vetted Sitters</span></div>
-        <div class="trust-pill"><i class="fas fa-camera"></i><span>Photo Updates</span></div>
-        <div class="trust-pill"><i class="fas fa-heart"></i><span>Pet-First Care</span></div>
-        <div class="trust-pill"><i class="fas fa-clock"></i><span>7 Days a Week</span></div>
-      </div>
-
       <div class="why-grid reveal">
         <div class="why-item">
           <div class="why-icon-badge"><i class="fas fa-user-shield"></i></div>
@@ -601,7 +544,7 @@
     </div>
   </section>
 
-  <!-- TESTIMONIALS WITH ARROWS -->
+  <!-- TESTIMONIALS -->
   <section class="section" id="reviews">
     <div class="container">
       <div class="section-header reveal">
@@ -613,10 +556,6 @@
 
     <div class="container">
       <div class="testimonials-wrapper reveal">
-        <button class="testimonial-arrow prev" id="testimonialPrev" aria-label="Previous review">
-          <i class="fas fa-chevron-left"></i>
-        </button>
-
         <div class="testimonials-row" id="testimonialsRow">
           <div class="testimonial-card">
             <div class="testimonial-tape"></div>
@@ -668,13 +607,7 @@
             </div>
           </div>
         </div>
-
-        <button class="testimonial-arrow next" id="testimonialNext" aria-label="Next review">
-          <i class="fas fa-chevron-right"></i>
-        </button>
       </div>
-
-      <p class="scroll-hint"><i class="fas fa-arrows-alt-h"></i> Swipe or use arrows</p>
     </div>
   </section>
 
@@ -953,42 +886,6 @@
       const mm = String(minDate.getMonth() + 1).padStart(2, '0');
       const dd = String(minDate.getDate()).padStart(2, '0');
       bookingDate.min = `${yyyy}-${mm}-${dd}`;
-    }
-
-    // Testimonial arrows
-    const row = document.getElementById('testimonialsRow');
-    const prevBtn = document.getElementById('testimonialPrev');
-    const nextBtn = document.getElementById('testimonialNext');
-
-    if (row && prevBtn && nextBtn) {
-      const getScrollAmount = () => {
-        const card = row.querySelector('.testimonial-card');
-        const gap = 18;
-        return card ? card.offsetWidth + gap : 318;
-      };
-
-      const updateArrows = () => {
-        const maxScroll = row.scrollWidth - row.clientWidth;
-        const atStart = row.scrollLeft <= 2;
-        const atEnd = row.scrollLeft >= maxScroll - 2;
-
-        prevBtn.style.opacity = atStart ? '0.4' : '1';
-        prevBtn.style.pointerEvents = atStart ? 'none' : 'auto';
-        nextBtn.style.opacity = atEnd ? '0.4' : '1';
-        nextBtn.style.pointerEvents = atEnd ? 'none' : 'auto';
-      };
-
-      prevBtn.addEventListener('click', () => {
-        row.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
-      });
-
-      nextBtn.addEventListener('click', () => {
-        row.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
-      });
-
-      row.addEventListener('scroll', updateArrows);
-      window.addEventListener('resize', updateArrows);
-      updateArrows();
     }
   </script>
 </body>
