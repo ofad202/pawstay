@@ -16,7 +16,6 @@
 html{
   scroll-behavior:smooth;
   scroll-padding-top:90px;
-  scroll-snap-type:y proximity;
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
   background-color:var(--bg-main);
@@ -54,15 +53,14 @@ nav a.active{background:var(--salmon);color:#FFFFFF;box-shadow:0 6px 14px rgba(2
 .menu-toggle{display:none;background:var(--salmon);border:none;color:#FFFFFF;width:40px;height:40px;border-radius:50%;font-size:0.95rem;cursor:pointer;transition:var(--transition);align-items:center;justify-content:center}
 .menu-toggle:hover{transform:scale(1.08)}
 
-/* Hero & Sections with Full Height and Scroll Snap */
+/* Hero */
 .hero{
-  padding:130px 0 90px;
+  padding:140px 0 90px;
   position:relative;
   overflow:hidden;
   display:flex;
   align-items:center;
   min-height:100vh;
-  scroll-snap-align:start;
 }
 @supports (min-height:100svh){.hero{min-height:100svh}}
 
@@ -96,19 +94,16 @@ nav a.active{background:var(--salmon);color:#FFFFFF;box-shadow:0 6px 14px rgba(2
 .floating-badge.badge-2{bottom:26px;right:-14px;transform:rotate(3deg)}
 .floating-badge.badge-3{top:50%;left:-22px;transform:rotate(-2deg)}
 
+/* Sections - Removed min-height and scroll-snap to eliminate gaps */
 .section{
   position:relative;
-  padding:90px 0 90px;
-  scroll-margin-top:80px;
-  min-height:100vh;
-  scroll-snap-align:start;
-  display:flex;
-  flex-direction:column;
+  padding:80px 0;
+  scroll-margin-top:90px; /* Ensures smooth landing below the fixed header */
 }
 .section > .container{
-  margin:auto;
   width:92%;
   max-width:1140px;
+  margin:0 auto;
   position:relative;
   z-index:2;
 }
@@ -282,7 +277,7 @@ nav a{display:block;padding:12px 20px;border-radius:50px;text-align:center}
 .hero h1{font-size:2.2rem}
 .hero h1 .script{font-size:2.5rem}
 .hero-stats{gap:18px}
-.section{padding:70px 0 50px;scroll-margin-top:70px}
+.section{padding:70px 0;scroll-margin-top:70px}
 .section-title{font-size:1.9rem}
 .section-title .script{font-size:2.2rem}
 .section-header{margin-bottom:28px}
