@@ -57,7 +57,6 @@
     }
 
     /* ============ PAW BACKGROUND PATTERN ============ */
-    /* Inline SVG paw, encoded for CSS use. Faint, scattered, whole-site. */
     body::before {
       content: '';
       position: fixed;
@@ -69,7 +68,6 @@
       background-repeat: repeat;
     }
 
-    /* Everything above the pattern */
     header, .hero, .wave, .section, footer, .blob, .paw, .sticker {
       position: relative;
       z-index: 2;
@@ -1059,6 +1057,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 24px;
+      align-items: start;
     }
 
     .faq-category {
@@ -1087,6 +1086,7 @@
       overflow: hidden;
       transition: var(--transition);
       box-shadow: 6px 6px 0 var(--ink);
+      align-self: start;
     }
 
     .faq-item:hover {
@@ -1441,7 +1441,6 @@
       .hero-text-inner { max-width: 600px; }
     }
 
-    /* Fluid container above ultrawide — prevents huge empty margins */
     @media (min-width: 1920px) {
       :root { --container-wide: 1720px; }
     }
@@ -1489,19 +1488,13 @@
       .contact-form { padding: 48px 40px; }
     }
 
-    /* ============ RESPONSIVE — MOBILE (intentional, not stacked) ============ */
+    /* ============ RESPONSIVE — MOBILE ============ */
     @media (max-width: 768px) {
       body { font-size: 16px; line-height: 1.6; }
 
-      /* Pattern becomes smaller on mobile so it doesn't dominate */
       body::before { background-size: 180px 180px; }
 
-      /* --- Header --- */
-      header {
-        width: 94%;
-        top: 10px;
-        border-radius: 60px;
-      }
+      header { width: 94%; top: 10px; border-radius: 60px; }
       .header-inner { padding: 10px 16px; }
       .logo { font-size: 1.15rem; gap: 8px; }
       .logo-icon { width: 36px; height: 36px; }
@@ -1529,7 +1522,6 @@
         font-size: 0.88rem;
       }
 
-      /* --- Hero --- */
       .hero { min-height: auto; }
       .hero-text-col { padding: 110px 22px 40px; }
       .hero h1 { font-size: 2.35rem; line-height: 1.08; margin-bottom: 18px; }
@@ -1564,13 +1556,10 @@
       .hero-stat strong { font-size: 1.6rem; }
       .hero-stat span { font-size: 0.68rem; letter-spacing: 0.08em; }
 
-      /* Hero image — shorter on mobile */
       .hero-visual-col { min-height: 42vh; }
 
-      /* Hide all stickers and decorative blobs/paws on mobile */
       .sticker, .blob, .paw { display: none; }
 
-      /* --- Sections --- */
       .section { padding: 56px 0; }
       .section-header { margin-bottom: 36px; }
       .section-label {
@@ -1584,7 +1573,6 @@
 
       .wave { height: 40px; }
 
-      /* --- Services --- */
       .services-grid { gap: 22px; }
       .service-card {
         padding: 28px 22px;
@@ -1613,7 +1601,6 @@
         top: -15px;
       }
 
-      /* --- Gallery --- */
       .gallery-grid { gap: 14px; }
       .gallery-item,
       .gallery-item:nth-child(1) {
@@ -1625,7 +1612,6 @@
         transform: rotate(0deg) !important;
       }
 
-      /* --- Promise --- */
       .promise {
         border-radius: 32px;
         margin-bottom: 40px;
@@ -1638,7 +1624,6 @@
       .promise-text { font-size: 0.98rem; margin-bottom: 22px; }
       .promise-signature { font-size: 1.4rem; }
 
-      /* --- Stats --- */
       .stats-strip {
         grid-template-columns: repeat(2, 1fr);
         gap: 14px;
@@ -1653,7 +1638,6 @@
       .stat-card strong { font-size: 1.95rem; }
       .stat-card span { font-size: 0.68rem; letter-spacing: 0.1em; }
 
-      /* --- Why Grid --- */
       .why-grid { grid-template-columns: 1fr; gap: 16px; }
       .why-item {
         padding: 24px 22px;
@@ -1666,7 +1650,6 @@
       .why-item h4 { font-size: 1.1rem; }
       .why-item p { font-size: 0.92rem; }
 
-      /* --- Testimonials --- */
       .testimonials-row { gap: 16px; padding: 16px 0 24px; }
       .testimonial-card {
         flex: 0 0 82vw;
@@ -1684,7 +1667,6 @@
       .testimonial-info strong { font-size: 0.85rem; }
       .testimonial-info span { font-size: 0.75rem; }
 
-      /* --- FAQ --- */
       .faq-grid { gap: 12px; }
       .faq-category {
         font-size: 0.78rem;
@@ -1719,7 +1701,6 @@
         padding: 14px 22px;
       }
 
-      /* --- Form --- */
       .contact-form {
         padding: 28px 20px;
         border-radius: 28px;
@@ -1753,7 +1734,6 @@
         margin-top: 20px;
       }
 
-      /* --- Footer --- */
       footer { padding: 56px 0 28px; }
       .footer-grid {
         grid-template-columns: 1fr;
