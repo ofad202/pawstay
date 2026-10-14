@@ -56,16 +56,31 @@
       min-height: 100vh;
     }
 
-    /* ============ PAW BACKGROUND PATTERN ============ */
+    /* ============ PAW + GRAIN BACKGROUND ============ */
     body::before {
       content: '';
       position: fixed;
       inset: 0;
       pointer-events: none;
       z-index: 0;
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260' viewBox='0 0 260 260'><g fill='%232D2823' fill-opacity='0.035'><g transform='translate(30, 30) rotate(-18)'><ellipse cx='0' cy='14' rx='11' ry='14'/><ellipse cx='-14' cy='-2' rx='5' ry='6.5'/><ellipse cx='-5' cy='-14' rx='5' ry='6.5'/><ellipse cx='6' cy='-14' rx='5' ry='6.5'/><ellipse cx='15' cy='-2' rx='5' ry='6.5'/></g><g transform='translate(200, 90) rotate(22)'><ellipse cx='0' cy='14' rx='11' ry='14'/><ellipse cx='-14' cy='-2' rx='5' ry='6.5'/><ellipse cx='-5' cy='-14' rx='5' ry='6.5'/><ellipse cx='6' cy='-14' rx='5' ry='6.5'/><ellipse cx='15' cy='-2' rx='5' ry='6.5'/></g><g transform='translate(100, 170) rotate(-32)'><ellipse cx='0' cy='14' rx='11' ry='14'/><ellipse cx='-14' cy='-2' rx='5' ry='6.5'/><ellipse cx='-5' cy='-14' rx='5' ry='6.5'/><ellipse cx='6' cy='-14' rx='5' ry='6.5'/><ellipse cx='15' cy='-2' rx='5' ry='6.5'/></g><g transform='translate(240, 210) rotate(15)'><ellipse cx='0' cy='14' rx='11' ry='14'/><ellipse cx='-14' cy='-2' rx='5' ry='6.5'/><ellipse cx='-5' cy='-14' rx='5' ry='6.5'/><ellipse cx='6' cy='-14' rx='5' ry='6.5'/><ellipse cx='15' cy='-2' rx='5' ry='6.5'/></g></g></svg>");
-      background-size: 260px 260px;
-      background-repeat: repeat;
+      background-image:
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260' viewBox='0 0 260 260'><g fill='%232D2823' fill-opacity='0.055'><g transform='translate(30, 30) rotate(-18)'><ellipse cx='0' cy='14' rx='11' ry='14'/><ellipse cx='-14' cy='-2' rx='5' ry='6.5'/><ellipse cx='-5' cy='-14' rx='5' ry='6.5'/><ellipse cx='6' cy='-14' rx='5' ry='6.5'/><ellipse cx='15' cy='-2' rx='5' ry='6.5'/></g><g transform='translate(200, 90) rotate(22)'><ellipse cx='0' cy='14' rx='11' ry='14'/><ellipse cx='-14' cy='-2' rx='5' ry='6.5'/><ellipse cx='-5' cy='-14' rx='5' ry='6.5'/><ellipse cx='6' cy='-14' rx='5' ry='6.5'/><ellipse cx='15' cy='-2' rx='5' ry='6.5'/></g><g transform='translate(100, 170) rotate(-32)'><ellipse cx='0' cy='14' rx='11' ry='14'/><ellipse cx='-14' cy='-2' rx='5' ry='6.5'/><ellipse cx='-5' cy='-14' rx='5' ry='6.5'/><ellipse cx='6' cy='-14' rx='5' ry='6.5'/><ellipse cx='15' cy='-2' rx='5' ry='6.5'/></g><g transform='translate(240, 210) rotate(15)'><ellipse cx='0' cy='14' rx='11' ry='14'/><ellipse cx='-14' cy='-2' rx='5' ry='6.5'/><ellipse cx='-5' cy='-14' rx='5' ry='6.5'/><ellipse cx='6' cy='-14' rx='5' ry='6.5'/><ellipse cx='15' cy='-2' rx='5' ry='6.5'/></g></g></svg>"),
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 0.2 0 0 0 0 0.15 0 0 0 0 0.1 0 0 0 0.08 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
+      background-size: 260px 260px, 200px 200px;
+      background-repeat: repeat, repeat;
+    }
+
+    /* ============ WARM AMBIENT GLOW ============ */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 15% 15%, rgba(255, 212, 71, 0.14) 0%, transparent 55%),
+        radial-gradient(ellipse 70% 50% at 88% 85%, rgba(255, 107, 91, 0.08) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 40% at 90% 10%, rgba(107, 197, 232, 0.08) 0%, transparent 55%);
     }
 
     header, .hero, .wave, .section, footer, .blob, .paw, .sticker {
@@ -681,7 +696,7 @@
       margin-top: auto;
     }
 
-    /* ============ GALLERY (balanced 5 items) ============ */
+    /* ============ GALLERY ============ */
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -1492,7 +1507,7 @@
     @media (max-width: 768px) {
       body { font-size: 16px; line-height: 1.6; }
 
-      body::before { background-size: 180px 180px; }
+      body::before { background-size: 180px 180px, 140px 140px; }
 
       header { width: 94%; top: 10px; border-radius: 60px; }
       .header-inner { padding: 10px 16px; }
