@@ -1334,7 +1334,55 @@
       padding: 22px 40px;
     }
 
-    /* ============ BOOKING SUCCESS BANNER ============ */
+    .form-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    /* ============ FORM STATUS MESSAGES ============ */
+    .form-status {
+      display: none;
+      align-items: center;
+      gap: 16px;
+      margin-top: 24px;
+      padding: 22px 28px;
+      border: 3px solid var(--ink);
+      border-radius: 28px;
+      box-shadow: 6px 6px 0 var(--ink);
+    }
+
+    .form-status.show { display: flex; }
+
+    .form-status i {
+      font-size: 1.75rem;
+      flex-shrink: 0;
+    }
+
+    .form-status strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .form-status p {
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+      margin: 0;
+    }
+
+    .form-status.success {
+      background: var(--mint-light);
+    }
+    .form-status.success i { color: #2E7D4A; }
+
+    .form-status.error {
+      background: var(--coral-light);
+    }
+    .form-status.error i { color: var(--coral-ink); }
+
+    /* ============ BOOKING SUCCESS BANNER (top of section) ============ */
     .booking-success {
       display: none;
       align-items: center;
@@ -1347,6 +1395,8 @@
       border-radius: 28px;
       box-shadow: 6px 6px 0 var(--ink);
     }
+
+    .booking-success.show { display: flex; }
 
     .booking-success i {
       font-size: 1.75rem;
@@ -1790,14 +1840,18 @@
         margin-top: 20px;
       }
 
+      .form-status,
       .booking-success {
         padding: 18px 20px;
         border-radius: 22px;
         box-shadow: 5px 5px 0 var(--ink);
         margin-bottom: 24px;
       }
+      .form-status i,
       .booking-success i { font-size: 1.4rem; }
+      .form-status strong,
       .booking-success strong { font-size: 1rem; }
+      .form-status p,
       .booking-success p { font-size: 0.88rem; }
 
       footer { padding: 56px 0 28px; }
@@ -2373,9 +2427,7 @@
         <h3>Booking Request</h3>
         <p class="contact-form-subtitle">All fields required unless noted otherwise.</p>
 
-        <form action="https://formspree.io/f/mnpjzdwz" method="POST">
-          <input type="hidden" name="_next" value="https://ofad202.github.io/pawstay/#booked">
-
+        <form id="booking-form" action="https://formspree.io/f/mnpjzdwz" method="POST">
           <div class="form-row-3">
             <div class="form-group">
               <label for="name">Your Name</label>
@@ -2449,9 +2501,11 @@
             <textarea id="message" name="message" placeholder="Describe your pet's temperament, any special needs, medications, or things we should know." required></textarea>
           </div>
 
-          <button type="submit" class="btn btn-primary form-submit">
+          <button type="submit" class="btn btn-primary form-submit" id="formSubmitBtn">
             <i class="fas fa-paper-plane"></i> Send Booking Request
           </button>
+
+          <div id="formStatus" class="form-status" role="status" aria-live="polite"></div>
         </form>
       </div>
     </div>
@@ -2670,15 +2724,115 @@
       updateArrows();
     }
 
-    /* ============ BOOKING SUCCESS BANNER ============ */
-    if (window.location.hash === '#booked') {
-      const el = document.getElementById('booked');
-      if (el && !sessionStorage.getItem('bookedSeen')) {
-        el.style.display = 'flex';
-        sessionStorage.setItem('bookedSeen', '1');
-        setTimeout(() => {
-          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 200);
+    /* ============ AJAX FORM SUBMISSION ============ */
+    const bookingForm = document.getElementById('booking-form');
+    const formStatus = document.getElementById('formStatus');
+    const formSubmitBtn = document.getElementById('formSubmitBtn');
+    const bookedBanner = document.getElementById('booked');
+
+    if (bookingForm) {
+      bookingForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Reset previous status
+        formStatus.className = 'form-status';
+        formStatus.innerHTML = '';
+
+        // Disable button while submitting
+        const originalBtnHTML = formSubmitBtn.innerHTML;
+        formSubmitBtn.disabled = true;
+        formSubmitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+        const formData = new FormData(bookingForm);
+
+        try {
+          const response = await fetch(bookingForm.action, {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (response.ok) {
+            // Success — show inline status AND top banner
+            formStatus.className = 'form-status success show';
+            formStatus.innerHTML = `
+              <i class="fas fa-check-circle"></i>
+              <div>
+                <strong>Request sent!</strong>
+                <p>We'll be in touch within 24 hours. Check your email for confirmation.</p>
+              </div>
+            `;
+            if (bookedBanner) bookedBanner.classList.add('show');
+
+            // Reset form fields
+            bookingForm.reset();
+            // Rebuild the date dropdown (it was cleared by reset)
+            if (bookingDate) {
+              bookingDate.innerHTML = '<option value="">Select a date...</option>';
+              rebuildDateOptions();
+            }
+
+            // Scroll status into view
+            setTimeout(() => {
+              formStatus.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100);
+          } else {
+            const data = await response.json().catch(() => ({}));
+            const errMsg = (data.errors && data.errors[0] && data.errors[0].message)
+              ? data.errors[0].message
+              : 'Something went wrong. Please try again or contact us directly.';
+            formStatus.className = 'form-status error show';
+            formStatus.innerHTML = `
+              <i class="fas fa-exclamation-circle"></i>
+              <div>
+                <strong>Submission failed</strong>
+                <p>${errMsg}</p>
+              </div>
+            `;
+          }
+        } catch (err) {
+          formStatus.className = 'form-status error show';
+          formStatus.innerHTML = `
+            <i class="fas fa-exclamation-circle"></i>
+            <div>
+              <strong>Network error</strong>
+              <p>Please check your connection and try again.</p>
+            </div>
+          `;
+        } finally {
+          formSubmitBtn.disabled = false;
+          formSubmitBtn.innerHTML = originalBtnHTML;
+        }
+      });
+    }
+
+    /* Rebuild date options helper — used after form reset */
+    function rebuildDateOptions() {
+      if (!bookingDate) return;
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const minDate = new Date(today);
+      minDate.setDate(today.getDate() + 3);
+      const maxDate = new Date(today);
+      maxDate.setDate(today.getDate() + 90);
+      const fmt = new Intl.DateTimeFormat('en-PH', {
+        weekday: 'short', month: 'short', day: 'numeric'
+      });
+      const toValue = (d) => {
+        const y = d.getFullYear();
+        const m = String(d.getMonth() + 1).padStart(2, '0');
+        const dd = String(d.getDate()).padStart(2, '0');
+        return `${y}-${m}-${dd}`;
+      };
+      const cursor = new Date(minDate);
+      while (cursor <= maxDate) {
+        const opt = document.createElement('option');
+        opt.value = toValue(cursor);
+        const label = fmt.format(cursor);
+        opt.textContent = cursor.getTime() === minDate.getTime()
+          ? `${label} (earliest)` : label;
+        bookingDate.appendChild(opt);
+        cursor.setDate(cursor.getDate() + 1);
       }
     }
   </script>
