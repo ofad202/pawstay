@@ -1382,42 +1382,6 @@
     }
     .form-status.error i { color: var(--coral-ink); }
 
-    /* ============ BOOKING SUCCESS BANNER (top of section) ============ */
-    .booking-success {
-      display: none;
-      align-items: center;
-      gap: 16px;
-      max-width: 1100px;
-      margin: 0 auto 32px;
-      padding: 22px 28px;
-      background: var(--mint-light);
-      border: 3px solid var(--ink);
-      border-radius: 28px;
-      box-shadow: 6px 6px 0 var(--ink);
-    }
-
-    .booking-success.show { display: flex; }
-
-    .booking-success i {
-      font-size: 1.75rem;
-      color: #2E7D4A;
-      flex-shrink: 0;
-    }
-
-    .booking-success strong {
-      display: block;
-      font-family: var(--font-display);
-      font-size: 1.1rem;
-      color: var(--ink);
-      margin-bottom: 4px;
-    }
-
-    .booking-success p {
-      font-size: 0.95rem;
-      color: var(--ink-soft);
-      margin: 0;
-    }
-
     /* ============ FOOTER ============ */
     footer {
       background: var(--ink);
@@ -1840,19 +1804,14 @@
         margin-top: 20px;
       }
 
-      .form-status,
-      .booking-success {
+      .form-status {
         padding: 18px 20px;
         border-radius: 22px;
         box-shadow: 5px 5px 0 var(--ink);
-        margin-bottom: 24px;
       }
-      .form-status i,
-      .booking-success i { font-size: 1.4rem; }
-      .form-status strong,
-      .booking-success strong { font-size: 1rem; }
-      .form-status p,
-      .booking-success p { font-size: 0.88rem; }
+      .form-status i { font-size: 1.4rem; }
+      .form-status strong { font-size: 1rem; }
+      .form-status p { font-size: 0.88rem; }
 
       footer { padding: 56px 0 28px; }
       .footer-grid {
@@ -2415,14 +2374,6 @@
         <p class="section-desc">Fill out the form below and we'll be in touch within 24 hours.</p>
       </div>
 
-      <div id="booked" class="booking-success">
-        <i class="fas fa-check-circle"></i>
-        <div>
-          <strong>Request sent!</strong>
-          <p>We'll be in touch within 24 hours. Check your email for confirmation.</p>
-        </div>
-      </div>
-
       <div class="contact-form reveal">
         <h3>Booking Request</h3>
         <p class="contact-form-subtitle">All fields required unless noted otherwise.</p>
@@ -2728,7 +2679,6 @@
     const bookingForm = document.getElementById('booking-form');
     const formStatus = document.getElementById('formStatus');
     const formSubmitBtn = document.getElementById('formSubmitBtn');
-    const bookedBanner = document.getElementById('booked');
 
     if (bookingForm) {
       bookingForm.addEventListener('submit', async (e) => {
@@ -2753,7 +2703,7 @@
           });
 
           if (response.ok) {
-            // Success — show inline status AND top banner
+            // Success — show inline status
             formStatus.className = 'form-status success show';
             formStatus.innerHTML = `
               <i class="fas fa-check-circle"></i>
@@ -2762,7 +2712,6 @@
                 <p>We'll be in touch within 24 hours. Check your email for confirmation.</p>
               </div>
             `;
-            if (bookedBanner) bookedBanner.classList.add('show');
 
             // Reset form fields
             bookingForm.reset();
