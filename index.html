@@ -2374,7 +2374,7 @@
         <p class="contact-form-subtitle">All fields required unless noted otherwise.</p>
 
         <form action="https://formspree.io/f/mnpjzdwz" method="POST">
-          <input type="hidden" name="_next" value="https://pawstayph.com/#booked">
+          <input type="hidden" name="_next" value="https://ofad202.github.io/pawstay/#booked">
 
           <div class="form-row-3">
             <div class="form-group">
@@ -2673,8 +2673,9 @@
     /* ============ BOOKING SUCCESS BANNER ============ */
     if (window.location.hash === '#booked') {
       const el = document.getElementById('booked');
-      if (el) {
+      if (el && !sessionStorage.getItem('bookedSeen')) {
         el.style.display = 'flex';
+        sessionStorage.setItem('bookedSeen', '1');
         setTimeout(() => {
           el.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }, 200);
