@@ -19,6 +19,7 @@
       --yellow-light: #FFF1B8;
       --yellow-dark: #E5B94A;
       --coral: #FF6B5B;
+      --coral-ink: #C43A2B;
       --coral-light: #FFD9D3;
       --coral-dark: #E04A3A;
       --sky: #6BC5E8;
@@ -577,7 +578,7 @@
       top: -18px;
       left: 50%;
       transform: translateX(-50%) rotate(-4deg);
-      background: var(--coral);
+      background: var(--coral-ink);
       color: white;
       font-family: var(--font-display);
       font-size: 0.75rem;
@@ -794,7 +795,7 @@
       letter-spacing: 0.15em;
       text-transform: uppercase;
       color: white;
-      background: var(--coral);
+      background: var(--coral-ink);
       border: 2px solid var(--ink);
       padding: 7px 16px;
       border-radius: 50px;
@@ -1070,9 +1071,11 @@
     /* ============ FAQ ============ */
     .faq-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
+      grid-template-columns: 1fr;
+      gap: 16px;
       align-items: start;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
     .faq-category {
@@ -1089,10 +1092,13 @@
       border-radius: 50px;
       display: inline-block;
       margin-bottom: 4px;
+      margin-top: 20px;
       box-shadow: 3px 3px 0 var(--ink);
       transform: rotate(-1.5deg);
       width: fit-content;
     }
+
+    .faq-category:first-child { margin-top: 0; }
 
     .faq-item {
       background: var(--bg-white);
@@ -1180,6 +1186,9 @@
       margin-top: 40px;
       background: var(--sky-light);
       box-shadow: 8px 8px 0 var(--ink);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .faq-contact h4 {
@@ -1323,6 +1332,40 @@
       margin-top: 28px;
       font-size: 1.05rem;
       padding: 22px 40px;
+    }
+
+    /* ============ BOOKING SUCCESS BANNER ============ */
+    .booking-success {
+      display: none;
+      align-items: center;
+      gap: 16px;
+      max-width: 1100px;
+      margin: 0 auto 32px;
+      padding: 22px 28px;
+      background: var(--mint-light);
+      border: 3px solid var(--ink);
+      border-radius: 28px;
+      box-shadow: 6px 6px 0 var(--ink);
+    }
+
+    .booking-success i {
+      font-size: 1.75rem;
+      color: #2E7D4A;
+      flex-shrink: 0;
+    }
+
+    .booking-success strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .booking-success p {
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+      margin: 0;
     }
 
     /* ============ FOOTER ============ */
@@ -1494,8 +1537,6 @@
 
       .why-grid { grid-template-columns: repeat(2, 1fr); }
       .why-item, .why-item:nth-child(n) { transform: rotate(0deg); }
-
-      .faq-grid { grid-template-columns: 1fr; }
 
       .form-row-3 { grid-template-columns: 1fr 1fr; }
 
@@ -1735,7 +1776,7 @@
       .form-group select,
       .form-group textarea {
         padding: 15px 20px;
-        font-size: 1rem;
+        font-size: 16px;
         border-radius: 40px;
       }
       .form-group textarea {
@@ -1748,6 +1789,16 @@
         font-size: 0.95rem;
         margin-top: 20px;
       }
+
+      .booking-success {
+        padding: 18px 20px;
+        border-radius: 22px;
+        box-shadow: 5px 5px 0 var(--ink);
+        margin-bottom: 24px;
+      }
+      .booking-success i { font-size: 1.4rem; }
+      .booking-success strong { font-size: 1rem; }
+      .booking-success p { font-size: 0.88rem; }
 
       footer { padding: 56px 0 28px; }
       .footer-grid {
@@ -1787,14 +1838,66 @@
       .testimonial-card { flex: 0 0 86vw; }
     }
 
+    /* ============ iOS DATE INPUT FIXES ============ */
+    .form-group input[type="date"] {
+      -webkit-appearance: none;
+      appearance: none;
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      line-height: normal;
+    }
+
+    .form-group input[type="date"]::-webkit-date-and-time-value {
+      text-align: left;
+      min-height: 1.2em;
+    }
+
+    .form-group input[type="date"]::-webkit-calendar-picker-indicator {
+      cursor: pointer;
+      opacity: 0.55;
+      margin-left: auto;
+    }
+
+    @media (max-width: 768px) {
+      .form-group input[type="date"] {
+        padding: 14px 18px;
+        min-height: 52px;
+        font-size: 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .form-group input[type="date"] {
+        padding: 14px 16px;
+      }
+    }
+
+    /* ============ REDUCED MOTION (scoped) ============ */
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
+      .blob,
+      .paw,
+      .sticker {
+        animation: none !important;
+      }
+
+      .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+
+      html {
         scroll-behavior: auto !important;
       }
-      .blob { animation: none !important; }
+
+      .service-card,
+      .gallery-item,
+      .why-item,
+      .testimonial-card,
+      .stat-card {
+        transform: none !important;
+      }
     }
   </style>
 </head>
@@ -1992,9 +2095,9 @@
       </div>
 
       <div class="stats-strip reveal">
-        <div class="stat-card"><strong>500+</strong><span>Happy Pets</span></div>
-        <div class="stat-card"><strong>4.9</strong><span>Avg Rating</span></div>
-        <div class="stat-card"><strong>7</strong><span>Days a Week</span></div>
+        <div class="stat-card"><strong>5+</strong><span>Years Caring</span></div>
+        <div class="stat-card"><strong>12</strong><span>Vetted Sitters</span></div>
+        <div class="stat-card"><strong>16</strong><span>Cities Served</span></div>
         <div class="stat-card"><strong>100%</strong><span>Insured</span></div>
       </div>
 
@@ -2258,11 +2361,20 @@
         <p class="section-desc">Fill out the form below and we'll be in touch within 24 hours.</p>
       </div>
 
+      <div id="booked" class="booking-success">
+        <i class="fas fa-check-circle"></i>
+        <div>
+          <strong>Request sent!</strong>
+          <p>We'll be in touch within 24 hours. Check your email for confirmation.</p>
+        </div>
+      </div>
+
       <div class="contact-form reveal">
         <h3>Booking Request</h3>
         <p class="contact-form-subtitle">All fields required unless noted otherwise.</p>
 
         <form action="https://formspree.io/f/mnpjzdwz" method="POST">
+          <input type="hidden" name="_next" value="https://pawstayph.com/#booked">
 
           <div class="form-row-3">
             <div class="form-group">
@@ -2316,7 +2428,9 @@
           <div class="form-row">
             <div class="form-group">
               <label for="booking_date">Preferred Booking Date</label>
-              <input type="date" id="booking_date" name="booking_date" required>
+              <select id="booking_date" name="booking_date" required>
+                <option value="">Select a date...</option>
+              </select>
             </div>
             <div class="form-group">
               <label for="pet_type">Pet Type</label>
@@ -2382,11 +2496,13 @@
   </footer>
 
   <script>
+    /* ============ HEADER SCROLL ============ */
     const header = document.getElementById('header');
     window.addEventListener('scroll', () => {
       header.classList.toggle('scrolled', window.scrollY > 40);
     });
 
+    /* ============ MOBILE MENU ============ */
     const menuToggle = document.getElementById('menuToggle');
     const mainNav = document.getElementById('mainNav');
 
@@ -2408,6 +2524,7 @@
       link.addEventListener('click', closeMobileMenu);
     });
 
+    /* ============ REVEAL ON SCROLL ============ */
     const revealElements = document.querySelectorAll('.reveal');
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -2419,6 +2536,7 @@
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
     revealElements.forEach(el => revealObserver.observe(el));
 
+    /* ============ SMOOTH SCROLL ============ */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         const targetId = this.getAttribute('href');
@@ -2433,6 +2551,7 @@
       });
     });
 
+    /* ============ ACTIVE NAV HIGHLIGHT ============ */
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('nav a[href^="#"]');
 
@@ -2466,23 +2585,54 @@
     window.addEventListener('resize', updateActiveNav);
     updateActiveNav();
 
+    /* ============ FAQ ACCORDION ============ */
     document.querySelectorAll('.faq-question').forEach(btn => {
       btn.addEventListener('click', () => {
         btn.parentElement.classList.toggle('open');
       });
     });
 
+    /* ============ BOOKING DATE DROPDOWN ============ */
     const bookingDate = document.getElementById('booking_date');
+
     if (bookingDate) {
       const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
       const minDate = new Date(today);
-      minDate.setDate(today.getDate() + 3);
-      const yyyy = minDate.getFullYear();
-      const mm = String(minDate.getMonth() + 1).padStart(2, '0');
-      const dd = String(minDate.getDate()).padStart(2, '0');
-      bookingDate.min = `${yyyy}-${mm}-${dd}`;
+      minDate.setDate(today.getDate() + 3);   // 3-day rule
+
+      const maxDate = new Date(today);
+      maxDate.setDate(today.getDate() + 90);  // 90-day booking window
+
+      const fmt = new Intl.DateTimeFormat('en-PH', {
+        weekday: 'short',
+        month: 'short',
+        day: 'numeric'
+      });
+
+      const toValue = (d) => {
+        const y = d.getFullYear();
+        const m = String(d.getMonth() + 1).padStart(2, '0');
+        const dd = String(d.getDate()).padStart(2, '0');
+        return `${y}-${m}-${dd}`;
+      };
+
+      const cursor = new Date(minDate);
+      while (cursor <= maxDate) {
+        const opt = document.createElement('option');
+        opt.value = toValue(cursor);
+        const label = fmt.format(cursor);
+        opt.textContent =
+          cursor.getTime() === minDate.getTime()
+            ? `${label} (earliest)`
+            : label;
+        bookingDate.appendChild(opt);
+        cursor.setDate(cursor.getDate() + 1);
+      }
     }
 
+    /* ============ TESTIMONIAL SLIDER ============ */
     const row = document.getElementById('testimonialsRow');
     const prevBtn = document.getElementById('testimonialPrev');
     const nextBtn = document.getElementById('testimonialNext');
@@ -2490,8 +2640,10 @@
     if (row && prevBtn && nextBtn) {
       const getScrollAmount = () => {
         const card = row.querySelector('.testimonial-card');
-        const gap = 28;
-        return card ? card.offsetWidth + gap : 468;
+        if (!card) return 468;
+        const styles = getComputedStyle(row);
+        const gap = parseFloat(styles.columnGap || styles.gap) || 28;
+        return card.offsetWidth + gap;
       };
 
       const updateArrows = () => {
@@ -2516,6 +2668,17 @@
       row.addEventListener('scroll', updateArrows);
       window.addEventListener('resize', updateArrows);
       updateArrows();
+    }
+
+    /* ============ BOOKING SUCCESS BANNER ============ */
+    if (window.location.hash === '#booked') {
+      const el = document.getElementById('booked');
+      if (el) {
+        el.style.display = 'flex';
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 200);
+      }
     }
   </script>
 </body>
