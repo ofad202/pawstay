@@ -65,7 +65,7 @@
       pointer-events: none;
       z-index: 0;
       background-image:
-        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260' viewBox='0 0 260 260'><g fill='%232D2823' fill-opacity='0.055'><g transform='translate(30, 30) rotate(-18)'><ellipse cx='0' cy='14' rx='11' ry='14'/><ellipse cx='-14' cy='-2' rx='5' ry='6.5'/><ellipse cx='-5' cy='-14' rx='5' ry='6.5'/><ellipse cx='6' cy='-14' rx='5' ry='6.5'/><ellipse cx='15' cy='-2' rx='5' ry='6.5'/></g><g transform='translate(200, 90) rotate(22)'><ellipse cx='0' cy='14' rx='11' ry='14'/><ellipse cx='-14' cy='-2' rx='5' ry='6.5'/><ellipse cx='-5' cy='-14' rx='5' ry='6.5'/><ellipse cx='6' cy='-14' rx='5' ry='6.5'/><ellipse cx='15' cy='-2' rx='5' ry='6.5'/></g><g transform='translate(100, 170) rotate(-32)'><ellipse cx='0' cy='14' rx='11' ry='14'/><ellipse cx='-14' cy='-2' rx='5' ry='6.5'/><ellipse cx='-5' cy='-14' rx='5' ry='6.5'/><ellipse cx='6' cy='-14' rx='5' ry='6.5'/><ellipse cx='15' cy='-2' rx='5' ry='6.5'/></g><g transform='translate(240, 210) rotate(15)'><ellipse cx='0' cy='14' rx='11' ry='14'/><ellipse cx='-14' cy='-2' rx='5' ry='6.5'/><ellipse cx='-5' cy='-14' rx='5' ry='6.5'/><ellipse cx='6' cy='-14' rx='5' ry='6.5'/><ellipse cx='15' cy='-2' rx='5' ry='6.5'/></g></g></svg>"),
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260' viewBox='0 0 260 260'><g fill='%232D2823' fill-opacity='0.08'><g transform='translate(30, 30) rotate(-18)'><ellipse cx='0' cy='14' rx='11' ry='14'/><ellipse cx='-14' cy='-2' rx='5' ry='6.5'/><ellipse cx='-5' cy='-14' rx='5' ry='6.5'/><ellipse cx='6' cy='-14' rx='5' ry='6.5'/><ellipse cx='15' cy='-2' rx='5' ry='6.5'/></g><g transform='translate(200, 90) rotate(22)'><ellipse cx='0' cy='14' rx='11' ry='14'/><ellipse cx='-14' cy='-2' rx='5' ry='6.5'/><ellipse cx='-5' cy='-14' rx='5' ry='6.5'/><ellipse cx='6' cy='-14' rx='5' ry='6.5'/><ellipse cx='15' cy='-2' rx='5' ry='6.5'/></g><g transform='translate(100, 170) rotate(-32)'><ellipse cx='0' cy='14' rx='11' ry='14'/><ellipse cx='-14' cy='-2' rx='5' ry='6.5'/><ellipse cx='-5' cy='-14' rx='5' ry='6.5'/><ellipse cx='6' cy='-14' rx='5' ry='6.5'/><ellipse cx='15' cy='-2' rx='5' ry='6.5'/></g><g transform='translate(240, 210) rotate(15)'><ellipse cx='0' cy='14' rx='11' ry='14'/><ellipse cx='-14' cy='-2' rx='5' ry='6.5'/><ellipse cx='-5' cy='-14' rx='5' ry='6.5'/><ellipse cx='6' cy='-14' rx='5' ry='6.5'/><ellipse cx='15' cy='-2' rx='5' ry='6.5'/></g></g></svg>"),
         url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 0.2 0 0 0 0 0.15 0 0 0 0 0.1 0 0 0 0.08 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
       background-size: 260px 260px, 200px 200px;
       background-repeat: repeat, repeat;
@@ -946,7 +946,7 @@
       margin: 0;
     }
 
-    /* ============ TESTIMONIALS ============ */
+    /* ============ TEAM / SITTERS ============ */
     .testimonials-wrapper { position: relative; }
 
     .testimonials-row {
@@ -982,13 +982,6 @@
       box-shadow: 12px 12px 0 var(--ink);
     }
 
-    .testimonial-stars {
-      font-size: 1.1rem;
-      letter-spacing: 3px;
-      color: var(--coral);
-      margin-bottom: 22px;
-    }
-
     .testimonial-text {
       font-family: var(--font-body);
       font-size: 1.1rem;
@@ -997,46 +990,6 @@
       margin-bottom: 32px;
       font-weight: 500;
       flex-grow: 1;
-    }
-
-    .testimonial-author {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding-top: 24px;
-      border-top: 2px dashed rgba(45, 40, 35, 0.2);
-    }
-
-    .testimonial-avatar {
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      border: 2px solid var(--ink);
-      background: var(--yellow);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 1.2rem;
-      color: var(--ink);
-      flex-shrink: 0;
-    }
-
-    .testimonial-card:nth-child(even) .testimonial-avatar { background: var(--coral); color: white; }
-
-    .testimonial-info strong {
-      display: block;
-      font-family: var(--font-display);
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--ink);
-      margin-bottom: 2px;
-    }
-
-    .testimonial-info span {
-      font-size: 0.85rem;
-      color: var(--ink-muted);
     }
 
     .testimonial-arrow {
@@ -1730,12 +1683,12 @@
         transform: rotate(0deg) !important;
       }
       .testimonial-arrow { display: none; }
-      .testimonial-stars { font-size: 0.95rem; margin-bottom: 14px; }
       .testimonial-text { font-size: 0.98rem; margin-bottom: 22px; }
-      .testimonial-author { padding-top: 18px; gap: 12px; }
-      .testimonial-avatar { width: 44px; height: 44px; font-size: 1rem; }
-      .testimonial-info strong { font-size: 0.85rem; }
-      .testimonial-info span { font-size: 0.75rem; }
+      
+      .testimonial-card > div:first-child {
+        width: 100px !important;
+        height: 100px !important;
+      }
 
       .faq-grid { gap: 12px; }
       .faq-category {
@@ -1927,12 +1880,13 @@
       </button>
       <nav id="mainNav">
         <ul>
+          <li><a href="#home">Home</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#gallery">Gallery</a></li>
           <li><a href="#about">About</a></li>
-          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#team">Our Team</a></li>
           <li><a href="#faq">FAQ</a></li>
-          <li><a href="#book">Book</a></li>
+          <li><a href="#book">Book Now</a></li>
         </ul>
       </nav>
     </div>
@@ -1988,7 +1942,7 @@
   <section class="section alt" id="services">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-label">01 — Services</span>
+        <span class="section-label">Services</span>
         <h2 class="section-title">Simple, <span class="script">honest rates.</span></h2>
         <p class="section-desc">No hidden fees. Multi-pet discounts available. Pick the care that fits your pet's needs.</p>
       </div>
@@ -2062,7 +2016,7 @@
   <section class="section" id="gallery">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-label">02 — Gallery</span>
+        <span class="section-label">Gallery</span>
         <h2 class="section-title">The pets we <span class="script">care for.</span></h2>
         <p class="section-desc">A glimpse at some of the fur babies we've had the joy of looking after.</p>
       </div>
@@ -2088,7 +2042,7 @@
   <section class="section alt" id="about">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-label">03 — About</span>
+        <span class="section-label">About</span>
         <h2 class="section-title">Why <span class="script">PawStay.</span></h2>
         <p class="section-desc">More than just sitting — every pet gets personal attention, genuine love, and professional care.</p>
       </div>
@@ -2156,70 +2110,79 @@
     </svg>
   </div>
 
-  <!-- TESTIMONIALS -->
-  <section class="section" id="reviews">
+  <!-- TEAM / SITTERS -->
+  <section class="section" id="team">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-label">04 — Reviews</span>
-        <h2 class="section-title">What pet parents <span class="script">are saying.</span></h2>
-        <p class="section-desc">Real reviews from clients who trust us with their fur babies.</p>
+        <span class="section-label">Our Team</span>
+        <h2 class="section-title">Meet the <span class="script">PawStay team.</span></h2>
+        <p class="section-desc">The vetted professionals who will treat your pets like their own.</p>
       </div>
 
       <div class="testimonials-wrapper reveal">
-        <button class="testimonial-arrow prev" id="testimonialPrev" aria-label="Previous review">
+        
+        <button class="testimonial-arrow prev" id="teamPrev" aria-label="Previous member">
           <i class="fas fa-chevron-left"></i>
         </button>
 
-        <div class="testimonials-row" id="testimonialsRow">
-          <div class="testimonial-card">
-            <div class="testimonial-stars">★★★★★</div>
-            <p class="testimonial-text">"Our dog Mochi is usually anxious around strangers, but PawStay handled her with so much patience. We got photos every day — it really put our minds at ease."</p>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">M</div>
-              <div class="testimonial-info"><strong>Maria S.</strong><span>Dog Owner · Quezon City</span></div>
+        <div class="testimonials-row" id="teamRow">
+          
+          <!-- Sitter 1 -->
+          <div class="testimonial-card" style="align-items: center; text-align: center;">
+            <div style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; border: 3px solid var(--ink); margin-bottom: 20px; box-shadow: 4px 4px 0 var(--yellow);">
+              <img src="jose.jpg" alt="Jose Ombrog" style="width: 100%; height: 100%; object-fit: cover;">
             </div>
+            <h3 class="service-name" style="font-size: 1.5rem; margin-bottom: 4px;">Jose Ombrog</h3>
+            <p style="font-family: var(--font-display); color: var(--coral); font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px;">Founder & Lead Sitter</p>
+            <p class="testimonial-text" style="font-size: 1rem; flex-grow: 0; margin-bottom: 0;">"I specialize in overnight care and making sure every pet feels safe and loved while you're away."</p>
           </div>
 
-          <div class="testimonial-card">
-            <div class="testimonial-stars">★★★★★</div>
-            <p class="testimonial-text">"I travel a lot for work, and PawStay has become my go-to. They follow my cat's feeding schedule perfectly and always clean the litter box before leaving."</p>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">J</div>
-              <div class="testimonial-info"><strong>James R.</strong><span>Cat Owner · Makati</span></div>
+          <!-- Sitter 2 -->
+          <div class="testimonial-card" style="align-items: center; text-align: center;">
+            <div style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; border: 3px solid var(--ink); margin-bottom: 20px; box-shadow: 4px 4px 0 var(--sky);">
+              <img src="member2.jpg" alt="Jade" style="width: 100%; height: 100%; object-fit: cover;">
             </div>
+            <h3 class="service-name" style="font-size: 1.5rem; margin-bottom: 4px;">Jade</h3>
+            <p style="font-family: var(--font-display); color: var(--coral); font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px;">Dog Walker & Playtime Pro</p>
+            <p class="testimonial-text" style="font-size: 1rem; flex-grow: 0; margin-bottom: 0;">"I love keeping active dogs happy with long walks, fresh water, and lots of belly rubs."</p>
           </div>
 
-          <div class="testimonial-card">
-            <div class="testimonial-stars">★★★★★</div>
-            <p class="testimonial-text">"Booked an overnight sitter for a 3-day trip. Came home to a spotless house and a very happy dog. Worth every peso — highly recommended."</p>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">A</div>
-              <div class="testimonial-info"><strong>Andrea L.</strong><span>Dog Owner · Marikina</span></div>
+          <!-- Sitter 3 -->
+          <div class="testimonial-card" style="align-items: center; text-align: center;">
+            <div style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; border: 3px solid var(--ink); margin-bottom: 20px; box-shadow: 4px 4px 0 var(--mint);">
+              <img src="member3.jpg" alt="Jaysel Diane" style="width: 100%; height: 100%; object-fit: cover;">
             </div>
+            <h3 class="service-name" style="font-size: 1.5rem; margin-bottom: 4px;">Jaysel Diane</h3>
+            <p style="font-family: var(--font-display); color: var(--coral); font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px;">Cat & Drop-In Specialist</p>
+            <p class="testimonial-text" style="font-size: 1rem; flex-grow: 0; margin-bottom: 0;">"I'm the go-to sitter for shy cats and senior pets. I make sure routines are never interrupted."</p>
           </div>
 
-          <div class="testimonial-card">
-            <div class="testimonial-stars">★★★★★</div>
-            <p class="testimonial-text">"Super reliable and genuinely caring. They even sent a video of my cat playing — made my whole trip better knowing he was in good hands."</p>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">P</div>
-              <div class="testimonial-info"><strong>Paolo D.</strong><span>Cat Owner · Taguig</span></div>
+          <!-- Sitter 4 -->
+          <div class="testimonial-card" style="align-items: center; text-align: center;">
+            <div style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; border: 3px solid var(--ink); margin-bottom: 20px; box-shadow: 4px 4px 0 var(--coral);">
+              <img src="member4.jpg" alt="Kris" style="width: 100%; height: 100%; object-fit: cover;">
             </div>
+            <h3 class="service-name" style="font-size: 1.5rem; margin-bottom: 4px;">Kris</h3>
+            <p style="font-family: var(--font-display); color: var(--coral); font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px;">Health & Safety Sitter</p>
+            <p class="testimonial-text" style="font-size: 1rem; flex-grow: 0; margin-bottom: 0;">"I handle medication administration and make sure every visit is safe, clean, and stress-free."</p>
           </div>
 
-          <div class="testimonial-card">
-            <div class="testimonial-stars">★★★★★</div>
-            <p class="testimonial-text">"They took care of our senior dog with so much patience. Gave him his meds on time and sent updates. Highly trusted."</p>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">R</div>
-              <div class="testimonial-info"><strong>Rica M.</strong><span>Dog Owner · Pasig</span></div>
+          <!-- Sitter 5 -->
+          <div class="testimonial-card" style="align-items: center; text-align: center;">
+            <div style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; border: 3px solid var(--ink); margin-bottom: 20px; box-shadow: 4px 4px 0 var(--yellow-dark);">
+              <img src="member5.jpg" alt="Issa" style="width: 100%; height: 100%; object-fit: cover;">
             </div>
+            <h3 class="service-name" style="font-size: 1.5rem; margin-bottom: 4px;">Issa</h3>
+            <p style="font-family: var(--font-display); color: var(--coral); font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px;">Client Care & Booking</p>
+            <p class="testimonial-text" style="font-size: 1rem; flex-grow: 0; margin-bottom: 0;">"I manage client requests and make sure every booking is confirmed quickly and accurately."</p>
           </div>
+
         </div>
 
-        <button class="testimonial-arrow next" id="testimonialNext" aria-label="Next review">
+        <button class="testimonial-arrow next" id="teamNext" aria-label="Next member">
           <i class="fas fa-chevron-right"></i>
         </button>
+
       </div>
     </div>
   </section>
@@ -2235,7 +2198,7 @@
   <section class="section alt" id="faq">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-label">05 — FAQ</span>
+        <span class="section-label">FAQ</span>
         <h2 class="section-title">Frequently <span class="script">asked.</span></h2>
         <p class="section-desc">Quick answers to the questions we hear most.</p>
       </div>
@@ -2369,7 +2332,7 @@
   <section class="section" id="book">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-label">06 — Booking</span>
+        <span class="section-label">Booking</span>
         <h2 class="section-title">Request a <span class="script">sitter.</span></h2>
         <p class="section-desc">Fill out the form below and we'll be in touch within 24 hours.</p>
       </div>
@@ -2403,10 +2366,10 @@
               <label for="service">Service Needed</label>
               <select id="service" name="service" required>
                 <option value="">Select a service...</option>
-                <option value="walk">Daily Dog Walking</option>
-                <option value="dropin">Drop-In Visit</option>
-                <option value="overnight">Overnight Sitting</option>
-                <option value="other">Other / Not Sure</option>
+                <option value="Daily Dog Walking">Daily Dog Walking</option>
+                <option value="Drop-In Visit">Drop-In Visit</option>
+                <option value="Overnight Sitting">Overnight Sitting</option>
+                <option value="Other / Not Sure">Other / Not Sure</option>
               </select>
             </div>
           </div>
@@ -2637,40 +2600,40 @@
       }
     }
 
-    /* ============ TESTIMONIAL SLIDER ============ */
-    const row = document.getElementById('testimonialsRow');
-    const prevBtn = document.getElementById('testimonialPrev');
-    const nextBtn = document.getElementById('testimonialNext');
+    /* ============ TEAM SLIDER ============ */
+    const teamRow = document.getElementById('teamRow');
+    const teamPrevBtn = document.getElementById('teamPrev');
+    const teamNextBtn = document.getElementById('teamNext');
 
-    if (row && prevBtn && nextBtn) {
+    if (teamRow && teamPrevBtn && teamNextBtn) {
       const getScrollAmount = () => {
-        const card = row.querySelector('.testimonial-card');
+        const card = teamRow.querySelector('.testimonial-card');
         if (!card) return 468;
-        const styles = getComputedStyle(row);
+        const styles = getComputedStyle(teamRow);
         const gap = parseFloat(styles.columnGap || styles.gap) || 28;
         return card.offsetWidth + gap;
       };
 
       const updateArrows = () => {
-        const maxScroll = row.scrollWidth - row.clientWidth;
-        const atStart = row.scrollLeft <= 2;
-        const atEnd = row.scrollLeft >= maxScroll - 2;
+        const maxScroll = teamRow.scrollWidth - teamRow.clientWidth;
+        const atStart = teamRow.scrollLeft <= 2;
+        const atEnd = teamRow.scrollLeft >= maxScroll - 2;
 
-        prevBtn.style.opacity = atStart ? '0.35' : '1';
-        prevBtn.style.pointerEvents = atStart ? 'none' : 'auto';
-        nextBtn.style.opacity = atEnd ? '0.35' : '1';
-        nextBtn.style.pointerEvents = atEnd ? 'none' : 'auto';
+        teamPrevBtn.style.opacity = atStart ? '0.35' : '1';
+        teamPrevBtn.style.pointerEvents = atStart ? 'none' : 'auto';
+        teamNextBtn.style.opacity = atEnd ? '0.35' : '1';
+        teamNextBtn.style.pointerEvents = atEnd ? 'none' : 'auto';
       };
 
-      prevBtn.addEventListener('click', () => {
-        row.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+      teamPrevBtn.addEventListener('click', () => {
+        teamRow.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
       });
 
-      nextBtn.addEventListener('click', () => {
-        row.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+      teamNextBtn.addEventListener('click', () => {
+        teamRow.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
       });
 
-      row.addEventListener('scroll', updateArrows);
+      teamRow.addEventListener('scroll', updateArrows);
       window.addEventListener('resize', updateArrows);
       updateArrows();
     }
