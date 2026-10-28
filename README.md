@@ -1,9 +1,6 @@
 # PawStay Pet Sitting — Landing Page
 
-A single-page responsive landing site for a fictional pet-sitting service in Metro Manila, built as a college web development project.
-
-## Live Demo
-Open `index.html` directly in any modern browser — no build step or server required.
+A single-page responsive landing site for a pet-sitting service in Metro Manila,
 
 ## Features
 - **Responsive layout** with three breakpoints (1100px, 768px, 480px)
@@ -32,4 +29,3 @@ Open `index.html` directly in any modern browser — no build step or server req
 - Font Awesome 6 (CDN)
 - Formspree (demo form endpoint)
 
-## File Structure
